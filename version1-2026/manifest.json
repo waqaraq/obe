@@ -23,12 +23,30 @@
     "compact": true,
     "paired_assets": true,
     "physical_file_target": "under_100",
-    "courses_full": "courses/courses.json + courses.f32",
-    "course_contents": "courses/course-contents.json + course-contents.f32",
-    "plo": "plo/plo.json + plo.f32",
-    "wk": "wk/wk.json + wk.f32",
-    "ec": "ec/ec.json + ec.f32",
-    "sdg": "sdg/sdg.json + sdg.f32"
+    "courses_full": {
+      "metadata": "courses/courses.json",
+      "vectors": "courses/courses.f32"
+    },
+    "course_contents": {
+      "metadata": "courses/course-contents.json",
+      "vectors": "courses/course-contents.f32"
+    },
+    "plo": {
+      "metadata": "plo/plo.json",
+      "vectors": "plo/plo.f32"
+    },
+    "wk": {
+      "metadata": "wk/wk.json",
+      "vectors": "wk/wk.f32"
+    },
+    "ec": {
+      "metadata": "ec/ec.json",
+      "vectors": "ec/ec.f32"
+    },
+    "sdg": {
+      "metadata": "sdg/sdg.json",
+      "vectors": "sdg/sdg.f32"
+    }
   },
   "counts": {
     "actual_courses": 104,
