@@ -1,0 +1,66 @@
+{
+  "schema_version": 2,
+  "package_version": "version1-2026",
+  "lexical_rule_version": "f123-entity-frequency-v1",
+  "generated_at": "2026-09-30T09:55:20.753Z",
+  "source_reference": {
+    "repository": "waqaraq/obe",
+    "branch": "main",
+    "version_folder": "version1-2026",
+    "embedding_manifest_generated_at": "2026-09-30T08:02:05.709Z",
+    "embedding_model": "mixedbread-ai/mxbai-embed-xsmall-v1"
+  },
+  "layout": {
+    "courses_full": {
+      "lexical": "courses/courses.lexical.json",
+      "frequency_entity": "one full course"
+    },
+    "course_contents": {
+      "lexical": null,
+      "note": "No per-content-chunk lexical profiles are generated; course frequency is calculated at full-course level."
+    },
+    "plo": {
+      "lexical": "plo/plo.lexical.json"
+    },
+    "wk": {
+      "lexical": "wk/wk.lexical.json"
+    },
+    "ec": {
+      "lexical": "ec/ec.lexical.json"
+    },
+    "sdg": {
+      "lexical": "sdg/sdg.lexical.json"
+    }
+  },
+  "family_counts": {
+    "course": 104,
+    "plo": 11,
+    "wk": 9,
+    "ec": 13,
+    "sdg": 17
+  },
+  "rules": {
+    "f1": "df=1",
+    "f2": "df=2",
+    "f3": "df=3",
+    "excluded": "df>=4",
+    "eligibility": ">=1 F1 OR >=2 F2 OR >=3 F3",
+    "frequency_unit": "distinct entities within each family",
+    "course_frequency_entity": "full course only"
+  },
+  "files": {
+    "manifest": "lexical-manifest.json",
+    "readme": "lexical-README.md",
+    "checksums": "lexical-checksums.sha256",
+    "families": {
+      "course": "courses/courses.lexical.json",
+      "plo": "plo/plo.lexical.json",
+      "wk": "wk/wk.lexical.json",
+      "ec": "ec/ec.lexical.json",
+      "sdg": "sdg/sdg.lexical.json"
+    }
+  },
+  "integrity": {
+    "self_test": "PASS"
+  }
+}
