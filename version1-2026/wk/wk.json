@@ -1,0 +1,140 @@
+{
+  "schema_version": 2,
+  "package_version": "version1-2026",
+  "kind": "wk_index",
+  "model": {
+    "id": "mixedbread-ai/mxbai-embed-xsmall-v1",
+    "revision": "e6ac24e",
+    "dimension": 384,
+    "pooling": "mean",
+    "normalize": true,
+    "dtype": "q8"
+  },
+  "vector": {
+    "file": "wk.f32",
+    "format": "float32-le",
+    "dimension": 384,
+    "normalized": true,
+    "row_major": true,
+    "record_count": 9
+  },
+  "records": [
+    {
+      "id": "wk:WK-1",
+      "family": "wk",
+      "subtype": "definition",
+      "entity_id": "WK-1",
+      "display_id": "WK-1",
+      "title": "Natural sciences and relevant social sciences",
+      "source_sheet": "WK Definitions",
+      "source_row": 2,
+      "text": "A systematic theory-based understanding of natural sciences applicable to the discipline and awareness of relevant social sciences.",
+      "embed_text": "Natural sciences and relevant social sciences. A systematic theory-based understanding of natural sciences applicable to the discipline and awareness of relevant social sciences.",
+      "vector_index": 0
+    },
+    {
+      "id": "wk:WK-2",
+      "family": "wk",
+      "subtype": "definition",
+      "entity_id": "WK-2",
+      "display_id": "WK-2",
+      "title": "Mathematics and computing",
+      "source_sheet": "WK Definitions",
+      "source_row": 3,
+      "text": "Conceptually based mathematics, numerical analysis, data analysis, statistics and formal aspects of computer and information science to support detailed analysis and modelling applicable to the discipline.",
+      "embed_text": "Mathematics and computing. Conceptually based mathematics, numerical analysis, data analysis, statistics and formal aspects of computer and information science to support detailed analysis and modelling applicable to the discipline.",
+      "vector_index": 1
+    },
+    {
+      "id": "wk:WK-3",
+      "family": "wk",
+      "subtype": "definition",
+      "entity_id": "WK-3",
+      "display_id": "WK-3",
+      "title": "Engineering fundamentals",
+      "source_sheet": "WK Definitions",
+      "source_row": 4,
+      "text": "A systematic theory-based formulation of engineering fundamentals required in the relevant engineering discipline.",
+      "embed_text": "Engineering fundamentals. A systematic theory-based formulation of engineering fundamentals required in the relevant engineering discipline.",
+      "vector_index": 2
+    },
+    {
+      "id": "wk:WK-4",
+      "family": "wk",
+      "subtype": "definition",
+      "entity_id": "WK-4",
+      "display_id": "WK-4",
+      "title": "Engineering specialist knowledge",
+      "source_sheet": "WK Definitions",
+      "source_row": 5,
+      "text": "Engineering specialist knowledge that provides theoretical frameworks and bodies of knowledge for the accepted practice areas in the engineering discipline; much is at the forefront of the discipline.",
+      "embed_text": "Engineering specialist knowledge. Engineering specialist knowledge that provides theoretical frameworks and bodies of knowledge for the accepted practice areas in the engineering discipline; much is at the forefront of the discipline.",
+      "vector_index": 3
+    },
+    {
+      "id": "wk:WK-5",
+      "family": "wk",
+      "subtype": "definition",
+      "entity_id": "WK-5",
+      "display_id": "WK-5",
+      "title": "Engineering design and operations",
+      "source_sheet": "WK Definitions",
+      "source_row": 6,
+      "text": "Knowledge including efficient resource use, environmental impacts, whole-life cost, re-use of resources, net zero carbon and similar concepts that supports engineering design and operations in a practice area.",
+      "embed_text": "Engineering design and operations. Knowledge including efficient resource use, environmental impacts, whole-life cost, re-use of resources, net zero carbon and similar concepts that supports engineering design and operations in a practice area.",
+      "vector_index": 4
+    },
+    {
+      "id": "wk:WK-6",
+      "family": "wk",
+      "subtype": "definition",
+      "entity_id": "WK-6",
+      "display_id": "WK-6",
+      "title": "Engineering practice",
+      "source_sheet": "WK Definitions",
+      "source_row": 7,
+      "text": "Knowledge of engineering practice technology in the practice areas in the engineering discipline.",
+      "embed_text": "Engineering practice. Knowledge of engineering practice technology in the practice areas in the engineering discipline.",
+      "vector_index": 5
+    },
+    {
+      "id": "wk:WK-7",
+      "family": "wk",
+      "subtype": "definition",
+      "entity_id": "WK-7",
+      "display_id": "WK-7",
+      "title": "Engineering in society",
+      "source_sheet": "WK Definitions",
+      "source_row": 8,
+      "text": "Knowledge of the role of engineering in society and identified issues in engineering practice in the discipline, such as the professional responsibility of an engineer to public safety and sustainable development.",
+      "embed_text": "Engineering in society. Knowledge of the role of engineering in society and identified issues in engineering practice in the discipline, such as the professional responsibility of an engineer to public safety and sustainable development.",
+      "vector_index": 6
+    },
+    {
+      "id": "wk:WK-8",
+      "family": "wk",
+      "subtype": "definition",
+      "entity_id": "WK-8",
+      "display_id": "WK-8",
+      "title": "Research literature",
+      "source_sheet": "WK Definitions",
+      "source_row": 9,
+      "text": "Engagement with selected knowledge in the current research literature of the discipline, awareness of the power of critical thinking and creative approaches to evaluate emerging issues.",
+      "embed_text": "Research literature. Engagement with selected knowledge in the current research literature of the discipline, awareness of the power of critical thinking and creative approaches to evaluate emerging issues.",
+      "vector_index": 7
+    },
+    {
+      "id": "wk:WK-9",
+      "family": "wk",
+      "subtype": "definition",
+      "entity_id": "WK-9",
+      "display_id": "WK-9",
+      "title": "Ethics, inclusive behavior and conduct",
+      "source_sheet": "WK Definitions",
+      "source_row": 10,
+      "text": "Ethics, inclusive behavior and conduct; knowledge of professional ethics, responsibilities and norms of engineering practice. Awareness of the need for diversity with mutual understanding and respect, and of inclusive attitudes.",
+      "embed_text": "Ethics, inclusive behavior and conduct. Ethics, inclusive behavior and conduct; knowledge of professional ethics, responsibilities and norms of engineering practice. Awareness of the need for diversity with mutual understanding and respect, and of inclusive attitudes.",
+      "vector_index": 8
+    }
+  ]
+}

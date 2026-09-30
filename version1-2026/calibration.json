@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "package_version": "version1-2026",
+  "model_id": "mixedbread-ai/mxbai-embed-xsmall-v1",
+  "status": "UNSET_REQUIRES_FACULTY_CALIBRATION",
+  "thresholds": {
+    "course_full": null,
+    "course_content": null,
+    "plo": null,
+    "wk": null,
+    "ec": null,
+    "sdg": null
+  },
+  "aggregation": {
+    "course": "compare assigned course full vector and/or max content chunk",
+    "plo": "per_definition",
+    "wk": "per_definition",
+    "ec": "per_definition",
+    "sdg": "max_goal_or_target_within_sdg"
+  },
+  "note": "Do not treat raw similarity as pass/fail until thresholds are calibrated on labelled CLO examples."
+}

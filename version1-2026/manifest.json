@@ -1,0 +1,59 @@
+{
+  "schema_version": 2,
+  "package_version": "version1-2026",
+  "root_folder": "version1-2026",
+  "generated_at": "2026-09-30T08:02:05.709Z",
+  "builder": {
+    "name": "Reference Embedding Package Builder",
+    "version": "2.0.0-compact"
+  },
+  "model": {
+    "id": "mixedbread-ai/mxbai-embed-xsmall-v1",
+    "revision": "e6ac24e",
+    "transformers_js_version": "3.8.1",
+    "transformers_js_url": "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1",
+    "dtype": "q8",
+    "device": "wasm",
+    "pooling": "mean",
+    "normalize": true,
+    "dimension": 384,
+    "runtime_requirement": "CLO embeddings must use this same model/revision/pooling/normalization contract"
+  },
+  "layout": {
+    "compact": true,
+    "paired_assets": true,
+    "physical_file_target": "under_100",
+    "courses_full": "courses/courses.json + courses.f32",
+    "course_contents": "courses/course-contents.json + course-contents.f32",
+    "plo": "plo/plo.json + plo.f32",
+    "wk": "wk/wk.json + wk.f32",
+    "ec": "ec/ec.json + ec.f32",
+    "sdg": "sdg/sdg.json + sdg.f32"
+  },
+  "counts": {
+    "actual_courses": 104,
+    "full_course_embeddings": 104,
+    "course_content_embeddings": 819,
+    "plo_embeddings": 11,
+    "wk_embeddings": 9,
+    "ec_embeddings": 13,
+    "sdg_goal_target_embeddings": 186,
+    "total_embeddings": 1142
+  },
+  "course_chunking": {
+    "version": "heading-aware-bullets-v1",
+    "max_chars": 520
+  },
+  "source_workbook": {
+    "filename": "Full_Underlying_Validator_Data.xlsx",
+    "sha256": "a24b41fbcd92100c660c6a8f099233ee66e0f9853f8075f1f7100c3724da085d",
+    "app_version": "2026-09-29-unified-lexical-v3.7-klm-nosidebar"
+  },
+  "exclusions": [
+    "CLOs are not embedded",
+    "Bloom is packaged but not embedded",
+    "Legacy PLO Map is not embedded",
+    "Lexical Config is not embedded",
+    "Lexical Vocabulary is not embedded"
+  ]
+}
