@@ -1,0 +1,1769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OBE CLO Mapper v12 · Contents Tab</title>
+<style>
+
+:root{--bg:#f7f8fa;--card:#fff;--ink:#162033;--muted:#667085;--line:#d8dee8;--blue:#175cd3;--blue-weak:#eef4ff;--green:#067647;--green-weak:#ecfdf3;--amber:#9a6700;--amber-weak:#fff7d6;--red:#b42318;--red-weak:#fff1f0;--radius:14px;--shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.04)}
+*{box-sizing:border-box}html{color-scheme:light}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit;color:inherit}button,label,select{touch-action:manipulation}.hidden{display:none!important}
+button,.btn,select,input,textarea{min-height:44px}.btn{border:1px solid #bdc6d4;border-radius:10px;background:#fff;padding:10px 14px;font-weight:700;cursor:pointer}.btn:hover{border-color:#98a2b3}.btn:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #84adff;outline-offset:2px}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn.danger-lite{color:var(--red);border-color:#efc4bf;background:#fff}.btn:disabled{opacity:.45;cursor:not-allowed}
+header{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line)}.topbar{max-width:1080px;margin:auto;height:64px;padding:0 20px;display:flex;align-items:center;gap:14px}.brand{font-weight:800;font-size:17px}.brand small{display:block;font-size:12px;font-weight:500;color:var(--muted)}.spacer{flex:1}.status-dot{font-size:12px;color:var(--muted);white-space:nowrap}.status-dot.ok{color:var(--green)}.status-dot.bad{color:var(--red)}.engine-pill{font-size:12px;color:var(--muted);white-space:nowrap}.engine-pill.ok{color:var(--green)}.engine-pill.warn{color:var(--amber)}.engine-pill.bad{color:var(--red)}.settings-btn{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:20px;cursor:pointer}
+main{max-width:980px;margin:auto;padding:22px 18px 90px}.empty-state{max-width:600px;margin:12vh auto 0;text-align:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:38px 30px;box-shadow:var(--shadow)}.empty-state h1{font-size:24px;margin:0 0 8px}.empty-state p{color:var(--muted);margin:0 0 22px}.file-trigger{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:10px;background:var(--blue);color:#fff;font-weight:750;cursor:pointer}
+.context-bar{display:block;margin-bottom:6px}.context-left label{display:block;font-size:12px;font-weight:750;color:#475467;margin:0 0 5px}.context-left select{width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;padding:0 12px}.course-meta{display:none}.clo-nav{display:none}.clo-strip{display:flex;align-items:stretch;gap:8px;margin:6px 0 8px}.progress-line{text-align:right;color:var(--muted);font-size:12px;margin:0 0 6px}.progress-line:empty{display:none}.clo-tabs-row{display:flex;flex:1 1 auto;flex-wrap:wrap;gap:6px;align-items:stretch;margin:0;min-width:0}.clo-tab{flex:1 1 110px;min-height:38px;border:1px solid var(--line);border-radius:9px;padding:6px 11px;background:#fff;font-size:12px;font-weight:800;cursor:pointer}.add-clo-compact{flex:0 0 auto;min-height:38px;padding:6px 12px;font-size:12px}.clo-tab.valid{background:var(--green-weak);border-color:#9ad7b7;color:var(--green)}.clo-tab.invalid{background:var(--red-weak);border-color:#efb8b2;color:var(--red)}.clo-tab.active{box-shadow:inset 0 -3px 0 currentColor,0 0 0 2px #fff,0 0 0 3px currentColor}.clo-tab:focus-visible{outline:3px solid #84adff;outline-offset:2px}.clo-tabs-empty{font-size:12px;color:var(--muted)}.add-clo-compact{min-height:38px;padding:6px 11px;font-size:12px}
+.clo-work{display:flex;flex-direction:column;gap:14px}.step-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.step{height:42px;display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--muted);font-weight:700;font-size:13px}.step span{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#eef1f5}.step.active{border-color:#9dbdf9;background:var(--blue-weak);color:#1849a9}.step.done{border-color:#9ad7b7;background:var(--green-weak);color:var(--green)}.step.done span{background:#d1fadf}
+.course-word-note{font-size:11px;line-height:1.55;color:var(--muted);padding:7px 10px;border:1px solid #e5e9ef;border-radius:9px;background:#fff;white-space:normal;overflow:visible;overflow-wrap:anywhere}.course-word-note b{color:#475467}.course-word-note .f1{color:#067647}.course-word-note .f2{color:#175cd3}.course-word-note .f3{color:#c11574}.selected-lexical-note{margin-top:7px;margin-bottom:0}.compact-map-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}.compact-map-title b{font-size:12px}.smart-select{width:100%;min-height:40px;border:1px solid var(--line);border-radius:9px;background:#fff;padding:0 9px;font-size:12px}.mapping-card[data-family=sdg]{grid-column:1/-1}.mapping-card[data-family=sdg] .smart-select{max-width:100%}
+.editor-card,.mapping-card,.bloom-row,.final-state,.empty-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.editor-card{padding:18px}.editor-head{display:flex;justify-content:space-between;gap:16px;align-items:start;margin-bottom:10px}.editor-head label{display:block;font-weight:800;font-size:16px}.helper{display:block;color:var(--muted);font-size:12px;margin-top:2px}.clo-id{width:94px;border:1px solid var(--line);border-radius:9px;padding:0 10px;text-align:center;font-weight:700}.clo-text{width:100%;min-height:116px;border:1px solid #cbd3df;border-radius:12px;padding:14px;resize:vertical;font-size:16px;line-height:1.55;background:#fff}.course-fit{margin-top:12px;border-radius:10px;padding:10px 12px;background:#f8fafc;border:1px solid #e7ebf0}.course-fit>div{display:flex;gap:10px;justify-content:space-between}.course-fit b{font-size:13px}.course-fit span{font-size:13px;color:var(--muted)}.course-fit.ready,.course-fit.verified{background:var(--green-weak);border-color:#b7e3c9}.course-fit.review{background:var(--amber-weak);border-color:#eed88e}.course-fit details,.why{margin-top:5px;color:#475467;font-size:12px}.course-fit summary,.why summary{cursor:pointer;font-weight:700}
+.authoring-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);gap:12px;align-items:start}.authoring-left{display:flex;flex-direction:column;gap:10px}.mapping-stack{display:flex;flex-direction:column;gap:10px}.sdg-row{display:block}.mapping-card{padding:10px;min-width:0}.mapping-card.verified{border-color:#9ad7b7}.mapping-card.review{border-color:#e8c56b}.mapping-card.ready{border-color:#c7d8f5}.mapping-status{font-size:10px;font-weight:800;border-radius:999px;padding:3px 6px;background:#eef1f5;color:#475467;white-space:nowrap}.mapping-status.ready{background:var(--blue-weak);color:#1849a9}.mapping-status.verified{background:var(--green-weak);color:var(--green)}.mapping-status.review{background:var(--amber-weak);color:var(--amber)}.semantic-hint{margin-top:7px;padding:7px 8px;border-radius:8px;background:var(--amber-weak);font-size:11px;color:#694f00}
+.bloom-row{display:block;padding:13px 15px}.bloom-top{display:flex;justify-content:space-between;gap:16px;align-items:center}.bloom-top>div b{display:block;font-size:14px}.bloom-top>div span{display:block;color:var(--muted);font-size:12px;margin-top:2px}.bloom-row select{min-width:230px;border:1px solid var(--line);border-radius:9px;background:#fff;padding:0 10px}.bloom-verb-line{margin-top:9px;padding-top:8px;border-top:1px solid #edf0f4;font-size:11px;line-height:1.55;color:#475467;white-space:normal;overflow-wrap:anywhere}.bloom-verb-line>span{display:block;margin-top:2px}.bloom-verb-line b{color:var(--ink)}.bloom-row.verified{border-color:#b7e3c9}.bloom-row.review{border-color:#eed88e}
+.final-state{padding:14px 16px;display:flex;justify-content:space-between;gap:16px;align-items:center}.final-state b{font-size:15px}.final-state span{color:#667085;font-size:13px;text-align:right}.final-state.ready{background:var(--blue-weak);border-color:#b5cdf8}.final-state.verified{background:var(--green-weak);border-color:#9ad7b7}.final-state.review{background:var(--amber-weak);border-color:#e8c56b}.actions{display:flex;justify-content:space-between;gap:12px}.actions .primary{min-width:230px}.empty-card{padding:28px;text-align:center}.empty-card span{display:block;color:var(--muted);margin-top:4px}
+.drawer-backdrop{display:none;position:fixed;inset:0;background:rgba(16,24,40,.28);z-index:39}.settings-panel{position:fixed;z-index:40;top:0;right:0;width:min(430px,94vw);height:100vh;background:#fff;border-left:1px solid var(--line);box-shadow:-18px 0 45px rgba(16,24,40,.12);transform:translateX(105%);transition:.2s ease;padding:18px;overflow:auto}.settings-panel.open{transform:translateX(0)}.settings-panel.open~.drawer-backdrop{display:block}.settings-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.settings-head h2{font-size:18px;margin:0}.settings-close{width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:22px}.settings-group{border-top:1px solid #edf0f4;padding:16px 0}.settings-group:first-of-type{border-top:0}.settings-group h3{font-size:13px;margin:0 0 10px}.settings-group label{display:block;font-size:12px;font-weight:700;color:#475467;margin-bottom:6px}.control{width:100%;border:1px solid var(--line);border-radius:9px;background:#fff;padding:0 10px}.settings-actions{display:flex;gap:8px;flex-wrap:wrap}.engine-note{font-size:12px;color:#475467;margin-top:8px}.runtime-log{height:130px;overflow:auto;background:#101828;color:#d0d5dd;border-radius:9px;padding:9px;font:11px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}.workbook-status{font-size:12px;color:#667085;margin-top:6px}.admin-hidden{display:none}.notice{border:1px solid #efd58e;background:var(--amber-weak);color:#654f0f;border-radius:9px;padding:9px 11px}.notice.good{border-color:#a8d9bf;background:var(--green-weak);color:#165c3d}.notice.bad{border-color:#efb8b2;background:var(--red-weak);color:#8f241b}
+
+/* Compact single-column CLO + five-tab criteria workspace */
+.clo-work{gap:10px}
+.clo-work .step-rail{display:none}
+.editor-card{padding:14px}
+.clo-text{min-height:78px;height:78px;resize:vertical}
+.criteria-shell{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.criteria-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border-bottom:1px solid var(--line);background:#f8fafc}
+.criteria-tab{min-height:42px;border:0;border-right:1px solid var(--line);background:#fff;padding:8px 6px;font-weight:800;font-size:12px;cursor:pointer;color:#344054}
+.criteria-tab:last-child{border-right:0}
+.criteria-tab.valid{background:var(--green-weak);color:var(--green)}
+.criteria-tab.invalid{background:var(--red-weak);color:var(--red)}
+.criteria-tab.active{box-shadow:inset 0 -3px 0 currentColor}
+.criteria-tab:focus-visible{outline:3px solid #84adff;outline-offset:-3px;position:relative;z-index:2}
+.criteria-panel{display:none;padding:10px}
+.criteria-panel.active{display:block}
+.criteria-panel .mapping-card,.criteria-panel .bloom-row{box-shadow:none;border:0;border-radius:0;padding:2px}
+.criteria-panel .mapping-card.review,.criteria-panel .bloom-row.review,.criteria-panel .mapping-card.verified,.criteria-panel .bloom-row.verified,.criteria-panel .mapping-card.ready{border:0}
+.criteria-panel .course-word-note{margin-top:8px}
+.criteria-panel .semantic-hint{margin-top:8px}
+@media(max-width:760px){.criteria-tab{font-size:10px;padding:7px 3px}.clo-tab{min-height:36px;padding:5px 9px;font-size:11px}.add-clo-compact{min-height:36px;padding:5px 9px}.clo-text{min-height:78px;height:78px}.criteria-panel{padding:9px}.topbar{padding:0 14px}.status-dot{display:none}main{padding:14px 12px 90px}.context-bar{display:block}.authoring-grid{grid-template-columns:1fr}.editor-head{align-items:end}.bloom-row,.final-state{align-items:stretch;flex-direction:column}.bloom-row select{min-width:0;width:100%}.final-state span{text-align:left}.actions{position:sticky;bottom:8px;background:rgba(247,248,250,.94);padding:8px 0}.actions .primary{min-width:0;flex:1}.step{font-size:12px}}
+
+
+
+/* Unified 3D tab language: CLO tabs + criteria tabs */
+.clo-tabs-row{
+  gap:8px;
+  margin:0;
+  align-items:stretch;
+}
+.clo-tab,
+.criteria-tab{
+  border:1px solid #cfd6e1;
+  border-radius:10px;
+  background:#fff;
+  color:#344054;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:
+    0 3px 0 #cfd6e1,
+    0 5px 10px rgba(16,24,40,.08);
+  transform:translateY(0);
+  transition:transform .08s ease,box-shadow .08s ease,border-color .08s ease;
+}
+.clo-tab{flex:1 1 110px;min-width:0}
+.clo-tab:hover,
+.criteria-tab:hover{
+  transform:translateY(-1px);
+  box-shadow:
+    0 4px 0 #cfd6e1,
+    0 7px 12px rgba(16,24,40,.09);
+}
+.clo-tab.valid,
+.criteria-tab.valid{
+  background:var(--green-weak);
+  border-color:#8fd1ae;
+  color:var(--green);
+  box-shadow:
+    0 3px 0 #8fd1ae,
+    0 5px 10px rgba(6,118,71,.10);
+}
+.clo-tab.invalid,
+.criteria-tab.invalid{
+  background:var(--red-weak);
+  border-color:#e9aaa3;
+  color:var(--red);
+  box-shadow:
+    0 3px 0 #e9aaa3,
+    0 5px 10px rgba(180,35,24,.09);
+}
+.clo-tab.active,
+.criteria-tab.active{
+  transform:translateY(3px);
+  box-shadow:
+    inset 0 2px 4px rgba(16,24,40,.13),
+    0 0 0 1px rgba(16,24,40,.03);
+}
+.clo-tab.active:hover,
+.criteria-tab.active:hover{
+  transform:translateY(3px);
+}
+.clo-tab:focus-visible,
+.criteria-tab:focus-visible{
+  outline:3px solid #84adff;
+  outline-offset:3px;
+  position:relative;
+  z-index:2;
+}
+.criteria-shell{
+  overflow:visible;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+}
+.criteria-tabs{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:8px;
+  padding:0 0 9px;
+  border-bottom:0;
+  background:transparent;
+}
+.criteria-tab{
+  min-height:40px;
+  padding:7px 8px;
+  font-size:12px;
+}
+.criteria-tab:last-child{border-right:1px solid #cfd6e1}
+.criteria-panel{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  box-shadow:var(--shadow);
+}
+@media(max-width:760px){
+  .clo-strip{gap:6px;margin:5px 0 7px}
+  .clo-tabs-row,.criteria-tabs{gap:6px}
+  .clo-tab,.criteria-tab{
+    border-radius:8px;
+    font-size:10.5px;
+  }
+  .criteria-tab{padding:6px 3px;min-height:38px}
+  .clo-tab{padding:5px 7px;min-height:36px;flex:1 1 82px}
+  .add-clo-compact{min-height:36px;padding:5px 9px}
+}
+
+
+/* Compact CLO-count selector and equal-width dynamic CLO tabs */
+.clo-tabs-row{
+  display:grid;
+  grid-template-columns:repeat(var(--clo-count,3),minmax(0,1fr));
+  flex:1 1 auto;
+  gap:6px;
+}
+.clo-tab{width:100%;min-width:0;flex:none}
+.clo-count-select{
+  flex:0 0 52px;
+  width:52px;
+  min-height:38px;
+  height:38px;
+  padding:0 6px;
+  border:1px solid #cfd6e1;
+  border-radius:9px;
+  background:#fff;
+  font-size:12px;
+  font-weight:800;
+  text-align:center;
+  cursor:pointer;
+}
+.clo-count-select:focus-visible{outline:3px solid #84adff;outline-offset:2px}
+@media(max-width:760px){
+  .clo-strip{gap:6px}
+  .clo-tabs-row{gap:4px}
+  .clo-tab{padding:5px 4px;font-size:10px}
+  .clo-count-select{flex-basis:46px;width:46px;min-height:36px;height:36px;padding:0 4px;font-size:11px}
+}
+
+
+
+/* Decisive, accessible status language */
+:root{
+  --ok:#067647;--ok-bg:#ecfdf3;--ok-border:#75c69a;
+  --danger:#b42318;--danger-strong:#912018;--danger-bg:#fff1f0;--danger-border:#f08a80;
+  --pending:#b54708;--pending-bg:#fffaeb;--pending-border:#f0bf69;
+  --info:#175cd3;--info-bg:#eef4ff;
+}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+body{background:#f5f7fa}
+
+/* Primary authoring area stays calm and neutral */
+.editor-card{border-color:#cdd6e2;box-shadow:0 1px 2px rgba(16,24,40,.04),0 5px 14px rgba(16,24,40,.05)}
+.clo-text{border-color:#b8c5d6;background:#fff}
+.clo-text:focus{border-color:#6b9df5;box-shadow:0 0 0 3px rgba(23,92,211,.10)}
+.course-word-note{border-color:#d9e0e9;background:#fbfcfe}
+
+/* Tabs: state is readable by color + symbol + 3D depth */
+.clo-tab,.criteria-tab{position:relative;letter-spacing:.01em}
+.clo-tab .status-symbol,.criteria-tab .status-symbol{
+  display:inline-grid;place-items:center;width:16px;height:16px;margin-right:5px;border-radius:50%;
+  font-size:10px;font-weight:900;line-height:1;vertical-align:-1px
+}
+.clo-tab.valid,.criteria-tab.valid{
+  background:linear-gradient(#f2fff8,#e5f9ef);border-color:var(--ok-border);color:var(--ok);
+  box-shadow:0 3px 0 #63b78a,0 5px 10px rgba(6,118,71,.11)
+}
+.clo-tab.valid .status-symbol,.criteria-tab.valid .status-symbol{background:#d1fadf;color:#05603a}
+.clo-tab.invalid,.criteria-tab.invalid{
+  background:linear-gradient(#fff7f6,#ffe9e7);border-color:var(--danger-border);color:var(--danger-strong);
+  box-shadow:0 3px 0 #e67066,0 5px 11px rgba(180,35,24,.14)
+}
+.clo-tab.invalid .status-symbol,.criteria-tab.invalid .status-symbol{background:#ffd4cf;color:var(--danger-strong)}
+.clo-tab.invalid:hover,.criteria-tab.invalid:hover{box-shadow:0 4px 0 #dc6258,0 7px 13px rgba(180,35,24,.17)}
+.clo-tab.active.valid,.criteria-tab.active.valid{box-shadow:inset 0 2px 5px rgba(6,118,71,.20),0 0 0 2px rgba(6,118,71,.16)}
+.clo-tab.active.invalid,.criteria-tab.active.invalid{box-shadow:inset 0 2px 5px rgba(180,35,24,.22),0 0 0 2px rgba(180,35,24,.18)}
+
+/* Active panel inherits the selected tab's state */
+.criteria-panel{border-width:1px;transition:border-color .12s ease,box-shadow .12s ease}
+.criteria-panel.valid{border-color:#a6dbc0;box-shadow:0 2px 10px rgba(6,118,71,.07)}
+.criteria-panel.invalid{border-color:#f0a39b;box-shadow:0 2px 12px rgba(180,35,24,.10)}
+.criteria-panel.invalid::before,.criteria-panel.valid::before{content:"";display:block;height:3px;margin:-10px -10px 9px;border-radius:11px 11px 0 0}
+.criteria-panel.invalid::before{background:var(--danger)}
+.criteria-panel.valid::before{background:var(--ok)}
+
+/* Internal status badges follow the same state system */
+.mapping-status{border:1px solid transparent}
+.mapping-status.ready,.mapping-status.verified{background:var(--ok-bg);color:var(--ok);border-color:#b1e1c8}
+.mapping-status.review{background:var(--danger-bg);color:var(--danger);border-color:#f3b4ae}
+.mapping-card.neutral .mapping-status{background:var(--danger-bg);color:var(--danger);border-color:#f3b4ae}
+.semantic-hint{background:var(--danger-bg);border:1px solid #f3b4ae;color:#8f241b}
+.bloom-row.review .bloom-top>div span{color:var(--danger);font-weight:700}
+.bloom-row.verified .bloom-top>div span{color:var(--ok);font-weight:700}
+
+/* Course fit: green means settled, red means action needed */
+.course-fit.ready,.course-fit.verified{background:var(--ok-bg);border-color:#9dd5b8}
+.course-fit.ready>div span,.course-fit.verified>div span{color:var(--ok);font-weight:750}
+.course-fit.review{background:var(--danger-bg);border-color:#f0a39b}
+.course-fit.review>div span{color:var(--danger);font-weight:800}
+.course-fit.neutral{background:#f8fafc;border-color:#d8dee8}
+
+/* Bottom state acts as the strongest completion cue */
+.final-state{border-width:1.5px;box-shadow:none}
+.final-state.neutral,.final-state.review{
+  background:linear-gradient(90deg,#fff1f0,#fff8f7);border-color:var(--danger-border);color:var(--danger-strong);
+  box-shadow:inset 4px 0 0 var(--danger)
+}
+.final-state.neutral b,.final-state.review b{color:var(--danger-strong)}
+.final-state.neutral span,.final-state.review span{color:#8f241b;font-weight:650}
+.final-state.ready{
+  background:linear-gradient(90deg,#fffaeb,#fffdf5);border-color:var(--pending-border);color:#854a0e;
+  box-shadow:inset 4px 0 0 var(--pending)
+}
+.final-state.ready b{color:#854a0e}.final-state.ready span{color:#7a4b14;font-weight:650}
+.final-state.verified{
+  background:linear-gradient(90deg,#ecfdf3,#f6fff9);border-color:var(--ok-border);color:var(--ok);
+  box-shadow:inset 4px 0 0 var(--ok)
+}
+.final-state.verified b,.final-state.verified span{color:var(--ok);font-weight:700}
+
+/* Primary action feels unfinished until pressed; destructive action stays secondary */
+.btn.primary{background:#175cd3;border-color:#175cd3;box-shadow:0 2px 0 #0f4aa8}
+.btn.primary:hover{background:#1849a9;border-color:#1849a9}
+.btn.danger-lite{background:#fff;color:#b42318;border-color:#f0a39b}
+
+@media(max-width:760px){
+  .clo-tab .status-symbol,.criteria-tab .status-symbol{width:14px;height:14px;margin-right:3px;font-size:9px}
+  .criteria-panel.invalid::before,.criteria-panel.valid::before{margin:-9px -9px 8px}
+  .final-state{padding:11px 12px}
+}
+
+
+
+/* v9 — explicit lexical + semantic status language */
+:root{
+  --ok:#067647;--ok-strong:#045d3a;--ok-bg:#e9fbf2;--ok-border:#56c58a;
+  --danger:#d92d20;--danger-strong:#a91912;--danger-bg:#fff0ee;--danger-border:#ff766d;
+  --pending:#e87400;--pending-strong:#9f4c00;--pending-bg:#fff5df;--pending-border:#f7b955;
+  --info:#155eef;--info-strong:#0f46b8;--info-bg:#eef4ff;
+}
+
+/* Three-state tabs: unresolved / lexical-ready / fully verified */
+.clo-tab.pending,.criteria-tab.pending{
+  background:linear-gradient(#fffaf0,#fff0cf);border-color:var(--pending-border);color:var(--pending-strong);
+  box-shadow:0 3px 0 #e6a13c,0 5px 11px rgba(232,116,0,.16)
+}
+.clo-tab.pending .status-symbol,.criteria-tab.pending .status-symbol{background:#ffe3a3;color:#884000}
+.clo-tab.active.pending,.criteria-tab.active.pending{box-shadow:inset 0 2px 5px rgba(232,116,0,.22),0 0 0 2px rgba(232,116,0,.19)}
+
+.criteria-tab{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  min-height:54px;padding:6px 5px
+}
+.criteria-name{display:block;font-weight:900;line-height:1.05}
+.dual-status{display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
+.channel{
+  display:inline-flex;align-items:center;justify-content:center;min-height:17px;padding:1px 5px;border-radius:999px;
+  font-size:9px;line-height:1;font-weight:900;letter-spacing:.015em;border:1px solid transparent;background:#eef2f6;color:#475467
+}
+.channel.pass{background:#c9f3dd;color:#045d3a;border-color:#80d7aa}
+.channel.fail{background:#ffd8d4;color:#a91912;border-color:#ff9b93}
+.channel.pending{background:#ffe9b8;color:#8a4200;border-color:#f4c668}
+.channel.rule{min-width:48px}
+.criteria-tab .status-symbol{display:none}
+
+.criteria-panel.pending{border-color:#efc06f;box-shadow:0 2px 12px rgba(232,116,0,.09)}
+.criteria-panel.pending::before{content:"";display:block;height:3px;margin:-10px -10px 9px;border-radius:11px 11px 0 0;background:var(--pending)}
+
+/* Bright, consistent card feedback */
+.mapping-status{display:inline-flex;gap:4px;align-items:center;background:transparent!important;border:0!important;padding:0!important}
+.map-channel{display:inline-flex;align-items:center;gap:3px;padding:3px 7px;border-radius:999px;font-size:10px;font-weight:900;border:1px solid transparent}
+.map-channel.pass{background:#d5f7e5;color:#045d3a;border-color:#8edcb4}
+.map-channel.fail{background:#ffe0dc;color:#a91912;border-color:#ffa29a}
+.map-channel.pending{background:#ffedc4;color:#8a4200;border-color:#f2c463}
+.compact-map-title{align-items:center}
+
+.course-fit.ready{background:linear-gradient(90deg,#fff5df,#fffaf0);border-color:var(--pending-border)}
+.course-fit.ready>div span{color:var(--pending-strong);font-weight:800}
+.course-fit.verified{background:linear-gradient(90deg,#e9fbf2,#f5fff9);border-color:var(--ok-border)}
+.course-fit.verified>div span{color:var(--ok);font-weight:800}
+.course-fit.review{background:linear-gradient(90deg,#fff0ee,#fff8f7);border-color:var(--danger-border)}
+
+.final-state.neutral,.final-state.review{background:linear-gradient(90deg,#fff0ee,#fff9f8);border-color:var(--danger-border);box-shadow:inset 5px 0 0 var(--danger)}
+.final-state.ready{background:linear-gradient(90deg,#fff5df,#fffdf6);border-color:var(--pending-border);box-shadow:inset 5px 0 0 var(--pending)}
+.final-state.verified{background:linear-gradient(90deg,#e9fbf2,#f8fffb);border-color:var(--ok-border);box-shadow:inset 5px 0 0 var(--ok)}
+.btn.primary{background:linear-gradient(#1f6fff,#155eef);border-color:#155eef;box-shadow:0 3px 0 #0d43af}
+.btn.primary:hover{background:linear-gradient(#155eef,#114fc9);border-color:#114fc9}
+
+/* Semantic evidence panel uses blue rather than error-red; the tab still carries pass/fail state */
+.semantic-hint{background:#eef4ff;border:1px solid #9abcfb;color:#123e91}
+
+@media(max-width:760px){
+  .criteria-tab{min-height:50px;padding:5px 2px;gap:2px}
+  .criteria-name{font-size:10px}
+  .dual-status{gap:2px}
+  .channel{font-size:8px;padding:1px 3px;min-height:15px}
+  .map-channel{font-size:9px;padding:3px 5px}
+  .criteria-panel.pending::before{margin:-9px -9px 8px}
+}
+
+
+
+/* v10 — split-channel tabs + refreshed visual system */
+:root{
+  --page-1:#edf4ff;--page-2:#f8fbff;--surface:#ffffff;--surface-soft:#f8fbff;
+  --ink:#14213d;--muted:#5b6b84;--line:#cbd7e6;
+  --accent:#3157d5;--accent-2:#2563eb;--accent-soft:#e8efff;
+  --word-pass:#16a34a;--word-pass-bg:#dcfce7;--word-fail:#dc2626;--word-fail-bg:#fee2e2;
+  --embed-pass:#059669;--embed-pass-bg:#d1fae5;--embed-fail:#e11d48;--embed-fail-bg:#ffe4e6;
+  --embed-pending:#2563eb;--embed-pending-bg:#dbeafe;
+  --rule-pass:#0f9f6e;--rule-pass-bg:#d9fbe9;--rule-fail:#d92d20;--rule-fail-bg:#ffe3df;
+}
+html{background:var(--page-2)}
+body{
+  background:
+    radial-gradient(circle at 12% 0%,rgba(49,87,213,.10),transparent 30rem),
+    linear-gradient(180deg,var(--page-1) 0,var(--page-2) 240px,#eef3f9 100%);
+  color:var(--ink)
+}
+header{background:linear-gradient(135deg,#172554 0%,#1e3a8a 55%,#3157d5 100%);border-bottom:0;box-shadow:0 5px 18px rgba(30,58,138,.18)}
+.brand{color:#fff}.brand small{color:#dbeafe}.status-dot,.engine-pill{color:#dbeafe}.status-dot.ok,.engine-pill.ok{color:#bbf7d0}.status-dot.bad,.engine-pill.bad{color:#fecaca}.engine-pill.warn{color:#fde68a}.settings-btn{background:rgba(255,255,255,.95);border-color:rgba(255,255,255,.65);color:#172554;box-shadow:0 2px 7px rgba(15,23,42,.20)}
+main{max-width:1000px}
+.context-left label{color:#334155;font-weight:850}.context-left select,.control{border-color:#b9c9dc;background:#fff;box-shadow:0 2px 7px rgba(30,64,175,.05)}
+.context-left select:focus,.control:focus{border-color:#6f8ff1;box-shadow:0 0 0 3px rgba(49,87,213,.13)}
+.course-word-note{background:linear-gradient(90deg,#ffffff,#f6f9ff);border:1px solid #c9d7eb;border-left:4px solid var(--accent);box-shadow:0 4px 14px rgba(30,58,138,.06);border-radius:12px}
+.editor-card{background:rgba(255,255,255,.98);border:1px solid #c8d5e6;border-radius:16px;box-shadow:0 8px 22px rgba(30,58,138,.08)}
+.editor-head label{color:#172554}.helper{color:#64748b}.clo-id{background:#f8fbff;border-color:#c7d5e8;color:#172554}
+.clo-text{border:1.5px solid #b9c9dc;border-radius:12px;background:#fff;box-shadow:inset 0 1px 2px rgba(15,23,42,.03)}
+.clo-text:focus{border-color:#4f74e8;box-shadow:0 0 0 4px rgba(49,87,213,.11)}
+
+/* Individual raised cards rather than one dull strip */
+.criteria-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;background:transparent;border:0;margin-top:2px;margin-bottom:8px}
+.clo-tabs-row{gap:8px}
+.clo-tab,.criteria-tab{
+  overflow:hidden;background:#fff!important;color:#172554!important;border:1px solid #bdcadb!important;border-radius:12px!important;
+  padding:0!important;min-height:50px;box-shadow:0 4px 0 #aebdd1,0 7px 14px rgba(30,58,138,.10)!important;
+  transform:translateY(0);transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease
+}
+.clo-tab:hover,.criteria-tab:hover{transform:translateY(-1px);border-color:#8fa7c8!important;box-shadow:0 5px 0 #9fb0c7,0 9px 17px rgba(30,58,138,.13)!important}
+.clo-tab.active,.criteria-tab.active{transform:translateY(2px);border-color:#5475de!important;box-shadow:0 1px 0 #91a7e9,0 0 0 3px rgba(49,87,213,.16)!important}
+.criteria-tab{display:flex;flex-direction:column;align-items:stretch;justify-content:stretch;gap:0}
+.criteria-name,.clo-name{display:flex;align-items:center;justify-content:center;min-height:28px;padding:5px 6px;font-weight:900;letter-spacing:.015em;color:#172554;background:linear-gradient(#fff,#f6f8fc)}
+.clo-name{font-size:11px;min-height:24px}
+.split-status{display:grid;grid-template-columns:1fr 1fr;width:100%;margin-top:auto;border-top:1px solid rgba(15,23,42,.08)}
+.status-half{min-height:23px;display:flex;align-items:center;justify-content:center;gap:5px;padding:3px 4px;font-size:9px;font-weight:900;letter-spacing:.025em}
+.status-half+ .status-half{border-left:1px solid rgba(15,23,42,.10)}
+.status-half small{font:inherit;font-size:8px}.status-half b{font-size:12px;line-height:1}
+.status-half.words.pass{background:var(--word-pass-bg);color:#087a34}.status-half.words.fail{background:var(--word-fail-bg);color:#b91c1c}
+.status-half.embed.pass{background:var(--embed-pass-bg);color:#047857}.status-half.embed.fail{background:var(--embed-fail-bg);color:#be123c}.status-half.embed.pending{background:var(--embed-pending-bg);color:#1d4ed8}
+.rule-strip{margin-top:auto;min-height:23px;display:flex;align-items:center;justify-content:center;gap:7px;border-top:1px solid rgba(15,23,42,.08);font-size:9px;font-weight:900;letter-spacing:.03em}
+.rule-strip b{font-size:12px}.rule-strip.pass{background:var(--rule-pass-bg);color:#047857}.rule-strip.fail{background:var(--rule-fail-bg);color:#b42318}
+
+/* Panel uses blue selection accent; status is communicated inside the tab halves */
+.criteria-panel,.criteria-panel.valid,.criteria-panel.invalid,.criteria-panel.pending{border:1px solid #c7d4e5;box-shadow:0 6px 18px rgba(30,58,138,.07);border-radius:14px;background:#fff}
+.criteria-panel.valid::before,.criteria-panel.invalid::before,.criteria-panel.pending::before{background:linear-gradient(90deg,#3157d5,#60a5fa);height:3px}
+.criteria-panel.active{border-color:#9fb4e9}
+
+/* Cleaner internal controls */
+.compact-map-select,.bloom-select,.other-select{border-color:#bdcadb!important;background:#fff!important;box-shadow:0 2px 5px rgba(30,58,138,.04)}
+.selected-word-note,.bloom-verbs-note{background:linear-gradient(90deg,#fbfdff,#f6f9ff);border-color:#d0dceb!important;border-radius:10px}
+.semantic-hint{background:linear-gradient(90deg,#eef4ff,#f6f9ff);border-color:#93b2f6;color:#1746a2}
+
+/* Bottom guidance feels intentional rather than flat */
+.course-fit{border-radius:12px;box-shadow:0 4px 12px rgba(30,58,138,.05)}
+.final-state{border-radius:12px;box-shadow:0 5px 16px rgba(30,58,138,.06)}
+.final-state.review,.final-state.neutral{background:linear-gradient(90deg,#fff2f0,#fff9f8);border-color:#f68b82;box-shadow:inset 5px 0 0 #d92d20,0 5px 16px rgba(185,28,28,.07)}
+.final-state.ready{background:linear-gradient(90deg,#fff7e6,#fffdf8);border-color:#f0bd5b;box-shadow:inset 5px 0 0 #e59a17,0 5px 16px rgba(180,83,9,.07)}
+.final-state.verified{background:linear-gradient(90deg,#eafcf2,#f8fffb);border-color:#69c996;box-shadow:inset 5px 0 0 #0f9f6e,0 5px 16px rgba(5,150,105,.08)}
+.btn{border-radius:11px}.btn.primary{background:linear-gradient(135deg,#3157d5,#2563eb);border-color:#3157d5;box-shadow:0 4px 0 #173ba4,0 7px 14px rgba(37,99,235,.20)}
+.btn.primary:hover{background:linear-gradient(135deg,#294bc4,#1d4ed8);transform:translateY(-1px);box-shadow:0 5px 0 #173ba4,0 9px 17px rgba(37,99,235,.22)}
+.btn.primary:active{transform:translateY(2px);box-shadow:0 1px 0 #173ba4}
+.btn.danger-lite{background:#fff;border-color:#f3a5a0;color:#b42318;box-shadow:none}
+
+/* CLO count selector belongs visually to the tab row */
+.clo-count-select{border:1px solid #b9c9dc!important;border-radius:11px!important;background:#fff!important;color:#172554;font-weight:900;box-shadow:0 4px 0 #aebdd1,0 7px 14px rgba(30,58,138,.08)}
+
+@media(max-width:760px){
+  main{padding:12px 9px 78px}
+  .criteria-tabs{gap:5px}.clo-tabs-row{gap:5px}
+  .clo-tab,.criteria-tab{min-height:45px;border-radius:10px!important}
+  .criteria-name{min-height:25px;font-size:10px;padding:4px 2px}.clo-name{font-size:10px;min-height:22px;padding:3px 2px}
+  .status-half{min-height:20px;padding:2px 1px;gap:2px}.status-half small{font-size:6.8px}.status-half b{font-size:10px}
+  .rule-strip{min-height:20px;font-size:7.5px}.rule-strip b{font-size:10px}
+  .editor-card{padding:12px}.course-word-note{padding:8px 9px}
+  .criteria-panel{border-radius:12px}
+}
+
+/* v11 — course-level validation channel summary */
+.validation-summary-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0 8px}
+.validation-summary-tab{
+  min-height:58px;border:1px solid #bdcadb;border-radius:12px;background:#fff;padding:0;overflow:hidden;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:stretch;text-align:left;cursor:pointer;
+  box-shadow:0 4px 0 #aebdd1,0 7px 14px rgba(30,58,138,.10);transition:transform .12s ease,box-shadow .12s ease,border-color .12s ease
+}
+.validation-summary-tab:hover{transform:translateY(-1px);border-color:#8fa7c8;box-shadow:0 5px 0 #9fb0c7,0 9px 17px rgba(30,58,138,.13)}
+.validation-summary-tab:active{transform:translateY(2px);box-shadow:0 1px 0 #91a7e9}
+.validation-summary-copy{display:flex;flex-direction:column;justify-content:center;padding:8px 12px;min-width:0}
+.validation-summary-copy strong{font-size:13px;line-height:1.2;color:#172554}
+.validation-summary-copy small{margin-top:3px;font-size:10px;color:#64748b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.validation-summary-state{min-width:108px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 10px;border-left:1px solid rgba(15,23,42,.08);font-weight:900}
+.validation-summary-state b{font-size:11px;letter-spacing:.035em}.validation-summary-state span{font-size:9px;margin-top:2px}
+.validation-summary-tab.complete{border-color:#86d6a8}.validation-summary-tab.complete .validation-summary-state{background:#dcfce7;color:#087a34}
+.validation-summary-tab.incomplete{border-color:#f2aaa4}.validation-summary-tab.incomplete .validation-summary-state{background:#fee2e2;color:#b91c1c}
+.validation-summary-tab.pending{border-color:#9ebcf6}.validation-summary-tab.pending .validation-summary-state{background:#dbeafe;color:#1d4ed8}
+.validation-summary-tab.lexical{box-shadow:0 4px 0 #9bc9aa,0 7px 14px rgba(22,163,74,.08)}
+.validation-summary-tab.semantic{box-shadow:0 4px 0 #9fb4df,0 7px 14px rgba(37,99,235,.09)}
+.validation-summary-tab:focus-visible{outline:3px solid #84adff;outline-offset:2px}
+@media(max-width:760px){
+  .validation-summary-tabs{gap:5px;margin:5px 0 7px}
+  .validation-summary-tab{min-height:52px;border-radius:10px;grid-template-columns:minmax(0,1fr) 88px}
+  .validation-summary-copy{padding:7px 8px}.validation-summary-copy strong{font-size:11px}.validation-summary-copy small{font-size:8.5px}
+  .validation-summary-state{min-width:88px;padding:5px 6px}.validation-summary-state b{font-size:9px}.validation-summary-state span{font-size:8px}
+}
+
+
+/* v12 — fully separated lexical / semantic validation modes */
+.validation-summary-tab.active{
+  transform:translateY(2px);
+  border-color:#5475de;
+  box-shadow:0 1px 0 #91a7e9,0 0 0 3px rgba(49,87,213,.18)!important;
+}
+.validation-summary-tab.active .validation-summary-copy{background:linear-gradient(180deg,#f8fbff,#edf3ff)}
+.validation-summary-tab[aria-selected="false"]{opacity:.88}
+.validation-summary-tab[aria-selected="false"]:hover{opacity:1}
+
+.single-status{
+  margin-top:auto;min-height:24px;display:flex;align-items:center;justify-content:center;gap:7px;
+  border-top:1px solid rgba(15,23,42,.08);font-size:9px;font-weight:900;letter-spacing:.035em
+}
+.single-status small{font:inherit;font-size:8px}.single-status b{font-size:12px;line-height:1}
+.single-status.lexical.pass{background:var(--word-pass-bg);color:#087a34}
+.single-status.lexical.fail{background:var(--word-fail-bg);color:#b91c1c}
+.single-status.semantic.pass{background:var(--embed-pass-bg);color:#047857}
+.single-status.semantic.fail{background:var(--embed-fail-bg);color:#be123c}
+.single-status.semantic.pending{background:var(--embed-pending-bg);color:#1d4ed8}
+
+.mapping-status.single-channel{display:inline-flex;align-items:center;gap:6px;padding:0;background:transparent}
+.mapping-status.single-channel .map-channel{min-width:86px;justify-content:center}
+.semantic-mode-note{
+  border:1px solid #b9cdf8;border-left:4px solid var(--accent);border-radius:12px;background:linear-gradient(90deg,#eef4ff,#f8fbff);
+  padding:8px 11px;color:#3157a5;font-size:11px;font-weight:700
+}
+.mode-final{border-radius:12px}
+.mode-final.semantic-pending{background:linear-gradient(90deg,#eef4ff,#f8fbff);border-color:#9ebcf6;box-shadow:inset 5px 0 0 #3157d5,0 5px 16px rgba(37,99,235,.07)}
+.mode-final.semantic-pending b,.mode-final.semantic-pending span{color:#1d4ed8}
+
+@media(max-width:760px){
+  .single-status{min-height:20px;gap:4px}.single-status small{font-size:7px}.single-status b{font-size:10px}
+  .validation-summary-copy small{white-space:normal}
+}
+
+
+/* v12.1 — channel is identified by the top-level mode; lower tabs use full-box status color */
+.clo-tab,.criteria-tab{
+  position:relative;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:46px;
+  padding:7px 8px!important;
+  color:#172554!important;
+}
+.clo-tab .clo-name,.criteria-tab .criteria-name{
+  min-height:0!important;
+  padding:0!important;
+  background:transparent!important;
+  color:inherit!important;
+  font-weight:900;
+}
+.clo-tab.valid,.criteria-tab.valid{
+  background:linear-gradient(180deg,#dcfce7 0%,#c9f5da 100%)!important;
+  border-color:#4fc781!important;
+  color:#086c37!important;
+  box-shadow:0 4px 0 #62b987,0 7px 14px rgba(22,163,74,.14)!important;
+}
+.clo-tab.invalid,.criteria-tab.invalid{
+  background:linear-gradient(180deg,#fee2e2 0%,#ffd2d2 100%)!important;
+  border-color:#f06f6f!important;
+  color:#b42318!important;
+  box-shadow:0 4px 0 #dc6b6b,0 7px 14px rgba(220,38,38,.14)!important;
+}
+.clo-tab.pending,.criteria-tab.pending{
+  background:linear-gradient(180deg,#dbeafe 0%,#c9ddff 100%)!important;
+  border-color:#73a2f6!important;
+  color:#1d4ed8!important;
+  box-shadow:0 4px 0 #7f9ed8,0 7px 14px rgba(37,99,235,.13)!important;
+}
+.clo-tab.active,.criteria-tab.active{
+  transform:translateY(2px);
+  border-color:currentColor!important;
+  box-shadow:inset 0 2px 5px rgba(15,23,42,.12),0 0 0 3px rgba(49,87,213,.16)!important;
+}
+.clo-tab.valid.active,.criteria-tab.valid.active{box-shadow:inset 0 2px 5px rgba(6,118,71,.18),0 0 0 3px rgba(22,163,74,.18)!important}
+.clo-tab.invalid.active,.criteria-tab.invalid.active{box-shadow:inset 0 2px 5px rgba(180,35,24,.18),0 0 0 3px rgba(220,38,38,.16)!important}
+.clo-tab.pending.active,.criteria-tab.pending.active{box-shadow:inset 0 2px 5px rgba(29,78,216,.16),0 0 0 3px rgba(37,99,235,.16)!important}
+.single-status,.rule-strip{display:none!important}
+@media(max-width:760px){
+  .clo-tab,.criteria-tab{min-height:40px;padding:6px 4px!important}
+  .clo-tab .clo-name,.criteria-tab .criteria-name{font-size:10px}
+}
+
+
+/* Bloom card intentionally mirrors PLO/WK/EC/SDG card structure. */
+.mapping-card[data-family="bloom"] .bloom-verbs-note{margin-top:7px}
+.mapping-card[data-family="bloom"] .bloom-verbs-note span{color:#475467}
+
+/* Compact criteria-tab height only */
+.criteria-tab{
+  min-height:24px!important;
+  padding:2px 6px!important;
+  border-radius:9px!important;
+}
+.criteria-tab .criteria-name{
+  font-size:11px!important;
+  line-height:1.15!important;
+}
+@media(max-width:760px){
+  .criteria-tab{min-height:24px!important;padding:2px 3px!important}
+  .criteria-tab .criteria-name{font-size:9.5px!important}
+}
+
+
+/* Equal compact CLO tabs + minimum-width CLO-count selector */
+.clo-strip{
+  display:flex!important;
+  gap:6px!important;
+  align-items:stretch!important;
+}
+.clo-tabs-row{
+  display:grid!important;
+  grid-template-columns:repeat(var(--clo-count,3),minmax(0,1fr))!important;
+  gap:6px!important;
+  flex:1 1 auto!important;
+  min-width:0!important;
+}
+.clo-tab,.clo-count-select{
+  min-height:31px!important;
+  height:31px!important;
+  padding:3px 6px!important;
+  font-size:11px!important;
+  border-radius:9px!important;
+}
+.clo-tab{width:100%!important;min-width:0!important}
+.clo-count-select{
+  flex:0 0 52px!important;
+  width:52px!important;
+  min-width:52px!important;
+  max-width:52px!important;
+  padding-left:5px!important;
+  padding-right:4px!important;
+  box-shadow:0 3px 0 #aebdd1,0 5px 10px rgba(30,58,138,.07)!important;
+}
+@media(max-width:760px){
+  .clo-strip,.clo-tabs-row{gap:4px!important}
+  .clo-tab,.clo-count-select{min-height:30px!important;height:30px!important;padding:2px 4px!important;font-size:10px!important}
+  .clo-count-select{flex-basis:46px!important;width:46px!important;min-width:46px!important;max-width:46px!important}
+}
+
+
+/* Compact course row: label left, selector right */
+.context-bar{margin-bottom:5px}
+.context-left{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:12px}
+.context-left label{display:block;margin:0;font-size:15px;font-weight:900;line-height:1;color:#1f2f46;white-space:nowrap}
+.context-left select{width:100%;min-height:40px}
+@media(max-width:520px){
+  .context-left{gap:8px}
+  .context-left label{font-size:14px}
+  .context-left select{min-height:38px}
+}
+
+
+/* Single-row course + validation header */
+.context-bar{
+  display:grid!important;
+  grid-template-columns:auto repeat(3,minmax(0,1fr));
+  align-items:stretch;
+  gap:8px!important;
+  margin-bottom:7px!important;
+}
+.context-left{display:contents!important}
+.context-left label{
+  align-self:center;
+  margin:0!important;
+  padding:0 2px;
+  font-size:15px!important;
+  font-weight:900!important;
+  white-space:nowrap;
+}
+.context-left select{
+  width:100%!important;
+  min-width:0!important;
+  min-height:50px!important;
+  height:50px!important;
+  margin:0!important;
+  border-radius:11px!important;
+}
+.course-meta{display:none!important}
+.validation-summary-tabs{display:contents!important;margin:0!important}
+.validation-summary-tab{
+  width:100%!important;
+  min-width:0!important;
+  min-height:50px!important;
+  height:50px!important;
+  border-radius:11px!important;
+  grid-template-columns:minmax(0,1fr) 92px!important;
+}
+.validation-summary-copy{padding:5px 8px!important}
+.validation-summary-copy strong{font-size:11.5px!important;line-height:1.1!important}
+.validation-summary-copy small{font-size:8.5px!important;margin-top:2px!important}
+.validation-summary-state{min-width:92px!important;padding:4px 6px!important}
+.validation-summary-state b{font-size:9.5px!important}
+.validation-summary-state span{font-size:7.5px!important;margin-top:1px!important}
+@media(max-width:760px){
+  .context-bar{grid-template-columns:auto repeat(3,minmax(0,1fr));gap:4px!important}
+  .context-left label{font-size:11px!important;padding:0!important}
+  .context-left select,.validation-summary-tab{min-height:42px!important;height:42px!important;border-radius:9px!important}
+  .context-left select{font-size:10px!important;padding:0 5px!important}
+  .validation-summary-tab{grid-template-columns:minmax(0,1fr) auto!important}
+  .validation-summary-copy{padding:4px 5px!important}
+  .validation-summary-copy strong{font-size:9px!important}
+  .validation-summary-copy small{display:none!important}
+  .validation-summary-state{min-width:0!important;padding:3px 5px!important}
+  .validation-summary-state b{font-size:8px!important}
+  .validation-summary-state span{display:none!important}
+}
+
+
+/* Tight criteria-tab strip: remove unnecessary vertical whitespace */
+.criteria-tabs{margin-top:0!important;margin-bottom:0!important;padding-top:0!important;padding-bottom:0!important}
+#criteriaTabs{margin-top:-8px}
+@media(max-width:760px){#criteriaTabs{margin-top:-8px}}
+
+
+
+/* Live CLO word highlighting overlay — neutral criterion styling */
+.clo-highlight-wrap{position:relative;width:100%}
+.clo-highlight-layer{
+  position:absolute;inset:0;z-index:1;pointer-events:none;overflow:auto;scrollbar-width:none;
+  padding:14px;border:1.5px solid transparent;border-radius:12px;
+  white-space:pre-wrap;overflow-wrap:break-word;word-break:normal;
+  font:inherit;font-size:16px;line-height:1.55;color:var(--ink);background:#fff
+}
+.clo-highlight-layer::-webkit-scrollbar{display:none}
+.clo-highlight-wrap .clo-text{
+  position:relative;z-index:2;display:block;background:transparent!important;color:transparent!important;
+  caret-color:var(--ink);-webkit-text-fill-color:transparent
+}
+.clo-highlight-wrap .clo-text::placeholder{-webkit-text-fill-color:#98a2b3;color:#98a2b3}
+
+/* Uniform responsive vertical rhythm */
+:root{
+  --workspace-row-gap:8px;
+}
+#workspace{
+  display:flex;
+  flex-direction:column;
+  gap:var(--workspace-row-gap);
+}
+.context-bar,
+.clo-strip,
+#courseProgress,
+#cloList{
+  margin-top:0!important;
+  margin-bottom:0!important;
+}
+#courseProgress{
+  min-height:0!important;
+}
+#courseProgress:empty{
+  display:none!important;
+}
+.clo-work{
+  gap:var(--workspace-row-gap)!important;
+}
+#criteriaTabs{
+  margin:0!important;
+}
+.criteria-shell{
+  display:flex;
+  flex-direction:column;
+  gap:var(--workspace-row-gap);
+}
+.criteria-tabs{
+  margin:0!important;
+  padding:0!important;
+}
+.criteria-panel,
+.editor-card,
+.final-state,
+.actions{
+  margin:0!important;
+}
+.actions{
+  padding-top:0!important;
+  padding-bottom:0!important;
+}
+
+@media(max-width:760px){
+  :root{--workspace-row-gap:7px}
+  #workspace,.clo-work,.criteria-shell{gap:var(--workspace-row-gap)}
+  .actions{padding-top:0!important;padding-bottom:0!important}
+}
+
+@media(max-width:420px){
+  :root{--workspace-row-gap:6px}
+}
+
+
+
+/* Neutral six-criterion headings: no criterion-specific color or typography. */
+.criteria-tab .criteria-name{
+  color:inherit!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  font-style:normal!important;
+  text-decoration:none!important;
+  line-height:1.15!important;
+}
+@media(max-width:760px){
+  .criteria-tab .criteria-name{font-size:9.5px!important}
+}
+
+/* Ultra-light valid background for the six criteria tabs only */
+.criteria-tab.valid{
+  background:linear-gradient(180deg,#fdfffe 0%,#f6fcf8 100%)!important;
+  border-color:#b9e7cc!important;
+  box-shadow:0 3px 0 #b8dcc7,0 5px 10px rgba(22,163,74,.055)!important;
+}
+.criteria-tab.valid:hover{
+  background:linear-gradient(180deg,#ffffff 0%,#f4fbf7 100%)!important;
+  border-color:#9fdcba!important;
+}
+.criteria-tab.valid.active{
+  background:linear-gradient(180deg,#fbfffd 0%,#f2faf6 100%)!important;
+}
+
+
+/* Active criterion emphasis: only its validating words are marked. */
+.clo-highlight-layer .clo-match{
+  color:inherit!important;
+  font-weight:850!important;
+  font-style:normal!important;
+  text-decoration:none!important;
+  background:rgba(49,87,213,.13)!important;
+  box-shadow:0 0 0 1px rgba(49,87,213,.10)!important;
+  border-radius:3px;
+}
+
+/* Active-tab hierarchy: diminish inactive siblings at every tab level */
+.validation-summary-tab,
+.clo-tab,
+.criteria-tab{
+  transition:transform .14s ease, opacity .14s ease, filter .14s ease, box-shadow .14s ease, border-color .14s ease!important;
+}
+
+.validation-summary-tab:not(.active),
+.clo-tab:not(.active),
+.criteria-tab:not(.active){
+  transform:scale(.965)!important;
+  opacity:.74;
+  filter:saturate(.78) brightness(.99);
+}
+
+.validation-summary-tab:not(.active):hover,
+.clo-tab:not(.active):hover,
+.criteria-tab:not(.active):hover{
+  transform:scale(.985) translateY(-1px)!important;
+  opacity:.92;
+  filter:saturate(.94) brightness(1);
+}
+
+.validation-summary-tab.active,
+.clo-tab.active,
+.criteria-tab.active{
+  opacity:1!important;
+  filter:none!important;
+  position:relative;
+  z-index:2;
+}
+
+@media(max-width:760px){
+  .validation-summary-tab:not(.active),
+  .clo-tab:not(.active),
+  .criteria-tab:not(.active){
+    transform:scale(.972)!important;
+    opacity:.78;
+  }
+  .validation-summary-tab:not(.active):hover,
+  .clo-tab:not(.active):hover,
+  .criteria-tab:not(.active):hover{
+    transform:scale(.99) translateY(-1px)!important;
+  }
+}
+
+
+/* Strong active-tab hierarchy — clearly enlarge the active choice and diminish siblings. */
+.validation-summary-tab,
+.clo-tab,
+.criteria-tab{
+  transform-origin:center center!important;
+  will-change:transform,opacity,filter;
+  transition:transform .16s ease,opacity .16s ease,filter .16s ease,box-shadow .16s ease,border-color .16s ease!important;
+}
+
+/* Level 1: Lexical / Semantic */
+.validation-summary-tab:not(.active){
+  transform:scale(.90)!important;
+  opacity:.60!important;
+  filter:saturate(.68) brightness(1.02)!important;
+  z-index:1;
+}
+.validation-summary-tab.active{
+  transform:scale(1.055) translateY(-1px)!important;
+  opacity:1!important;
+  filter:none!important;
+  z-index:5!important;
+  border-width:2px!important;
+  box-shadow:0 6px 0 #8098d7,0 11px 22px rgba(30,58,138,.22),0 0 0 3px rgba(49,87,213,.15)!important;
+}
+
+/* Level 2: CLO tabs */
+.clo-tabs-row{overflow:visible!important;padding:2px 0!important}
+.clo-tab:not(.active){
+  transform:scale(.88)!important;
+  opacity:.58!important;
+  filter:saturate(.64) brightness(1.03)!important;
+  z-index:1;
+}
+.clo-tab.active{
+  transform:scale(1.065) translateY(-1px)!important;
+  opacity:1!important;
+  filter:none!important;
+  z-index:5!important;
+  border-width:2px!important;
+  box-shadow:0 5px 0 rgba(80,105,170,.48),0 10px 20px rgba(30,58,138,.20),0 0 0 3px rgba(49,87,213,.14)!important;
+}
+
+/* Level 3: six criteria tabs — strongest differentiation because these are most frequently switched. */
+.criteria-tabs{overflow:visible!important;padding:3px 2px!important;gap:10px!important}
+.criteria-tab:not(.active){
+  transform:scale(.86)!important;
+  opacity:.55!important;
+  filter:saturate(.62) brightness(1.035)!important;
+  z-index:1;
+}
+.criteria-tab.active{
+  transform:scale(1.085) translateY(-2px)!important;
+  opacity:1!important;
+  filter:none!important;
+  z-index:6!important;
+  border-width:2px!important;
+  box-shadow:0 5px 0 rgba(80,105,170,.48),0 11px 22px rgba(30,58,138,.22),0 0 0 3px rgba(49,87,213,.16)!important;
+}
+
+/* Inactive tabs remain obviously interactive without competing with the active tab. */
+.validation-summary-tab:not(.active):hover{
+  transform:scale(.95) translateY(-1px)!important;
+  opacity:.82!important;
+  filter:saturate(.86) brightness(1.01)!important;
+}
+.clo-tab:not(.active):hover{
+  transform:scale(.94) translateY(-1px)!important;
+  opacity:.82!important;
+  filter:saturate(.86) brightness(1.01)!important;
+}
+.criteria-tab:not(.active):hover{
+  transform:scale(.93) translateY(-1px)!important;
+  opacity:.82!important;
+  filter:saturate(.86) brightness(1.01)!important;
+}
+
+/* Keep the hierarchy strong but safe on narrow screens. */
+@media(max-width:760px){
+  .validation-summary-tab:not(.active){transform:scale(.92)!important;opacity:.64!important}
+  .validation-summary-tab.active{transform:scale(1.035) translateY(-1px)!important}
+  .clo-tab:not(.active){transform:scale(.90)!important;opacity:.62!important}
+  .clo-tab.active{transform:scale(1.045) translateY(-1px)!important}
+  .criteria-tabs{gap:7px!important;padding:2px 1px!important}
+  .criteria-tab:not(.active){transform:scale(.88)!important;opacity:.60!important}
+  .criteria-tab.active{transform:scale(1.055) translateY(-1px)!important}
+}
+
+@media(max-width:420px){
+  .validation-summary-tab:not(.active){transform:scale(.93)!important}
+  .validation-summary-tab.active{transform:scale(1.025)!important}
+  .clo-tab:not(.active){transform:scale(.91)!important}
+  .clo-tab.active{transform:scale(1.035)!important}
+  .criteria-tab:not(.active){transform:scale(.89)!important}
+  .criteria-tab.active{transform:scale(1.045)!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .validation-summary-tab,.clo-tab,.criteria-tab{transition:none!important}
+}
+
+</style>
+</head>
+
+<body>
+<header><div class="topbar"><div class="brand">OBE CLO Mapper<small>Write → Map → Verify</small></div><div class="spacer"></div><div id="refStatus" class="status-dot">Loading guidance…</div><div id="modelStatus" class="status-dot">Semantic verifier idle</div><button id="settingsBtn" class="settings-btn" aria-label="Open settings">⚙</button></div></header>
+<main>
+  <section id="emptyState" class="empty-state">
+    <h1>Open your current OBE workbook</h1>
+    <p>The workbook supplies courses, CLOs and current selections. Reference definitions stay on GitHub.</p>
+    <label for="obeWorkbook" class="file-trigger">Open OBE workbook</label>
+  </section>
+
+  <section id="workspace" class="hidden">
+    <div class="context-bar">
+      <div class="context-left"><label for="courseSelect">Course</label><select id="courseSelect"></select><div id="courseMeta" class="course-meta"></div></div>
+      <div id="validationSummaryTabs" class="validation-summary-tabs" aria-label="Course validation summary"></div>
+    </div>
+    <div class="clo-strip">
+      <div id="cloTabs" class="clo-tabs-row" role="tablist" aria-label="Course CLOs"></div>
+      <select id="cloCountSelect" class="clo-count-select" aria-label="Number of CLOs" title="Number of CLOs">
+        <option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+      </select>
+    </div>
+    <div id="courseProgress" class="progress-line" aria-live="polite"></div>
+    <div id="cloList"></div>
+  </section>
+</main>
+
+<aside id="settingsPanel" class="settings-panel" aria-hidden="true" aria-label="Settings and data">
+  <div class="settings-head"><h2>Settings & data</h2><button id="settingsClose" class="settings-close" aria-label="Close settings">×</button></div>
+  <div class="settings-group"><h3>Current workbook</h3><input id="obeWorkbook" type="file" accept=".xlsx,.xls" class="hidden"><label for="obeWorkbook" class="file-trigger">Choose workbook</label><div id="workbookStatus" class="workbook-status">No workbook loaded</div><div class="settings-actions" style="margin-top:10px"><button id="exportStateBtn" class="btn" disabled>Download updated Excel</button></div></div>
+  <div class="settings-group"><h3>Reference version</h3><label for="refVersion">GitHub reference package</label><select id="refVersion" class="control"><option value="">Discovering…</option></select><div class="settings-actions" style="margin-top:10px"><button id="initBtn" class="btn" disabled>Reload references</button><button id="reanalyzeBtn" class="btn" disabled>Verify whole course</button></div><div id="engineNote" class="engine-note"></div></div>
+  <div class="settings-group"><h3>Batch tools</h3><div class="settings-actions"><button id="analyzeAll" class="btn" disabled>Verify all CLOs</button><button id="exportCandidates" class="btn" disabled>Candidate CSV</button><button id="exportSummary" class="btn" disabled>Summary CSV</button></div><div id="allProgress" class="workbook-status" style="margin-top:8px"></div></div>
+  <div class="settings-group"><h3>Runtime log</h3><div id="log" class="runtime-log"></div></div>
+</aside>
+<div id="settingsBackdrop" class="drawer-backdrop"></div>
+
+<div class="admin-hidden" aria-hidden="true"><input id="courseSearch"><div id="overallKpis"></div><div id="overallList"></div></div>
+<script>
+
+const INITIAL={"version":"2026-09-30-hybrid-authoring-v6","courses":[],"bloom":{"C1":{"name":"Remember","domain":"Cognitive","verbs":["Choose","Define","Find","How","Label","List","Match","Name","Omit","Recall","Relate","Select","Show","Spell","Tell","What","When","Where","Which","Who","Why","Remembering","Remember"]},"C2":{"name":"Understand","domain":"Cognitive","verbs":["Classify","Compare","Contrast","Demonstrate","Explain","Extend","Illustrate","Infer","Interpret","Outline","Relate","Rephrase","Show","Summarize","Translate","Understanding","Understand"]},"C3":{"name":"Apply","domain":"Cognitive","verbs":["Build","Choose","Construct","Develop","Experiment with","Identify","Interview","Make use of","Model","Organize","Plan","Select","Solve","Utilize","Application","Applying","Apply"]},"C4":{"name":"Analyze","domain":"Cognitive","verbs":["Assume","Categorize","Classify","Compare","Conclusion","Contrast","Discover","Dissect","Distinguish","Divide","Examine","Function","Inference","Inspect","List","Motive","Relationships","Simplify","Survey","Take part in","Test for","Theme","Analyzing","Analyse","Analyze","Analysis"]},"C5":{"name":"Evaluate","domain":"Cognitive","verbs":["Agree","Appraise","Assess","Award","Choose","Compare","Conclude","Criteria","Criticize","Decide","Deduct","Defend","Determine","Disprove","Estimate","Explain","Importance","Influence","Interpret","Judge","Justify","Mark","Measure","Opinion","Perceive","Prioritize","Prove","Rate","Recommend","Rule on","Select","Support","Value","Evaluating","Evaluate"]},"C6":{"name":"Create","domain":"Cognitive","verbs":["Adapt","Build","Change","Choose","Combine","Compile","Compose","Construct","Delete","Design","Develop","Discuss","Elaborate","Estimate","Formulate","Happen","Imagine","Improve","Invent","Make up","Maximize","Minimize","Modify","Original","Originate","Plan","Predict","Propose","Solution","Solve","Suppose","Test","Theory","Creating","Create"]},"A1":{"name":"Receiving","domain":"Affective","verbs":["Accept","Attend","Develop","Recognize","Receive"]},"A2":{"name":"Responding","domain":"Affective","verbs":["Complete","Comply","Cooperate","Discuss","Examine","Obey","Respond"]},"A3":{"name":"Valuing","domain":"Affective","verbs":["Accept","Defend","Devote","Pursue","Seek","Value"]},"A4":{"name":"Organization","domain":"Affective","verbs":["Codify","Discriminate","Display","Order","Organize","Systematize","Weigh","Organzing"]},"A5":{"name":"Characterization","domain":"Affective","verbs":["Internalize","Verify","Characterize"]},"P1":{"name":"Observing","domain":"Psychomotor","verbs":["Bend","Calibrates","Constructs","Differentiate","Dismantles","Displays","Fastens","Fixes","Grasp","Grinds","Handle","Heats","Manipulates","Measures","Mends","Mixes","Operate","Organizes","Perform","Reach","Relax","Shorten","Sketches","Stretch","Write","Observe"]},"P2":{"name":"Imitating","domain":"Psychomotor","verbs":["Bend","Calibrates","Constructs","Differentiate","Dismantles","Displays","Fastens","Fixes","Grasp","Grinds","Handle","Heats","Manipulates","Measures","Mends","Mixes","Operate","Organizes","Perform","Reach","Relax","Shorten","Sketches","Stretch","Write"]},"P3":{"name":"Practicing","domain":"Psychomotor","verbs":["Bend","Calibrates","Constructs","Differentiate","Dismantles","Displays","Fastens","Fixes","Grasp","Grinds","Handle","Heats","Manipulates","Measures","Mends","Mixes","Operate","Organizes","Perform","Reach","Relax","Shorten","Sketches","Stretch","Write","Practice","Practise"]},"P4":{"name":"Adapting","domain":"Psychomotor","verbs":["Bend","Calibrates","Constructs","Differentiate","Dismantles","Displays","Fastens","Fixes","Grasp","Grinds","Handle","Heats","Manipulates","Measures","Mends","Mixes","Operate","Organizes","Perform","Reach","Relax","Shorten","Sketches","Stretch","Write","Adapt"]}}};
+const APP_KEY='obe-hybrid-authoring-v6-excel';
+const GITHUB_REFERENCE={owner:'waqaraq',repo:'obe',branch:'main'};
+const DEFAULT_REFERENCE_VERSION='version1-2026';
+const EXPECTED_MODEL={id:'mixedbread-ai/mxbai-embed-xsmall-v1',revision:'e6ac24e',dimension:384,pooling:'mean',normalize:true,dtype:'q8',device:'wasm',transformers_js_version:'3.8.1'};
+const FALLBACK_PATHS={
+ courses_full:{metadata:'courses/courses.json',vectors:'courses/courses.f32'},
+ course_contents:{metadata:'courses/course-contents.json',vectors:'courses/course-contents.f32'},
+ plo:{metadata:'plo/plo.json',vectors:'plo/plo.f32'},wk:{metadata:'wk/wk.json',vectors:'wk/wk.f32'},ec:{metadata:'ec/ec.json',vectors:'ec/ec.f32'},sdg:{metadata:'sdg/sdg.json',vectors:'sdg/sdg.f32'}
+};
+let state=loadState(), currentUid=state.currentUid||state.courses?.[0]?.uid||'', refs=null, lexical=null, extractor=null, manifest=null, lexicalManifest=null, lexicalBase='', bloomMap=structuredClone(INITIAL.bloom), engineBusy=false, analyzeToken=0;
+const embeddingCache=new Map(), analysisCache=new Map();
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function clean(s){return String(s??'').trim()}
+function log(msg){const el=$('log'); const t=new Date().toLocaleTimeString(); el.textContent+=`[${t}] ${msg}\n`; el.scrollTop=el.scrollHeight}
+function versionFromLegacyUrl(url){const m=clean(url).match(/\/([^/?#]+)\/?(?:[?#].*)?$/);return m?m[1]:''}
+function loadState(){try{const x=JSON.parse(localStorage.getItem(APP_KEY)||'{}');return {courses:Array.isArray(x.courses)?x.courses:[],thresholds:x.thresholds||{},currentUid:x.currentUid||'',referenceVersion:x.referenceVersion||versionFromLegacyUrl(x.baseUrl)||'',workbookName:x.workbookName||''}}catch{return {courses:[],thresholds:{},currentUid:'',referenceVersion:'',workbookName:''}}}
+function saveState(){state.currentUid=currentUid;state.referenceVersion=clean($('refVersion')?.value||state.referenceVersion);delete state.baseUrl;localStorage.setItem(APP_KEY,JSON.stringify(state))}
+function courses(){return state.courses}
+function courseByUid(uid){return courses().find(c=>c.uid===uid)}
+function mappingValue(v){if(Array.isArray(v))return v.length?v[0]:'';return v??''}
+function normHeader(s){return clean(s).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()}
+function rowGetter(row){const m=new Map(Object.entries(row||{}).map(([k,v])=>[normHeader(k),v]));return (...names)=>{for(const n of names){const k=normHeader(n);if(m.has(k))return m.get(k)}return ''}}
+function parseOneMap(value,prefix){const s=clean(value);if(!s)return [];const m=s.match(new RegExp(prefix+'\\s*[-:]?\\s*(\\d+)','i'))||s.match(/(\\d+)/);return m?[Number(m[1])]:[]}
+function parseMapList(value,prefix){const s=clean(value);if(!s)return [];const out=[];for(const part of s.split(/[,;|]+/)){const m=clean(part).match(new RegExp(prefix+'\\s*[-:]?\\s*(\\d+)','i'))||clean(part).match(/(\\d+)/);if(m){const n=Number(m[1]);if(Number.isFinite(n)&&!out.includes(n))out.push(n)}}return out}
+const XLSX_CDNS=[
+ 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js',
+ 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',
+ 'https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js',
+ 'https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js'
+];
+let xlsxLoadPromise=null;
+function loadScriptOnce(src){return new Promise((resolve,reject)=>{const old=[...document.scripts].find(x=>x.src===src);if(old&&window.XLSX)return resolve();const sc=document.createElement('script');sc.src=src;sc.async=true;sc.crossOrigin='anonymous';sc.onload=()=>resolve();sc.onerror=()=>{sc.remove();reject(new Error('Failed '+src))};document.head.appendChild(sc)})}
+async function ensureXLSX(){
+ if(window.XLSX)return window.XLSX;
+ if(xlsxLoadPromise)return xlsxLoadPromise;
+ xlsxLoadPromise=(async()=>{
+   const failures=[];
+   for(const src of XLSX_CDNS){
+     try{log(`Loading Excel support from ${new URL(src).host}…`);await loadScriptOnce(src);if(window.XLSX){log(`Excel support ready from ${new URL(src).host}.`);return window.XLSX}}catch(e){failures.push(new URL(src).host)}
+   }
+   throw new Error('Excel support could not load from available CDNs ('+failures.join(', ')+'). Check internet/firewall access and retry.');
+ })().catch(e=>{xlsxLoadPromise=null;throw e});
+ return xlsxLoadPromise;
+}
+function workbookRows(wb,name){const ws=wb.Sheets[name];if(!ws)throw new Error(`Workbook must contain a '${name}' sheet.`);return XLSX.utils.sheet_to_json(ws,{defval:'',raw:false})}
+function parseCurrentWorkbook(wb){
+ const courseRows=workbookRows(wb,'Courses'),cloRows=workbookRows(wb,'CLOs');
+ if(!courseRows.length)throw new Error('Courses sheet contains no course rows.');
+ const list=[],byUid=new Map(),byCode=new Map();
+ courseRows.forEach((row,i)=>{const g=rowGetter(row),order=Number(g('Course Order'))||i+1,uid=clean(g('Course UID')),code=clean(g('Course Code'));if(!uid&&!code)return;const c={uid:uid||`course-${order}`,code,title:clean(g('Course Title')),type:clean(g('Type','Course Type')),credits:clean(g('Credits')),domain:clean(g('Domain')),content:'',clos:[],storedWK:parseMapList(g('Stored WK'),'WK'),storedEC:parseMapList(g('Stored EC'),'EC'),storedSDG:parseMapList(g('Stored SDG'),'SDG'),reviewNotes:clean(g('Review Notes'))?[clean(g('Review Notes'))]:[],sourceIndex:order};list.push(c);byUid.set(c.uid,c);if(code)byCode.set(code.toLowerCase(),c)});
+ if(!list.length)throw new Error('No usable courses found. Course UID or Course Code is required.');
+ const orphans=[];
+ cloRows.forEach((row,i)=>{const g=rowGetter(row),uid=clean(g('Course UID')),code=clean(g('Course Code')),c=(uid&&byUid.get(uid))||(code&&byCode.get(code.toLowerCase()));if(!c){orphans.push(i+2);return}const order=Number(g('CLO Order'))||c.clos.length+1;const clo={id:clean(g('CLO ID'))||`CLO-${order}`,statement:clean(g('CLO Statement')),plo:clean(g('Selected PLO','PLO')),bloom:clean(g('Bloom Level','Bloom')),activity:clean(g('Activity')),wk:parseOneMap(g('Selected WK','WK'),'WK'),ec:parseOneMap(g('Selected EC','EC'),'EC'),sdg:parseOneMap(g('Selected SDG','SDG'),'SDG'),_order:order};c.clos.push(clo)});
+ if(orphans.length)throw new Error(`CLOs sheet contains ${orphans.length} row(s) whose Course UID/Code is not present in Courses (first row: ${orphans[0]}).`);
+ list.sort((a,b)=>(a.sourceIndex||0)-(b.sourceIndex||0));for(const c of list){c.clos.sort((a,b)=>(a._order||0)-(b._order||0));for(const x of c.clos)delete x._order}
+ return list;
+}
+function importCurrentWorkbook(file){return (async()=>{await ensureXLSX();const ab=await file.arrayBuffer(),wb=XLSX.read(ab,{type:'array'}),parsed=parseCurrentWorkbook(wb);state.courses=parsed;state.workbookName=file.name;currentUid=parsed[0]?.uid||'';analysisCache.clear();analyzeToken++;saveState();syncWorkbookStatus();renderAll();validateCurrentCoursesAgainstReferences();log(`Loaded current OBE workbook ${file.name}: ${parsed.length} courses, ${parsed.reduce((n,c)=>n+c.clos.length,0)} CLOs. Live lexical guidance is ready when references are loaded.`)})()}
+function currentWorkbookAoA(){const coursesRows=[['Course Order','Course UID','Course Code','Course Title','Type','Credits','Domain','Stored WK','Stored EC','Stored SDG','Review Notes']],cloRows=[['Course UID','Course Code','Course Title','Course Type','CLO Order','CLO ID','CLO Statement','Selected PLO','Bloom Level','Selected WK','Selected EC','Selected SDG','Activity']];courses().forEach((c,i)=>{coursesRows.push([i+1,c.uid,c.code,c.title,c.type,c.credits,c.domain,(c.storedWK||[]).map(x=>'WK-'+x).join(', '),(c.storedEC||[]).map(x=>'EC-'+x).join(', '),(c.storedSDG||[]).map(x=>'SDG-'+x).join(', '),(c.reviewNotes||[]).join(' | ')]);c.clos.forEach((clo,j)=>cloRows.push([c.uid,c.code,c.title,c.type,j+1,clo.id,clo.statement,clo.plo,clo.bloom,mappingValue(clo.wk)?'WK-'+mappingValue(clo.wk):'',mappingValue(clo.ec)?'EC-'+mappingValue(clo.ec):'',mappingValue(clo.sdg)?'SDG-'+mappingValue(clo.sdg):'',clo.activity||'']))});return {coursesRows,cloRows}}
+async function exportCurrentWorkbook(){if(!courses().length)return;await ensureXLSX();const {coursesRows,cloRows}=currentWorkbookAoA(),wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(coursesRows),'Courses');XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(cloRows),'CLOs');const base=(state.workbookName||'Current_OBE_State.xlsx').replace(/\.(xlsx|xls)$/i,'');XLSX.writeFile(wb,`${base}_updated.xlsx`,{compression:true})}
+function syncWorkbookStatus(){const n=courses().length,cloN=courses().reduce((a,c)=>a+c.clos.length,0),el=$('workbookStatus');if(!el)return;el.textContent=n?`${state.workbookName||'Restored local state'} · ${n} courses · ${cloN} CLOs`:'Load Current_OBE_State.xlsx';$('exportStateBtn').disabled=!n}
+function referenceCourseRecord(course){if(!refs?.courses_full)return null;const rs=refs.courses_full.meta.records||[];return rs.find(r=>r.entity_id===course?.uid)||(course?.code?rs.find(r=>clean(r.display_id).toLowerCase()===clean(course.code).toLowerCase()):null)||null}
+function referenceCourseId(course){return referenceCourseRecord(course)?.entity_id||course?.uid||''}
+function validateCurrentCoursesAgainstReferences(){if(!refs||!courses().length)return;const missing=courses().filter(c=>!referenceCourseRecord(c));if(missing.length){log(`WARNING: ${missing.length} current course(s) do not match the selected reference package by UID or code. First: ${missing[0].code||missing[0].uid}`)}else log(`Current workbook coverage verified: all ${courses().length} courses match hosted reference courses.`)}
+function formatScore(v){return Number.isFinite(v)?v.toFixed(3):'—'}
+function threshold(k){const v=state.thresholds?.[k];return Number.isFinite(v)?v:null}
+function semanticClass(score,key,hasSelection=true){const t=threshold(key);if(t===null)return 'neutral';if(!hasSelection||!Number.isFinite(score))return 'fail';return score>=t?'pass':'fail'}
+function semanticState(score,key,hasSelection=true){const t=threshold(key);if(t===null)return 'uncalibrated';if(!hasSelection||!Number.isFinite(score))return 'invalid';return score>=t?'valid':'invalid'}
+function resolvePair(key){const e=manifest?.layout?.[key];if(e&&typeof e==='object'&&e.metadata&&e.vectors)return e;return FALLBACK_PATHS[key]}
+function joinUrl(base,path){return clean(base).replace(/\/$/,'')+'/'+String(path).replace(/^\//,'')}
+async function fetchJson(url){const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw new Error(`${r.status} ${r.statusText}: ${url}`);return r.json()}
+async function fetchBuffer(url){const r=await fetch(url,{cache:'force-cache'});if(!r.ok)throw new Error(`${r.status} ${r.statusText}: ${url}`);return r.arrayBuffer()}
+function githubApiRoot(){const {owner,repo,branch}=GITHUB_REFERENCE;return `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents?ref=${encodeURIComponent(branch)}`}
+function referenceBase(version){const {owner,repo,branch}=GITHUB_REFERENCE;return `https://raw.githubusercontent.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/${encodeURIComponent(branch)}/${encodeURIComponent(version)}`}
+function versionContentsApi(version){const {owner,repo,branch}=GITHUB_REFERENCE;return `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${encodeURIComponent(version)}?ref=${encodeURIComponent(branch)}`}
+const LEXICAL_FALLBACK_PATHS={course:'courses/courses.lexical.json',plo:'plo/plo.lexical.json',wk:'wk/wk.lexical.json',ec:'ec/ec.lexical.json',sdg:'sdg/sdg.lexical.json'};
+async function findLexicalBase(version){
+ const tried=[];const candidates=[joinUrl(referenceBase(version),`Lexical-${version}`),referenceBase(version)];
+ for(const base of candidates){try{const lm=await fetchJson(joinUrl(base,'lexical-manifest.json'));if(lm?.package_version){return {base,manifest:lm}}}catch(e){tried.push(base)}}
+ try{
+   const r=await fetch(versionContentsApi(version),{cache:'no-cache',headers:{Accept:'application/vnd.github+json'}});if(r.ok){const items=await r.json();for(const d of (Array.isArray(items)?items:[]).filter(x=>x?.type==='dir'&&/^lexical/i.test(x.name||''))){const base=joinUrl(referenceBase(version),d.name);try{const lm=await fetchJson(joinUrl(base,'lexical-manifest.json'));if(lm?.package_version)return {base,manifest:lm}}catch{}}}
+ }catch{}
+ throw new Error(`Hybrid lexical sidecar not found for ${version}. Expected a readable lexical-manifest.json under Lexical-${version}/ or the version root.`)
+}
+function lexicalExpectedCount(family){if(!refs)return null;if(family==='course')return refs.courses_full?.meta?.records?.length??null;if(family==='plo'||family==='wk'||family==='ec')return refs[family]?.meta?.records?.length??null;if(family==='sdg')return new Set((refs.sdg?.meta?.records||[]).map(r=>r.entity_id)).size;return null}
+async function loadLexicalReferences(version){
+ const found=await findLexicalBase(version);lexicalBase=found.base;lexicalManifest=found.manifest;
+ const sourceVersion=lexicalManifest?.source_reference?.version_folder||lexicalManifest?.package_version;
+ if(sourceVersion&&String(sourceVersion)!==String(version)&&String(lexicalManifest?.package_version)!==String(manifest?.package_version))throw new Error(`Lexical package version mismatch: ${sourceVersion} vs ${version}`);
+ if(lexicalManifest?.integrity?.self_test&&lexicalManifest.integrity.self_test!=='PASS')throw new Error(`Lexical package self-test is not PASS.`);
+ lexical={};
+ for(const family of ['course','plo','wk','ec','sdg']){
+   const path=lexicalManifest?.files?.families?.[family]||LEXICAL_FALLBACK_PATHS[family];
+   const pack=await fetchJson(joinUrl(lexicalBase,path));const f=pack?.family;
+   if(!f||f.family!==family||!Array.isArray(f.entities))throw new Error(`Invalid lexical ${family} package.`);
+   if(pack.package_version&&manifest?.package_version&&String(pack.package_version)!==String(manifest.package_version))throw new Error(`Lexical ${family} package version mismatch.`);
+   if(lexicalManifest?.lexical_rule_version&&pack.lexical_rule_version&&pack.lexical_rule_version!==lexicalManifest.lexical_rule_version)throw new Error(`Lexical ${family} rule version mismatch.`);
+   const expected=lexicalExpectedCount(family);if(Number.isFinite(expected)&&f.entities.length!==expected)throw new Error(`Lexical ${family} entity count mismatch: ${f.entities.length}, expected ${expected}`);
+   lexical[family]=pack;
+ }
+ if(lexicalManifest?.layout?.course_contents?.lexical!==null)log('WARNING: lexical manifest declares course-content lexical data; this validator intentionally ignores per-chunk lexical profiles.');
+ log(`Lexical sidecar loaded from ${lexicalBase.replace(referenceBase(version)+'/','')||'version root'}: course ${lexical.course.family.entities.length}, PLO ${lexical.plo.family.entities.length}, WK ${lexical.wk.family.entities.length}, EC ${lexical.ec.family.entities.length}, SDG ${lexical.sdg.family.entities.length}.`);
+}
+function manifestCompatible(m){try{validateContract(m);return true}catch{return false}}
+function invalidateReferences(message='Reference version changed'){refs=null;lexical=null;manifest=null;lexicalManifest=null;lexicalBase='';analysisCache.clear();analyzeToken++;$('refStatus').className='engine-pill warn';$('refStatus').textContent=message;$('reanalyzeBtn').disabled=true;$('analyzeAll').disabled=true;$('exportCandidates').disabled=true;$('exportSummary').disabled=true;renderCourse();renderOverall()}
+async function discoverReferenceVersions(){
+ const sel=$('refVersion'),init=$('initBtn'),prior=state.referenceVersion||DEFAULT_REFERENCE_VERSION;
+ sel.disabled=true;init.disabled=true;sel.innerHTML='<option value="">Discovering hybrid versions from GitHub…</option>';
+ try{
+   const r=await fetch(githubApiRoot(),{cache:'no-cache',headers:{Accept:'application/vnd.github+json'}});
+   if(!r.ok)throw new Error(`GitHub version discovery failed: ${r.status} ${r.statusText}`);
+   const root=await r.json(),dirs=Array.isArray(root)?root.filter(x=>x?.type==='dir'&&x?.name):[];
+   const tested=await Promise.all(dirs.map(async d=>{
+     try{
+       const m=await fetchJson(joinUrl(referenceBase(d.name),'manifest.json'));if(!m?.package_version)return null;
+       const modelCompatible=manifestCompatible(m);let lexicalReady=false;
+       if(modelCompatible){try{const lf=await findLexicalBase(d.name);lexicalReady=!!lf?.manifest?.package_version}catch{lexicalReady=false}}
+       return {folder:d.name,manifest:m,modelCompatible,lexicalReady,compatible:modelCompatible&&lexicalReady};
+     }catch{return null}
+   }));
+   const versions=tested.filter(Boolean).sort((a,b)=>{const ad=Date.parse(a.manifest.generated_at||'')||0,bd=Date.parse(b.manifest.generated_at||'')||0;return bd-ad||String(b.manifest.package_version||b.folder).localeCompare(String(a.manifest.package_version||a.folder),undefined,{numeric:true})});
+   if(!versions.length)throw new Error('No version folders with a readable manifest.json were found in the repository.');
+   sel.innerHTML='';
+   for(const v of versions){const o=document.createElement('option');o.value=v.folder;o.textContent=v.manifest.package_version||v.folder;if(!v.modelCompatible){o.disabled=true;o.textContent+=' · incompatible model contract'}else if(!v.lexicalReady){o.disabled=true;o.textContent+=' · no lexical sidecar'}sel.appendChild(o)}
+   const compatible=versions.filter(v=>v.compatible);if(!compatible.length)throw new Error('Version folders were found, but none contain both the compatible embedding package and lexical sidecar.');
+   const chosen=compatible.find(v=>v.folder===prior)?.folder||compatible[0].folder;sel.value=chosen;state.referenceVersion=chosen;saveState();
+   $('refStatus').className='engine-pill warn';$('refStatus').textContent=`Guidance references not loaded · ${chosen}`;log(`Discovered ${versions.length} reference version${versions.length===1?'':'s'}; ${compatible.length} hybrid-ready; selected ${chosen}.`);
+ }catch(err){sel.innerHTML='';const o=document.createElement('option');o.value=prior;o.textContent=prior;sel.appendChild(o);sel.value=prior;state.referenceVersion=prior;saveState();$('refStatus').className='engine-pill warn';$('refStatus').textContent=`Discovery unavailable · ${prior}`;log(`Version discovery warning: ${err?.message||err}. Falling back to ${prior}.`)}finally{sel.disabled=false;init.disabled=false}
+}
+function validateContract(m){const x=m.model||{};for(const k of ['id','revision','dimension','pooling','normalize']){if(String(x[k])!==String(EXPECTED_MODEL[k]))throw new Error(`Reference model contract mismatch: ${k}=${x[k]} expected ${EXPECTED_MODEL[k]}`)}}
+async function loadPair(base,key){const p=resolvePair(key);const [meta,buf]=await Promise.all([fetchJson(joinUrl(base,p.metadata)),fetchBuffer(joinUrl(base,p.vectors))]);const dim=meta.vector?.dimension||EXPECTED_MODEL.dimension, count=meta.vector?.record_count??meta.records?.length??0, expected=count*dim*4;if(buf.byteLength!==expected)throw new Error(`${key} vector length mismatch: ${buf.byteLength} bytes, expected ${expected}`);const vectors=new Float32Array(buf);if(count){for(const row of [0,count-1]){let ss=0,off=row*dim;for(let i=0;i<dim;i++){const v=vectors[off+i];if(!Number.isFinite(v))throw new Error(`${key} contains non-finite vector data`);ss+=v*v}const n=Math.sqrt(ss);if(Math.abs(n-1)>.002)throw new Error(`${key} vector normalization check failed (${n})`)}}return {meta,vectors,dim,count}}
+async function loadReferences(){const version=clean($('refVersion').value);if(!version)throw new Error('Select a reference package version.');const base=referenceBase(version);$('refStatus').className='engine-pill warn';$('refStatus').textContent=`Loading ${version}…`;manifest=await fetchJson(joinUrl(base,'manifest.json'));validateContract(manifest);const cal=await fetchJson(joinUrl(base,'calibration.json')).catch(()=>null);const bloom=await fetchJson(joinUrl(base,'bloom.json')).catch(()=>null);if(bloom?.levels&&bloom?.verbs){const map={};for(const l of bloom.levels)map[l.level]={name:l.name,domain:l.domain,verbs:[]};for(const v of bloom.verbs){if(map[v.level])map[v.level].verbs.push(v.verb)}bloomMap=map}
+ refs={};for(const key of Object.keys(FALLBACK_PATHS)){log(`Loading semantic ${key}…`);refs[key]=await loadPair(base,key)}
+ log('Loading K1/K2/K3 lexical sidecar…');await loadLexicalReferences(version);
+ $('refStatus').className='engine-pill ok';$('refStatus').textContent=`${manifest.package_version||version} · lexical + semantic references ready`;log(`Reference package ${manifest.package_version||version} loaded and verified.`);state.referenceVersion=version;saveState();validateCurrentCoursesAgainstReferences();renderAll()}
+async function loadModel(){if(extractor)return extractor;$('modelStatus').className='engine-pill warn';$('modelStatus').textContent='Loading model…';log('Loading Transformers.js and pinned embedding model…');const url=manifest?.model?.transformers_js_url||'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1';const {pipeline,env}=await import(url);env.allowLocalModels=false;extractor=await pipeline('feature-extraction',EXPECTED_MODEL.id,{revision:EXPECTED_MODEL.revision,dtype:EXPECTED_MODEL.dtype,device:EXPECTED_MODEL.device,progress_callback:p=>{if(p?.status==='progress'&&Number.isFinite(p.progress))$('modelStatus').textContent=`Model ${Math.round(p.progress)}%`;}});$('modelStatus').className='engine-pill ok';$('modelStatus').textContent='Semantic verifier ready';log('Embedding model ready. CLO inference stays in the browser.');return extractor}
+async function ensureEmbeddings(texts,onProgress){const unique=[...new Set(texts.map(clean).filter(Boolean))],missing=unique.filter(t=>!embeddingCache.has(t));if(!missing.length)return;await loadModel();const batch=12;for(let s=0;s<missing.length;s+=batch){const part=missing.slice(s,s+batch);const tensor=await extractor(part,{pooling:EXPECTED_MODEL.pooling,normalize:EXPECTED_MODEL.normalize});const data=tensor.data,d=EXPECTED_MODEL.dimension;if(data.length!==part.length*d)throw new Error(`Unexpected CLO embedding shape ${data.length}; expected ${part.length*d}`);for(let r=0;r<part.length;r++)embeddingCache.set(part[r],new Float32Array(data.slice(r*d,(r+1)*d)));onProgress?.(Math.min(s+part.length,missing.length),missing.length)}}
+function cosineSimilarity(a,b){if(!a||!b||a.length!==b.length)throw new Error('Embedding dimension mismatch.');let dot=0,na=0,nb=0;for(let i=0;i<a.length;i++){dot+=a[i]*b[i];na+=a[i]*a[i];nb+=b[i]*b[i]}if(na===0||nb===0)return 0;return dot/(Math.sqrt(na)*Math.sqrt(nb))}
+function shortlistTop3(cloEmbedding,candidates){return (candidates||[]).map(candidate=>{const packs=candidate.embeddings?.length?candidate.embeddings:[{vector:candidate.embedding,record:candidate.record}];let similarity=-Infinity,bestRecord=candidate.record||null;for(const p of packs){const vector=p?.vector||p;if(!vector)continue;const score=cosineSimilarity(cloEmbedding,vector);if(score>similarity){similarity=score;bestRecord=p?.record||candidate.record||null}}return {...candidate,similarity,bestRecord}}).filter(x=>Number.isFinite(x.similarity)).sort((a,b)=>b.similarity-a.similarity).slice(0,3)}
+function indexCandidates(index,filter=null){const out=[];for(const r of index?.meta?.records||[]){if(filter&&!filter(r))continue;const off=r.vector_index*index.dim;out.push({id:candidateId(r),record:r,embedding:index.vectors.subarray(off,off+index.dim)})}return out}
+function groupedSdgCandidates(index){const m=new Map();for(const r of index?.meta?.records||[]){const id=String(r.entity_id||r.display_id||r.id),off=r.vector_index*index.dim,pack={vector:index.vectors.subarray(off,off+index.dim),record:r};if(!m.has(id))m.set(id,{id,record:r,embeddings:[]});const c=m.get(id);c.embeddings.push(pack);if(r.subtype==='goal')c.record=r}return [...m.values()]}
+function asTopRows(items){return (items||[]).map((x,i)=>({record:x.bestRecord||x.record,score:x.similarity,semanticRank:i+1,id:x.id}))}
+function candidateScore(q,index,record){if(!record)return null;const off=record.vector_index*index.dim;return cosineSimilarity(q,index.vectors.subarray(off,off+index.dim))}
+function analyzeVector(course,clo,q){const rid=referenceCourseId(course),courseCandidates=indexCandidates(refs.courses_full),courses=asTopRows(shortlistTop3(q,courseCandidates)),fullRec=refs.courses_full.meta.records.find(r=>r.entity_id===rid)||null,full=fullRec?{record:fullRec,score:candidateScore(q,refs.courses_full,fullRec)}:null,chunks=asTopRows(shortlistTop3(q,indexCandidates(refs.course_contents,r=>r.entity_id===rid))),plos=asTopRows(shortlistTop3(q,indexCandidates(refs.plo))),wks=asTopRows(shortlistTop3(q,indexCandidates(refs.wk))),ecs=asTopRows(shortlistTop3(q,indexCandidates(refs.ec))),sdgs=asTopRows(shortlistTop3(q,groupedSdgCandidates(refs.sdg)));return {courses,full,chunks,plos,wks,ecs,sdgs,verifiedAt:Date.now()}}
+function keyFor(course,clo){return `${course.uid}|${clean(clo.statement)}`}
+function currentAnalysis(course,clo){return analysisCache.get(keyFor(course,clo))||null}
+async function verifyClo(course,clo){if(!refs)throw new Error('Load lexical guidance/reference data first.');const text=clean(clo?.statement);if(!text)throw new Error('Enter a CLO statement before semantic verification.');$('courseProgress').textContent=`Embedding ${clo.id||'CLO'}…`;await ensureEmbeddings([text],(a,b)=>{$('courseProgress').textContent=`Embedding ${a}/${b}`});const q=embeddingCache.get(text);analysisCache.set(keyFor(course,clo),analyzeVector(course,clo,q));$('courseProgress').textContent=`${clo.id||'CLO'} verified with semantic Top 3`;renderCourse();renderOverall()}
+async function analyzeCourse(course){if(!refs||!course)return;const token=++analyzeToken,items=course.clos.filter(c=>clean(c.statement));$('courseProgress').textContent=items.length?'Preparing semantic verification…':'';await ensureEmbeddings(items.map(c=>clean(c.statement)),(a,b)=>{$('courseProgress').textContent=`Embedding ${a}/${b}`});if(token!==analyzeToken)return;for(const clo of items){const text=clean(clo.statement),q=embeddingCache.get(text);analysisCache.set(keyFor(course,clo),analyzeVector(course,clo,q))}$('courseProgress').textContent=items.length?`${items.length} CLO${items.length===1?'':'s'} verified with semantic Top 3`:'';renderCourse();renderOverall()}
+function findScore(rows,field,value){const s=String(value??'');const x=rows?.find(x=>String(x.record[field]??x.record.display_id??'')===s);return x?.score}
+function selectedNumeric(v){const x=Number(mappingValue(v));return Number.isFinite(x)&&x>0?x:null}
+function idNumber(s){const m=String(s||'').match(/(\d+)$/);return m?Number(m[1]):null}
+function courseSemanticStatus(a,course,clo){const id=referenceCourseId(course),lex=lexicalEvidence('course',id,clo?.statement||'');if(!lex.loaded)return {cls:'neutral',state:'load lexical guidance',full:null,chunk:null,lex,semanticPass:null,semanticRank:null};if(!lex.eligible&&!a)return {cls:'fail',state:'LEXICAL FAIL · improve CLO wording',full:null,chunk:null,lex,semanticPass:null,semanticRank:null};if(!a)return {cls:'pending',state:'LEXICAL PASS · semantic verification not run',full:null,chunk:null,lex,semanticPass:null,semanticRank:null};const ix=(a.courses||[]).findIndex(x=>String(x.record?.entity_id||'')===String(id)),sp=ix>=0,rank=sp?ix+1:null;return {cls:lex.eligible&&sp?'pass':'fail',state:lex.eligible&&sp?'VALID · lexical + semantic Top 3':(!lex.eligible&&sp?'REVIEW · semantic Top 3 but lexical FAIL':'REVIEW · lexical PASS but assigned course not Semantic Top 3'),full:a.full?.score,chunk:a.chunks?.[0]?.score,lex,semanticPass:sp,semanticRank:rank}}
+function normText(s){return String(s??'').normalize('NFKC').replace(/[’‘`]/g,"'").replace(/[–—−]/g,'-').replace(/\s+/g,' ').trim()}
+function lexicalPack(family){return lexical?.[family]||null}
+function lexicalEntity(family,id){const p=lexicalPack(family),sid=String(id||'');if(!p||!sid)return null;return (p.family.entities||[]).find(e=>String(e.id)===sid||String(e.display_id)===sid)||null}
+function lexicalTokenSet(text,family='plo'){
+ const p=lexicalPack(family)||lexicalPack('course')||Object.values(lexical||{})[0];if(!p)return new Set();
+ const stop=new Set(p.rules?.stop_words||[]),openers=new Set(p.bloom_exclusion?.action_openers||[]),out=new Set();
+ for(const raw of (normText(text).match(/\p{L}+/gu)||[])){const w=raw.toLowerCase(),isAcronym=/^[A-Z]{2,5}$/.test(raw);if(([...w].length<3&&!isAcronym)||stop.has(w)||openers.has(w))continue;out.add(w)}return out
+}
+function lexicalEvidence(family,id,text){const entity=lexicalEntity(family,id);if(!entity)return {loaded:false,eligible:false,f1:[],f2:[],f3:[],routes:[],entity:null};const toks=lexicalTokenSet(text,family),f1=(entity.f1||[]).filter(w=>toks.has(w)),f2=(entity.f2||[]).filter(w=>toks.has(w)),f3=(entity.f3||[]).filter(w=>toks.has(w)),routes=[];if(f1.length>=1)routes.push('K1');if(f2.length>=2)routes.push('K2');if(f3.length>=3)routes.push('K3');return {loaded:true,eligible:routes.length>0,f1,f2,f3,routes,entity}}
+function lexWordsShort(a,n=4){return (a||[]).slice(0,n).join(', ')+((a||[]).length>n?'…':'')}
+function lexicalCompact(ev){if(!ev?.loaded)return 'L unavailable';if(ev.eligible){const bits=[];if(ev.f1.length)bits.push(`K1 ${ev.f1.length}${ev.f1.length?` [${lexWordsShort(ev.f1)}]`:''}`);if(ev.f2.length)bits.push(`K2 ${ev.f2.length}${ev.f2.length?` [${lexWordsShort(ev.f2)}]`:''}`);if(ev.f3.length)bits.push(`K3 ${ev.f3.length}${ev.f3.length?` [${lexWordsShort(ev.f3)}]`:''}`);return `L PASS · ${ev.routes.join('+')} · ${bits.join(' · ')}`}return `L FAIL · K1 ${ev.f1.length}/1 · K2 ${ev.f2.length}/2 · K3 ${ev.f3.length}/3`}
+function semanticPass(rows,selectedId){if(!rows)return null;const sid=String(selectedId||'');if(!sid)return false;return rows.some(x=>candidateId(x.record)===sid)}
+function hybridStatus(rows,selectedId,lexEv,analyzed){if(!selectedId)return {cls:'fail',state:'select a mapping',code:'NO_SELECTION',semanticPass:false,semanticRank:null};const lp=!!lexEv?.eligible;if(!analyzed)return {cls:lp?'pending':'fail',state:lp?'LEXICAL PASS · verify with embeddings':'LEXICAL FAIL · improve CLO or mapping',code:lp?'LEXICAL_PASS_PENDING_SEMANTIC':'LEXICAL_FAIL',semanticPass:null,semanticRank:null};const ix=(rows||[]).findIndex(x=>candidateId(x.record)===String(selectedId)),sp=ix>=0,rank=sp?ix+1:null;if(lp&&sp)return {cls:'pass',state:`VALID · lexical + semantic Top ${rank}`,code:'BOTH',semanticPass:true,semanticRank:rank};if(lp&&!sp)return {cls:'fail',state:'REVIEW · lexical PASS but not semantic Top 3',code:'LEXICAL_ONLY',semanticPass:false,semanticRank:null};if(!lp&&sp)return {cls:'fail',state:`REVIEW · semantic Top ${rank} but lexical FAIL`,code:'SEMANTIC_ONLY',semanticPass:true,semanticRank:rank};return {cls:'fail',state:'INVALID · neither lexical nor semantic Top 3',code:'NEITHER',semanticPass:false,semanticRank:null}}
+function lexicalEligibleIds(rows,family,text){const ids=[];for(const x of rows||[]){const id=candidateId(x.record),ev=lexicalEvidence(family,id,text);if(ev.eligible)ids.push(id)}return ids}
+function canonPhrase(s){return (normText(s).match(/[\p{L}\p{N}]+(?:[-'][\p{L}\p{N}]+)*/gu)||[]).map(x=>x.toLowerCase()).join(' ')}
+const BLOOM_NON_ACTION=new Set('analysis observation organization characterization receiving responding valuing practicing practising adaption'.split(/\s+/));
+function validBloomVerbs(b){return [...new Set((b?.verbs||[]).map(v=>canonPhrase(String(v).replace(/\([^)]*\)/g,''))).filter(Boolean).filter(v=>!BLOOM_NON_ACTION.has(v.split(' ')[0])))].sort((a,b)=>b.length-a.length)}
+function bloomDomainAllowed(course,b){const t=clean(course.type).toLowerCase();if(t==='theory')return b?.domain==='Cognitive';if(t==='lab')return b?.domain==='Affective'||b?.domain==='Psychomotor';return false}
+function validateBloom(course,clo){const b=bloomMap[clo.bloom];if(!b)return {pass:false,reason:'No valid Bloom level selected'};const domainOK=bloomDomainAllowed(course,b),stmt=canonPhrase(clo.statement);let verb='';for(const v of validBloomVerbs(b)){if(stmt===v||stmt.startsWith(v+' ')){verb=v;break}}return {pass:domainOK&&!!verb,reason:!domainOK?'Bloom domain does not match course type':(!verb?`CLO does not begin with a valid ${clo.bloom} action verb`:'Valid'),verb}}
+function candidateId(r){return String(r?.display_id||r?.entity_id||r?.id||'')}
+function familyStats(rows,selectedId=''){const xs=(rows||[]).filter(x=>Number.isFinite(x.score)).sort((a,b)=>(a.semanticRank||99)-(b.semanticRank||99)),sid=String(selectedId||''),si=sid?xs.findIndex(x=>candidateId(x.record)===sid):-1,sel=si>=0?xs[si]:null;return {count:xs.length,top1:xs[0]||null,top2:xs[1]||null,top3:xs[2]||null,selected:sel,selectedRank:si>=0?(xs[si].semanticRank||si+1):null}}
+function lexicalSortRows(rows,family,text){return [...(rows||[])].sort((a,b)=>{const ea=lexicalEvidence(family,candidateId(a.record),text),eb=lexicalEvidence(family,candidateId(b.record),text);if(ea.eligible!==eb.eligible)return eb.eligible-ea.eligible;if(ea.f1.length!==eb.f1.length)return eb.f1.length-ea.f1.length;if(ea.f2.length!==eb.f2.length)return eb.f2.length-ea.f2.length;if(ea.f3.length!==eb.f3.length)return eb.f3.length-ea.f3.length;return candidateId(a.record).localeCompare(candidateId(b.record),undefined,{numeric:true})})}
+function mergedRows(staticList,semanticTop3,family,text){const sm=new Map((semanticTop3||[]).map((x,i)=>[candidateId(x.record),{...x,semanticRank:x.semanticRank||i+1}]));const rows=(staticList||[]).map(x=>{const id=candidateId(x.record),m=sm.get(id);return {record:x.record,score:m?.score??null,semanticRank:m?.semanticRank??null}});if(semanticTop3?.length)return rows.sort((a,b)=>{const ar=a.semanticRank??99,br=b.semanticRank??99;if(ar!==br)return ar-br;const ea=lexicalEvidence(family,candidateId(a.record),text),eb=lexicalEvidence(family,candidateId(b.record),text);if(ea.eligible!==eb.eligible)return eb.eligible-ea.eligible;return candidateId(a.record).localeCompare(candidateId(b.record),undefined,{numeric:true})});return lexicalSortRows(rows,family,text)}
+function topRanks(rows,n=3,labelFn,key='',cloText=''){return (rows||[]).slice(0,n).map((x,i)=>{const lexev=key?lexicalEvidence(key,candidateId(x.record),cloText):null,lmark=lexev?.loaded?(lexev.eligible?'L✓ ':'L– '):'';return `<div class="rank"><span>${esc(lmark)}#${x.semanticRank||i+1} · ${esc(labelFn?labelFn(x.record):(x.record.display_id||x.record.id))}</span><b>${formatScore(x.score)}</b></div>`}).join('')||'<span class="muted">Not verified yet</span>'}
+function optionRows(rows,selected,emptyLabel,labelFn,key='',cloText=''){const list=[`<option value="">${esc(emptyLabel)}</option>`];for(const x of rows||[]){const val=labelFn.value(x.record),txt=labelFn.text(x.record),sel=String(selected)===String(val)?' selected':'',id=candidateId(x.record),lexev=key?lexicalEvidence(key,id,cloText):null,lmark=lexev?.loaded?(lexev.eligible?'L✓ ':'L– '):'',smark=x.semanticRank?`S✓#${x.semanticRank} `:'';list.push(`<option value="${esc(val)}"${sel}>${esc(smark+lmark+txt)}${Number.isFinite(x.score)?` · ${x.score.toFixed(3)}`:''}</option>`)}return list.join('')}
+function staticRows(index){return index?.meta?.records?.map(r=>({record:r,score:null,semanticRank:null}))||[]}
+function ploLabel(r){return `${r.display_id||r.entity_id} — ${r.title||''}`}
+function wkLabel(r){return `${r.display_id||('WK-'+idNumber(r.entity_id))} — ${r.title||''}`}
+function ecLabel(r){return `${r.display_id||('EC-'+idNumber(r.entity_id))} — ${r.title||''}`}
+function sdgLabel(r){return `${r.display_id||r.entity_id} — ${r.title||''}`}
+function guidanceLine(rows,selectedId,key,cloText='',analyzed=false){const eligible=lexicalEligibleIds(rows,key,cloText),lexGuide=eligible.length?`K-guided: ${eligible.slice(0,6).join(', ')}${eligible.length>6?'…':''}`:'No candidate currently satisfies K1/K2/K3';let semGuide='Embeddings not run';if(analyzed){const top=(rows||[]).filter(x=>x.semanticRank).sort((a,b)=>a.semanticRank-b.semanticRank).slice(0,3);semGuide=top.length?`Semantic Top 3: ${top.map(x=>candidateId(x.record)).join(', ')}`:'Semantic Top 3 unavailable'}return `<div class="guidance-line"><span><b>Live guidance:</b> ${esc(lexGuide)}</span><span class="guide-top"><b>Verification:</b> ${esc(semGuide)}</span></div>`}
+function selectSurface(label,key,selected,rows,semanticRows,valueFn,textFn,cloText='',analyzed=false){const has=selected!==''&&selected!==null&&selected!==undefined,selectedId=has?`${label}-${selected}`:'',lexev=lexicalEvidence(key,selectedId,cloText),hyb=hybridStatus(semanticRows,selectedId,lexev,analyzed),selSem=(semanticRows||[]).find(x=>candidateId(x.record)===selectedId);return `<div class="surface ${hyb.cls}"><div class="selector-label">${label}</div><select class="selector-control map-select" data-key="${key}">${optionRows(rows,selected,'Select '+label,{value:valueFn,text:textFn},key,cloText)}</select><div class="scoreline"><span>${esc(hyb.state)}</span><span class="score ${hyb.cls}">${analyzed?(hyb.semanticPass?`S TOP ${hyb.semanticRank}`:'S OUT'):'S —'} · ${lexev.loaded?(lexev.eligible?'L PASS':'L FAIL'):'L —'}</span></div><div class="lexline"><b>F evidence:</b> ${esc(lexicalCompact(lexev))}</div>${guidanceLine(rows,selectedId,key,cloText,analyzed)}</div>`}
+
+function familyStaticList(family){
+ if(family==='plo')return staticRows(refs?.plo);
+ if(family==='wk')return staticRows(refs?.wk);
+ if(family==='ec')return staticRows(refs?.ec);
+ if(family==='sdg')return refs?.sdg?aggregateStaticSdgs(refs.sdg):[];
+ return [];
+}
+function familyLabel(family,r){
+ if(family==='plo')return ploLabel(r);
+ if(family==='wk')return wkLabel(r);
+ if(family==='ec')return ecLabel(r);
+ return sdgLabel(r);
+}
+function setFamilySelection(clo,family,id){
+ if(family==='plo'){clo.plo=id||'';return}
+ const n=idNumber(id);clo[family]=n?[n]:[];
+}
+function evidenceWords(ev){
+ const out=[];
+ for(const w of ev?.f1||[])out.push(w);
+ for(const w of ev?.f2||[])if(!out.includes(w))out.push(w);
+ for(const w of ev?.f3||[])if(!out.includes(w))out.push(w);
+ return out.slice(0,4);
+}
+function evidenceDetail(ev){
+ if(!ev?.loaded)return 'Lexical data unavailable';
+ const bits=[];
+ if(ev.f1.length)bits.push(`K1: ${ev.f1.join(', ')}`);
+ if(ev.f2.length)bits.push(`K2: ${ev.f2.join(', ')}`);
+ if(ev.f3.length)bits.push(`K3: ${ev.f3.join(', ')}`);
+ return bits.length?bits.join(' · '):'No key words currently match this CLO.';
+}
+function selectedFamilyWordsNote(family,selectedId){
+ if(!['plo','wk','ec','sdg'].includes(family))return '';
+ const title=family.toUpperCase();
+ if(!selectedId){const article=family==='sdg'?'an':'a';return `<div class="course-word-note selected-lexical-note"><b>${title} lexical words:</b> select ${article} ${title} to view its key words.</div>`;}
+ const entity=lexicalEntity(family,selectedId);
+ if(!entity)return `<div class="course-word-note selected-lexical-note"><b>${esc(selectedId)} lexical words:</b> loading…</div>`;
+ const show=(label,cls,words)=>`<span class="${cls}"><b>${label}:</b> ${(words||[]).map(esc).join(', ')||'—'}</span>`;
+ return `<div class="course-word-note selected-lexical-note" aria-label="${esc(selectedId)} K1 K2 K3 lexical words"><b>${esc(selectedId)} words</b> · ${show('K1','f1',entity.f1)} &nbsp; ${show('K2','f2',entity.f2)} &nbsp; ${show('K3','f3',entity.f3)}</div>`;
+}
+function familyCard(course,clo,family,a){
+ const analyzed=!!a,staticList=familyStaticList(family),semanticRows=analyzed?(familyRowsForAnalysis(a,family)||[]):[];
+ const selectedId=selectedIdForFamily(clo,family),selectedEv=lexicalEvidence(family,selectedId,clo.statement),hyb=hybridStatus(semanticRows,selectedId,selectedEv,analyzed);
+ const sorted=lexicalSortRows(staticList,family,clo.statement);
+ const eligible=sorted.filter(x=>lexicalEvidence(family,candidateId(x.record),clo.statement).eligible);
+ const suggestedIds=new Set(eligible.slice(0,3).map(x=>candidateId(x.record)));
+ const title=family.toUpperCase();
+ const lexPass=!!selectedId&&!!selectedEv.eligible;
+ const semState=!analyzed?'pending':(hyb.semanticPass?'pass':'fail');
+ const cls=!lexPass?'review':!analyzed?'ready':hyb.semanticPass?'verified':'review';
+ const optionHtml=sorted.map(x=>{
+   const id=candidateId(x.record),ev=lexicalEvidence(family,id,clo.statement),sem=(semanticRows||[]).find(y=>candidateId(y.record)===id);
+   const marks=[];
+   if(suggestedIds.has(id))marks.push('Suggested');
+   if(ev.eligible)marks.push('F✓');
+   if(sem)marks.push(`S#${sem.semanticRank}`);
+   const prefix=marks.length?`${marks.join(' · ')} · `:'';
+   return `<option value="${esc(id)}"${id===selectedId?' selected':''}>${esc(prefix+familyLabel(family,x.record))}</option>`;
+ }).join('');
+ let semanticHint='';
+ if(analyzed){
+   if(hyb.semanticPass){
+     semanticHint=`<div class="semantic-hint"><b>Semantic verification:</b> Selected ${esc(title)} is in the Top 3${hyb.semanticRank?` · rank #${hyb.semanticRank}`:''}.</div>`;
+   }else{
+     const top=(semanticRows||[]).slice(0,3).map(x=>`${candidateId(x.record)} (${x.score.toFixed(3)})`).join(' · ');
+     semanticHint=`<div class="semantic-hint"><b>Semantic Top 3:</b> ${esc(top||'Unavailable')}</div>`;
+   }
+ }
+ return `<section class="mapping-card ${cls}" data-family="${family}">
+   <div class="compact-map-title"><b>${title}</b><span class="mapping-status"><span class="map-channel ${lexPass?'pass':'fail'}">F ${lexPass?'✓':'!'}</span><span class="map-channel ${semState}">SEM ${semState==='pass'?'✓':semState==='fail'?'!':'○'}</span></span></div>
+   <select class="other-select smart-select" data-family="${family}" aria-label="Select ${title}"><option value="">Select ${title}…</option>${optionHtml}</select>
+   ${selectedFamilyWordsNote(family,selectedId)}
+   ${semanticHint}
+ </section>`;
+}
+function courseFitBlock(course,clo,a){
+ const cs=courseSemanticStatus(a,course,clo),analyzed=!!a;
+ let status='Waiting for wording',cls='neutral';
+ if(cs.lex.loaded){
+   if(!cs.lex.eligible){status='Needs stronger course wording';cls='review'}
+   else if(!analyzed){status='Course wording matches';cls='ready'}
+   else if(cs.semanticPass){status=`Verified · semantic #${cs.semanticRank}`;cls='verified'}
+   else{status='Review · assigned course outside semantic Top 3';cls='review'}
+ }
+ return `<div class="course-fit ${cls}"><div><b>Course fit</b><span>${esc(status)}</span></div><details><summary>Evidence</summary><div>${esc(evidenceDetail(cs.lex))}${analyzed&&a?.courses?.length?`<br><b>Semantic Top 3:</b> ${esc(a.courses.map(x=>`${candidateId(x.record)} (${x.score.toFixed(3)})`).join(' · '))}`:''}</div></details></div>`;
+}
+function bloomBlock(course,clo){
+ const b=validateBloom(course,clo),allowed=Object.entries(bloomMap).filter(([,v])=>bloomDomainAllowed(course,v)),selected=bloomMap[clo.bloom]||null;
+ const verbs=selected?[...new Set((selected.verbs||[]).map(v=>clean(v)).filter(Boolean))]:[];
+ const status=b.pass?'pass':'fail',state=b.pass?'verified':'review',statusText=b.pass?'Valid':'Needs attention';
+ const selectedInfo=selected
+   ? `<div class="course-word-note selected-lexical-note bloom-verbs-note"><b>${esc(clo.bloom+' · '+selected.name)}</b> &nbsp; <span><b>Action verbs:</b> ${esc(verbs.join(', ')||'—')}</span></div>`
+   : `<div class="course-word-note selected-lexical-note bloom-verbs-note"><b>Bloom:</b> choose a level to view its action verbs.</div>`;
+ return `<section class="mapping-card ${state}" data-family="bloom"><select class="bloom-select smart-select" aria-label="Select Bloom level"><option value="">Choose Bloom…</option>${allowed.map(([k,v])=>`<option value="${esc(k)}"${clo.bloom===k?' selected':''}>${esc(k+' — '+v.name)}</option>`).join('')}</select>${selectedInfo}</section>`;
+}
+function finalStateBlock(course,clo,a){
+ const analyzed=!!a,b=validateBloom(course,clo),cs=courseSemanticStatus(a,course,clo);
+ const problems=[];
+ if(!cs.lex.eligible)problems.push('Course wording');
+ if(!b.pass)problems.push('Bloom');
+ for(const f of ['plo','wk','ec','sdg']){const sid=selectedIdForFamily(clo,f),ev=lexicalEvidence(f,sid,clo.statement);if(!sid)problems.push(f.toUpperCase());else if(!ev.eligible)problems.push(f.toUpperCase())}
+ if(!analyzed){
+   if(problems.length)return `<div class="final-state neutral"><b>Keep authoring</b><span>Resolve: ${esc(problems.join(', '))}</span></div>`;
+   return `<div class="final-state ready"><b>Ready to verify</b><span>Lexical guidance and Bloom checks are satisfied.</span></div>`;
+ }
+ const semProblems=[];
+ if(!cs.semanticPass)semProblems.push('Course');
+ for(const f of ['plo','wk','ec','sdg']){const sid=selectedIdForFamily(clo,f),rows=familyRowsForAnalysis(a,f)||[];if(!semanticPass(rows,sid))semProblems.push(f.toUpperCase())}
+ if(!problems.length&&!semProblems.length)return `<div class="final-state verified"><b>CLO verified</b><span>Lexical + semantic Top-3 criteria are satisfied.</span></div>`;
+ const all=[...new Set([...problems,...semProblems])];
+ return `<div class="final-state review"><b>Review ${all.length} item${all.length===1?'':'s'}</b><span>${esc(all.join(', '))}. Edit the CLO or change the mapping, then verify again.</span></div>`;
+}
+function stepState(course,clo,a){
+ const b=validateBloom(course,clo),cs=courseSemanticStatus(a,course,clo);let mapReady=cs.lex.eligible&&b.pass;
+ for(const f of ['plo','wk','ec','sdg']){const sid=selectedIdForFamily(clo,f),ev=lexicalEvidence(f,sid,clo.statement);mapReady=mapReady&&!!sid&&ev.eligible}
+ let final=mapReady&&!!a&&cs.semanticPass;
+ if(final)for(const f of ['plo','wk','ec','sdg'])final=final&&semanticPass(familyRowsForAnalysis(a,f)||[],selectedIdForFamily(clo,f));
+ return {mapReady,final};
+}
+function courseLexicalWordsNote(course){
+ const id=referenceCourseId(course),entity=lexicalEntity('course',id);
+ if(!entity)return `<div class="course-word-note"><b>Course lexical words:</b> loading…</div>`;
+ const show=(label,cls,words)=>`<span class="${cls}"><b>${label}:</b> ${(words||[]).map(esc).join(', ')||'—'}</span>`;
+ return `<div class="course-word-note" aria-label="Course K1 K2 K3 lexical words"><b>Course content words</b> · ${show('K1','f1',entity.f1)} &nbsp; ${show('K2','f2',entity.f2)} &nbsp; ${show('K3','f3',entity.f3)}</div>`;
+}
+function criterionTabState(course,clo,family,a){
+ if(family==='bloom'){
+   const pass=validateBloom(course,clo).pass;
+   return {state:pass?'valid':'invalid',rule:pass?'pass':'fail'};
+ }
+ const sid=selectedIdForFamily(clo,family),ev=lexicalEvidence(family,sid,clo.statement),lexPass=!!sid&&!!ev.eligible;
+ let sem='pending';
+ if(a)sem=semanticPass(familyRowsForAnalysis(a,family)||[],sid)?'pass':'fail';
+ const state=lexPass&&sem==='pass'?'valid':(lexPass&&sem==='pending'?'pending':'invalid');
+ return {state,lex:lexPass?'pass':'fail',sem};
+}
+function criteriaTabsBlock(course,clo,a){
+ const active=['bloom','plo','wk','ec','sdg'].includes(window.activeCriteriaTab)?window.activeCriteriaTab:'bloom';
+ const labels={bloom:'Bloom',plo:'PLO',wk:'WK',ec:'EC',sdg:'SDGs'};
+ const tabs=['bloom','plo','wk','ec','sdg'].map(f=>{
+   const st=criterionTabState(course,clo,f,a),on=active===f;
+   const statusHtml=f==='bloom'
+     ?`<span class="rule-strip ${st.rule}"><span>RULE</span><b>${st.rule==='pass'?'✓':'!'}</b></span>`
+     :`<span class="split-status"><span class="status-half words ${st.lex}"><small>WORDS</small><b>${st.lex==='pass'?'✓':'!'}</b></span><span class="status-half embed ${st.sem}"><small>EMBED</small><b>${st.sem==='pass'?'✓':st.sem==='fail'?'!':'○'}</b></span></span>`;
+   const spoken=f==='bloom'?(st.rule==='pass'?'rule valid':'rule needs attention'):`word validation ${st.lex}; embedding validation ${st.sem}`;
+   return `<button type="button" class="criteria-tab split-tab ${st.state} ${on?'active':''}" data-criteria-tab="${f}" role="tab" aria-selected="${on?'true':'false'}"><span class="criteria-name">${labels[f]}</span>${statusHtml}<span class="sr-only"> · ${spoken}</span></button>`;
+ }).join('');
+ const panels=['bloom','plo','wk','ec','sdg'].map(f=>{
+   const body=f==='bloom'?bloomBlock(course,clo):familyCard(course,clo,f,a);
+   const st=criterionTabState(course,clo,f,a);
+   return `<div class="criteria-panel ${st.state} ${active===f?'active':''}" data-criteria-panel="${f}" role="tabpanel">${body}</div>`;
+ }).join('');
+ return `<section class="criteria-shell"><div class="criteria-tabs" role="tablist" aria-label="CLO criteria">${tabs}</div>${panels}</section>`;
+}
+function renderCloCard(course,clo,i){
+ const a=currentAnalysis(course,clo);
+ return `<article class="clo-work" data-i="${i}">
+   ${courseLexicalWordsNote(course)}
+   <section class="editor-card">
+     <div class="editor-head"><div><label for="cloText">CLO statement</label><span class="helper">Write one measurable outcome. Guidance updates as you type.</span></div><input class="clo-id" aria-label="CLO ID" value="${esc(clo.id)}"></div>
+     <textarea id="cloText" class="clo-text" rows="2" placeholder="Example: Analyze fluid-flow systems using appropriate governing equations and engineering principles.">${esc(clo.statement)}</textarea>
+   </section>
+   <div id="criteriaTabs">${criteriaTabsBlock(course,clo,a)}</div>
+   <div id="courseFit">${courseFitBlock(course,clo,a)}</div>
+   <div id="finalState">${finalStateBlock(course,clo,a)}</div>
+   <div class="actions"><button type="button" class="btn danger-lite del">Delete CLO</button><button type="button" class="btn verify-clo primary" ${refs&&clean(clo.statement)?'':'disabled'}>${a?'Verify again':'Verify with embeddings'}</button></div>
+ </article>`;
+}
+function aggregateStaticSdgs(index){const m=new Map();for(const r of index.meta.records){if(!m.has(r.entity_id))m.set(r.entity_id,{record:r,score:null})}return [...m.values()].sort((a,b)=>idNumber(a.record.display_id)-idNumber(b.record.display_id))}
+function refreshLivePanels(c,clo){
+ const a=currentAnalysis(c,clo),root=document.querySelector('.clo-work');if(!root)return;
+ const cf=root.querySelector('#courseFit'),ct=root.querySelector('#criteriaTabs'),fs=root.querySelector('#finalState');
+ if(cf)cf.innerHTML=courseFitBlock(c,clo,a);
+ if(ct)ct.innerHTML=criteriaTabsBlock(c,clo,a);
+ if(fs)fs.innerHTML=finalStateBlock(c,clo,a);
+ refreshValidationSummary(c);
+ refreshCloTabs(c);
+ bindPanelEvents(c,clo);
+}
+function bindPanelEvents(c,clo){
+ document.querySelectorAll('.criteria-tab').forEach(b=>b.onclick=()=>{
+   window.activeCriteriaTab=b.dataset.criteriaTab;
+   document.querySelectorAll('.criteria-tab').forEach(x=>{const on=x.dataset.criteriaTab===window.activeCriteriaTab;x.classList.toggle('active',on);x.setAttribute('aria-selected',on?'true':'false')});
+   document.querySelectorAll('.criteria-panel').forEach(x=>x.classList.toggle('active',x.dataset.criteriaPanel===window.activeCriteriaTab));
+   renderCloHighlight(c,clo);
+ });
+ document.querySelectorAll('.candidate-radio').forEach(r=>r.onchange=e=>{setFamilySelection(clo,e.target.dataset.family,e.target.value);saveState();refreshLivePanels(c,clo)});
+ document.querySelectorAll('.other-select').forEach(s=>s.onchange=e=>{if(!e.target.value)return;setFamilySelection(clo,e.target.dataset.family,e.target.value);saveState();refreshLivePanels(c,clo)});
+ document.querySelector('.bloom-select')?.addEventListener('change',e=>{clo.bloom=e.target.value;saveState();refreshLivePanels(c,clo)});
+}
+function lexicalValidationForClo(course,clo){
+ if(!clo||!clean(clo.statement))return false;
+ const cs=courseSemanticStatus(null,course,clo);
+ if(!cs.lex.eligible)return false;
+ for(const f of ['plo','wk','ec','sdg']){
+   const sid=selectedIdForFamily(clo,f),ev=lexicalEvidence(f,sid,clo.statement);
+   if(!sid||!ev.eligible)return false;
+ }
+ return true;
+}
+function semanticValidationForClo(course,clo){
+ const a=currentAnalysis(course,clo);if(!a)return null;
+ const cs=courseSemanticStatus(a,course,clo);if(!cs.semanticPass)return false;
+ for(const f of ['plo','wk','ec','sdg']){
+   const sid=selectedIdForFamily(clo,f);
+   if(!sid||!semanticPass(familyRowsForAnalysis(a,f)||[],sid))return false;
+ }
+ return true;
+}
+function courseValidationSummary(course){
+ const list=course?.clos||[],total=list.length;
+ const lexicalPass=list.filter(clo=>lexicalValidationForClo(course,clo)).length;
+ const semanticChecked=list.filter(clo=>semanticValidationForClo(course,clo)!==null).length;
+ const semanticPass=list.filter(clo=>semanticValidationForClo(course,clo)===true).length;
+ return {
+   total,lexicalPass,semanticChecked,semanticPass,
+   lexicalState:total>0&&lexicalPass===total?'complete':'incomplete',
+   semanticState:total>0&&semanticPass===total?'complete':(semanticChecked===0?'pending':'incomplete')
+ };
+}
+function renderValidationSummaryTabs(course){
+ const s=courseValidationSummary(course);
+ if(!s.total)return '';
+ const lexText=s.lexicalState==='complete'?'COMPLETE':'INCOMPLETE';
+ const semText=s.semanticState==='complete'?'COMPLETE':(s.semanticState==='pending'?'NOT VERIFIED':'INCOMPLETE');
+ return `<button type="button" class="validation-summary-tab lexical ${s.lexicalState}" data-summary-channel="lexical" title="Open the first CLO needing lexical attention"><span class="validation-summary-copy"><strong>Lexical validation</strong><small>Key word evidence</small></span><span class="validation-summary-state"><b>${lexText}</b><span>${s.lexicalPass}/${s.total} CLOs</span></span></button>`+
+        `<button type="button" class="validation-summary-tab semantic ${s.semanticState}" data-summary-channel="semantic" title="Open the first CLO needing semantic attention"><span class="validation-summary-copy"><strong>Semantic validation</strong><small>Embedding Top-3 verification</small></span><span class="validation-summary-state"><b>${semText}</b><span>${s.semanticPass}/${s.total} passed</span></span></button>`;
+}
+function bindValidationSummaryTabs(course){
+ document.querySelectorAll('.validation-summary-tab').forEach(b=>b.onclick=()=>{
+   const channel=b.dataset.summaryChannel,list=course?.clos||[];
+   let idx=-1;
+   if(channel==='lexical')idx=list.findIndex(clo=>!lexicalValidationForClo(course,clo));
+   else idx=list.findIndex(clo=>semanticValidationForClo(course,clo)!==true);
+   if(idx<0)idx=Math.max(0,Math.min(Number(window.currentCloIndex||0),Math.max(0,list.length-1)));
+   window.currentCloIndex=idx;renderCourse();
+ });
+}
+function refreshValidationSummary(course){
+ const el=$('validationSummaryTabs');if(!el)return;el.innerHTML=renderValidationSummaryTabs(course);bindValidationSummaryTabs(course);
+}
+
+function cloTabState(course,clo){
+ if(!clo||!clean(clo.statement))return 'invalid';
+ const a=currentAnalysis(course,clo),b=validateBloom(course,clo),cs=courseSemanticStatus(a,course,clo);
+ let lexicalReady=b.pass&&cs.lex.eligible;
+ for(const f of ['plo','wk','ec','sdg']){
+   const sid=selectedIdForFamily(clo,f),ev=lexicalEvidence(f,sid,clo.statement);
+   lexicalReady=lexicalReady&&!!sid&&ev.eligible;
+ }
+ if(!lexicalReady)return 'invalid';
+ if(!a)return 'pending';
+ if(!cs.semanticPass)return 'invalid';
+ for(const f of ['plo','wk','ec','sdg'])if(!semanticPass(familyRowsForAnalysis(a,f)||[],selectedIdForFamily(clo,f)))return 'invalid';
+ return 'valid';
+}
+function cloTabChannels(course,clo){
+ if(!clo||!clean(clo.statement))return {words:'fail',sem:'pending',state:'invalid'};
+ const a=currentAnalysis(course,clo),b=validateBloom(course,clo),cs=courseSemanticStatus(a,course,clo);
+ let words=b.pass&&cs.lex.eligible;
+ for(const f of ['plo','wk','ec','sdg']){
+   const sid=selectedIdForFamily(clo,f),ev=lexicalEvidence(f,sid,clo.statement);
+   words=words&&!!sid&&ev.eligible;
+ }
+ let sem='pending';
+ if(a){
+   let semPass=!!cs.semanticPass;
+   for(const f of ['plo','wk','ec','sdg'])semPass=semPass&&semanticPass(familyRowsForAnalysis(a,f)||[],selectedIdForFamily(clo,f));
+   sem=semPass?'pass':'fail';
+ }
+ const state=words&&sem==='pass'?'valid':(words&&sem==='pending'?'pending':'invalid');
+ return {words:words?'pass':'fail',sem,state};
+}
+function renderCloTabs(course){
+ if(!course?.clos?.length)return '<span class="clo-tabs-empty">No CLOs yet</span>';
+ const active=Math.max(0,Math.min(Number(window.currentCloIndex||0),course.clos.length-1));
+ return course.clos.map((clo,i)=>{
+   const st=cloTabChannels(course,clo),label=clean(clo.id)||`CLO ${i+1}`;
+   const spoken=`word validation ${st.words}; embedding validation ${st.sem}`;
+   return `<button type="button" class="clo-tab split-tab ${st.state} ${i===active?'active':''}" data-clo-index="${i}" role="tab" aria-selected="${i===active?'true':'false'}" title="${esc(clo.statement||label)}"><span class="clo-name">${esc(label)}</span><span class="split-status"><span class="status-half words ${st.words}"><small>WORDS</small><b>${st.words==='pass'?'✓':'!'}</b></span><span class="status-half embed ${st.sem}"><small>EMBED</small><b>${st.sem==='pass'?'✓':st.sem==='fail'?'!':'○'}</b></span></span><span class="sr-only"> · ${spoken}</span></button>`;
+ }).join('');
+}
+function bindCloTabs(){
+ document.querySelectorAll('.clo-tab').forEach(b=>b.onclick=()=>{
+   window.currentCloIndex=Number(b.dataset.cloIndex)||0;
+   renderCourse();
+ });
+}
+function refreshCloTabs(course){
+ const el=$('cloTabs');if(!el)return;
+ const count=Math.max(1,course?.clos?.length||0);
+ el.style.setProperty('--clo-count',String(count));
+ const strip=el.closest('.clo-strip');
+ if(strip)strip.style.setProperty('--clo-total',String(count+1));
+ el.innerHTML=renderCloTabs(course);
+ bindCloTabs();
+ const sel=$('cloCountSelect');
+ if(sel){
+   const current=course?.clos?.length||0;
+   sel.value=String(Math.min(5,Math.max(2,current)));
+   sel.disabled=!course;
+ }
+}
+
+function renderCourse(){
+ const c=courseByUid(currentUid),sel=$('courseSelect');
+ if(!c){
+   $('emptyState').classList.remove('hidden');$('workspace').classList.add('hidden');
+   sel.innerHTML='<option value="">Load workbook</option>';$('courseMeta').textContent='';if($('validationSummaryTabs'))$('validationSummaryTabs').innerHTML='';$('cloTabs').innerHTML='';$('cloList').innerHTML='';$('courseProgress').textContent='';if($('cloCountSelect'))$('cloCountSelect').disabled=true;return;
+ }
+ $('emptyState').classList.add('hidden');$('workspace').classList.remove('hidden');
+ sel.innerHTML=courses().map(x=>`<option value="${esc(x.uid)}"${x.uid===currentUid?' selected':''}>${esc((x.code?x.code+' — ':'')+x.title)}</option>`).join('');
+ window.currentCloIndex=Math.max(0,Math.min(Number(window.currentCloIndex||0),Math.max(0,c.clos.length-1)));
+ const i=window.currentCloIndex,clo=c.clos[i];
+ $('courseMeta').textContent='';
+ refreshValidationSummary(c);
+ refreshCloTabs(c);
+ $('cloList').innerHTML=clo?renderCloCard(c,clo,i):'<div class="empty-card"><b>No CLOs in this course.</b><span>Add a CLO to begin.</span></div>';
+ bindCloEvents(c);
+}
+function bindCloEvents(c){
+ const root=document.querySelector('.clo-work');if(!root)return;const i=Number(root.dataset.i),clo=c.clos[i];
+ root.querySelector('.clo-id')?.addEventListener('change',e=>{clo.id=e.target.value;saveState();refreshCloTabs(c)});
+ const ta=root.querySelector('.clo-text');
+ if(ta)ta.oninput=e=>{const old=keyFor(c,clo);clo.statement=e.target.value;analysisCache.delete(old);saveState();clearTimeout(ta._live);ta._live=setTimeout(()=>refreshLivePanels(c,clo),120)};
+ root.querySelector('.verify-clo')?.addEventListener('click',()=>verifyClo(c,clo).catch(handleError));
+ root.querySelector('.del')?.addEventListener('click',()=>{if(!confirm(`Delete ${clo.id||'this CLO'}?`))return;c.clos.splice(i,1);window.currentCloIndex=Math.max(0,i-1);saveState();syncWorkbookStatus();renderCourse();renderOverall()});
+ bindPanelEvents(c,clo);
+}
+function renderOverall(){const q=clean($('courseSearch').value).toLowerCase(),all=courses(),filtered=all.filter(c=>!q||`${c.code} ${c.title}`.toLowerCase().includes(q)),cloN=all.reduce((n,c)=>n+c.clos.length,0),verified=all.reduce((n,c)=>n+c.clos.filter(clo=>currentAnalysis(c,clo)).length,0),finalValid=all.reduce((n,c)=>n+c.clos.filter(clo=>{const a=currentAnalysis(c,clo);if(!a)return false;const cs=courseSemanticStatus(a,c,clo),b=validateBloom(c,clo);if(!cs.lex.eligible||!cs.semanticPass||!b.pass)return false;for(const f of ['plo','wk','ec','sdg']){const sid=selectedIdForFamily(clo,f),lev=lexicalEvidence(f,sid,clo.statement),rows=familyRowsForAnalysis(a,f)||[];if(!sid||!lev.eligible||!semanticPass(rows,sid))return false}return true}).length,0);$('overallKpis').innerHTML=`<div class="kpi"><b>${all.length}</b><span>courses</span></div><div class="kpi"><b>${cloN}</b><span>CLOs</span></div><div class="kpi"><b>${verified}</b><span>embedding-verified</span></div><div class="kpi"><b>${finalValid}</b><span>fully valid</span></div>`;$('overallList').innerHTML=filtered.map(c=>{const an=c.clos.filter(x=>currentAnalysis(c,x)).length;return `<button class="course-tile" data-uid="${esc(c.uid)}"><b>${esc((c.code?c.code+' · ':'')+c.title)}</b><small>${c.clos.length} CLOs · ${an} embedding-verified</small></button>`}).join('');document.querySelectorAll('.course-tile').forEach(b=>b.onclick=()=>{currentUid=b.dataset.uid;saveState();switchTab('course');renderCourse()})}
+function syncThresholdInputs(){updateEngineNote()}
+function updateEngineNote(){const el=$('engineNote');el.className=refs?'notice good':'notice';el.innerHTML=refs?'<b>Phase 1 ready:</b> K1/K2/K3 guidance updates while the CLO is edited. <b>Phase 2:</b> embeddings run only when you press Verify. Final green requires lexical PASS and the selected candidate in semantic Top 3.':'Load a reference version to start live K1/K2/K3 guidance. Embeddings will remain idle until you explicitly verify.'}
+function initEngine(){return (async()=>{if(engineBusy)return;engineBusy=true;$('initBtn').disabled=true;try{await loadReferences();$('reanalyzeBtn').disabled=false;$('analyzeAll').disabled=false;$('exportCandidates').disabled=false;$('exportSummary').disabled=false;$('modelStatus').className='engine-pill warn';$('modelStatus').textContent=extractor?'Model cached · verifier idle':'Semantic verifier idle';updateEngineNote();log('Phase 1 ready. Live lexical guidance uses hosted K1/K2/K3. Embeddings will run only on Verify.')}catch(err){handleError(err);$('refStatus').className='engine-pill bad';$('refStatus').textContent='Reference load failed'}finally{engineBusy=false;$('initBtn').disabled=false}})()}
+function handleError(err){console.error(err);log('ERROR: '+(err?.message||err));$('engineNote').className='notice bad';$('engineNote').textContent=err?.message||String(err)}
+function analyzeAll(){return (async()=>{if(!refs)return;const list=[];for(const c of courses())for(const clo of c.clos)if(clean(clo.statement))list.push({c,clo,text:clean(clo.statement)});$('analyzeAll').disabled=true;try{await ensureEmbeddings(list.map(x=>x.text),(a,b)=>{$('allProgress').textContent=`Embedding unique CLOs ${a}/${b}`});let i=0;for(const x of list){analysisCache.set(keyFor(x.c,x.clo),analyzeVector(x.c,x.clo,embeddingCache.get(x.text)));i++;if(i%20===0){$('allProgress').textContent=`Semantic Top-3 verification ${i}/${list.length}`;await new Promise(r=>setTimeout(r,0))}}$('allProgress').textContent=`Complete: ${list.length} CLOs verified. Final validity requires lexical PASS + semantic Top 3 for every selected criterion.`;renderOverall();renderCourse()}catch(err){handleError(err)}finally{$('analyzeAll').disabled=false}})()}
+function csvCell(v){const s=String(v??'');return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
+function csvScore(v){return Number.isFinite(v)?v.toFixed(6):''}
+function downloadCsv(filename,rows){const blob=new Blob([rows.map(r=>r.map(csvCell).join(',')).join('\n')],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function selectedIdForFamily(clo,family){if(family==='plo')return clean(clo.plo);const n=selectedNumeric(clo[family]);return n?`${family.toUpperCase()}-${n}`:''}
+function familyRowsForAnalysis(a,family){return family==='plo'?a.plos:family==='wk'?a.wks:family==='ec'?a.ecs:a.sdgs}
+function candidateTitle(record){return clean(record?.title||'')}
+function candidateReferenceText(record){return clean(record?.text||record?.statement||record?.embed_text||'')}
+function thresholdVerification(score,key,has){const t=threshold(key);if(t===null)return '';if(!has||!Number.isFinite(score))return '0';return score>=t?'1':'0'}
+function selectedIdForFamily(clo,family){if(family==='plo')return clean(clo.plo);const n=selectedNumeric(clo[family]);return n?`${family.toUpperCase()}-${n}`:''}
+function familyRowsForAnalysis(a,family){return family==='plo'?a.plos:family==='wk'?a.wks:family==='ec'?a.ecs:a.sdgs}
+function candidateTitle(record){return clean(record?.title||'')}
+function candidateReferenceText(record){return clean(record?.text||record?.statement||record?.embed_text||'')}
+function exportCandidateMatrix(){const rows=[['package_version','lexical_rule_version','course_uid','course_code','course_title','clo_id','clo_statement','bloom','bloom_valid','family','candidate_id','candidate_title','candidate_is_selected','candidate_lexical_pass','candidate_lexical_routes','candidate_k1_words','candidate_k2_words','candidate_k3_words','candidate_semantic_top3','candidate_semantic_rank','candidate_semantic_score','selected_final_valid','candidate_reference_text']];let count=0;for(const c of courses())for(const clo of c.clos){const a=currentAnalysis(c,clo),b=validateBloom(c,clo);for(const family of ['plo','wk','ec','sdg']){const sid=selectedIdForFamily(clo,family),sem=a?familyRowsForAnalysis(a,family):[],staticList=family==='plo'?staticRows(refs?.plo):family==='wk'?staticRows(refs?.wk):family==='ec'?staticRows(refs?.ec):(refs?.sdg?aggregateStaticSdgs(refs.sdg):[]);for(const x of staticList){const id=candidateId(x.record),lev=lexicalEvidence(family,id,clo.statement),sr=(sem||[]).find(y=>candidateId(y.record)===id),isSel=id===sid,final=isSel&&!!a&&lev.eligible&&!!sr;rows.push([manifest?.package_version||'',lexicalManifest?.lexical_rule_version||'',c.uid,c.code,c.title,clo.id,clo.statement,clo.bloom,b.pass?'1':'0',family.toUpperCase(),id,candidateTitle(x.record),isSel?'1':'0',lev.eligible?'1':'0',lev.routes.join('|'),lev.f1.join('|'),lev.f2.join('|'),lev.f3.join('|'),sr?'1':'0',sr?.semanticRank||'',csvScore(sr?.score),final?'1':'0',candidateReferenceText(x.record)]);count++}}}downloadCsv('obe_hybrid_top3_candidate_matrix.csv',rows);$('allProgress').textContent=`Exported ${count.toLocaleString()} candidate rows.`}
+function exportSummary(){const headers=['course_uid','course_code','course_title','clo_id','clo_statement','bloom','bloom_valid','course_lexical_pass','course_semantic_top3','course_final_valid'];for(const f of ['plo','wk','ec','sdg'])headers.push(`${f}_selected`,`${f}_lexical_pass`,`${f}_lexical_routes`,`${f}_semantic_top3`,`${f}_semantic_rank`,`${f}_semantic_score`,`${f}_final_valid`,`${f}_top1`,`${f}_top2`,`${f}_top3`);const rows=[headers];for(const c of courses())for(const clo of c.clos){const a=currentAnalysis(c,clo),b=validateBloom(c,clo),cs=courseSemanticStatus(a,c,clo),row=[c.uid,c.code,c.title,clo.id,clo.statement,clo.bloom,b.pass?'1':'0',cs.lex.eligible?'1':'0',a&&cs.semanticPass?'1':'0',a&&cs.lex.eligible&&cs.semanticPass?'1':'0'];for(const f of ['plo','wk','ec','sdg']){const sid=selectedIdForFamily(clo,f),lev=lexicalEvidence(f,sid,clo.statement),sem=a?familyRowsForAnalysis(a,f):[],sr=(sem||[]).find(x=>candidateId(x.record)===sid),final=!!a&&!!sid&&lev.eligible&&!!sr;row.push(sid,lev.eligible?'1':'0',lev.routes.join('|'),sr?'1':'0',sr?.semanticRank||'',csvScore(sr?.score),final?'1':'0',sem?.[0]?candidateId(sem[0].record):'',sem?.[1]?candidateId(sem[1].record):'',sem?.[2]?candidateId(sem[2].record):'')}rows.push(row)}downloadCsv('obe_hybrid_top3_clo_summary.csv',rows)}
+function switchTab(id){document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.tabbtn').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));if(id==='course')renderCourse();if(id==='overall')renderOverall();if(id==='calibration')updateEngineNote()}
+function renderAll(){renderCourse();renderOverall();updateEngineNote()}
+$('refVersion').onchange=e=>{state.referenceVersion=e.target.value;saveState();invalidateReferences(`Loading ${state.referenceVersion}…`);initEngine().catch(handleError)};
+$('obeWorkbook').onchange=e=>{const f=e.target.files?.[0];if(f){window.currentCloIndex=0;importCurrentWorkbook(f).catch(handleError)}};
+$('exportStateBtn').onclick=()=>exportCurrentWorkbook().catch(handleError);
+$('initBtn').onclick=()=>initEngine();
+$('reanalyzeBtn').onclick=()=>analyzeCourse(courseByUid(currentUid)).catch(handleError);
+$('courseSelect').onchange=e=>{currentUid=e.target.value;window.currentCloIndex=0;saveState();renderCourse()};
+$('cloCountSelect').onchange=e=>{
+ const c=courseByUid(currentUid);
+ if(!c){e.target.value='2';return}
+ const target=Math.max(2,Math.min(5,Number(e.target.value)||2)),current=c.clos.length;
+ if(target===current)return;
+ if(target<current){
+   const removed=c.clos.slice(target);
+   if(!confirm(`Reduce this course from ${current} CLOs to ${target}? The last ${current-target} CLO${current-target===1?'':'s'} will be removed.`)){e.target.value=String(Math.min(5,Math.max(2,current)));return}
+   for(const clo of removed)analysisCache.delete(keyFor(c,clo));
+   c.clos.length=target;
+ }else{
+   while(c.clos.length<target)c.clos.push({id:`CLO-${c.clos.length+1}`,statement:'',plo:'',bloom:'',activity:'',wk:[],ec:[],sdg:[]});
+ }
+ window.currentCloIndex=Math.min(Number(window.currentCloIndex||0),target-1);
+ saveState();syncWorkbookStatus();renderCourse();renderOverall();
+};
+$('settingsBtn').onclick=()=>{$('settingsPanel').classList.add('open');$('settingsPanel').setAttribute('aria-hidden','false');$('settingsClose').focus()};
+$('settingsClose').onclick=()=>{$('settingsPanel').classList.remove('open');$('settingsPanel').setAttribute('aria-hidden','true');$('settingsBtn').focus()};
+$('settingsBackdrop').onclick=()=>$('settingsClose').click();
+$('courseSearch').oninput=renderOverall;
+$('analyzeAll').onclick=()=>analyzeAll();$('exportCandidates').onclick=exportCandidateMatrix;$('exportSummary').onclick=exportSummary;
+
+
+/* v12 behavior overrides: lexical and semantic are separate top-level modes */
+window.validationMode=window.validationMode||'lexical';
+
+function renderValidationSummaryTabs(course){
+ const s=courseValidationSummary(course);if(!s.total)return '';
+ const mode=window.validationMode||'lexical';
+ const lexText=s.lexicalState==='complete'?'COMPLETE':'INCOMPLETE';
+ const semText=s.semanticState==='complete'?'COMPLETE':(s.semanticState==='pending'?'NOT VERIFIED':'INCOMPLETE');
+ return `<button type="button" class="validation-summary-tab lexical ${s.lexicalState} ${mode==='lexical'?'active':''}" data-summary-channel="lexical" role="tab" aria-selected="${mode==='lexical'?'true':'false'}"><span class="validation-summary-copy"><strong>Lexical validation</strong><small>Key word matching</small></span><span class="validation-summary-state"><b>${lexText}</b><span>${s.lexicalPass}/${s.total} CLOs</span></span></button>`+
+        `<button type="button" class="validation-summary-tab semantic ${s.semanticState} ${mode==='semantic'?'active':''}" data-summary-channel="semantic" role="tab" aria-selected="${mode==='semantic'?'true':'false'}"><span class="validation-summary-copy"><strong>Semantic validation</strong><small>Embedding Top-3 verification</small></span><span class="validation-summary-state"><b>${semText}</b><span>${s.semanticPass}/${s.total} passed</span></span></button>`;
+}
+function bindValidationSummaryTabs(course){
+ document.querySelectorAll('.validation-summary-tab').forEach(b=>b.onclick=()=>{
+   window.validationMode=b.dataset.summaryChannel==='semantic'?'semantic':'lexical';
+   renderCourse();
+ });
+}
+
+function channelStateForCriterion(course,clo,family,a){
+ if(family==='contents'){
+   const mode=window.validationMode||'lexical',cs=courseSemanticStatus(a,course,clo);
+   if(mode==='lexical') return {state:cs.lex?.eligible?'valid':'invalid',status:cs.lex?.eligible?'pass':'fail',label:'LEXICAL'};
+   if(!a) return {state:'pending',status:'pending',label:'SEMANTIC'};
+   return {state:cs.semanticPass?'valid':'invalid',status:cs.semanticPass?'pass':'fail',label:'SEMANTIC'};
+ }
+ if(family==='bloom'){
+   const pass=validateBloom(course,clo).pass;
+   return {state:pass?'valid':'invalid',status:pass?'pass':'fail',label:'RULE'};
+ }
+ const mode=window.validationMode||'lexical',sid=selectedIdForFamily(clo,family);
+ if(mode==='lexical'){
+   const ev=lexicalEvidence(family,sid,clo.statement),pass=!!sid&&!!ev.eligible;
+   return {state:pass?'valid':'invalid',status:pass?'pass':'fail',label:'LEXICAL'};
+ }
+ if(!a)return {state:'pending',status:'pending',label:'SEMANTIC'};
+ const pass=!!sid&&semanticPass(familyRowsForAnalysis(a,family)||[],sid);
+ return {state:pass?'valid':'invalid',status:pass?'pass':'fail',label:'SEMANTIC'};
+}
+
+function familyCard(course,clo,family,a){
+ const mode=window.validationMode||'lexical',analyzed=!!a,staticList=familyStaticList(family),semanticRows=analyzed?(familyRowsForAnalysis(a,family)||[]):[];
+ const selectedId=selectedIdForFamily(clo,family),selectedEv=lexicalEvidence(family,selectedId,clo.statement);
+ const title=family.toUpperCase();
+ let ordered=[...staticList];
+ if(mode==='lexical')ordered=lexicalSortRows(staticList,family,clo.statement);
+ else if(analyzed){
+   const rank=new Map(semanticRows.map((x,i)=>[candidateId(x.record),i]));
+   ordered.sort((x,y)=>{const a=rank.has(candidateId(x.record))?rank.get(candidateId(x.record)):999,b=rank.has(candidateId(y.record))?rank.get(candidateId(y.record)):999;return a-b||candidateId(x.record).localeCompare(candidateId(y.record),undefined,{numeric:true})});
+ }
+ const eligible=mode==='lexical'?ordered.filter(x=>lexicalEvidence(family,candidateId(x.record),clo.statement).eligible):[];
+ const suggestedIds=new Set(eligible.slice(0,3).map(x=>candidateId(x.record)));
+ const optionHtml=ordered.map(x=>{
+   const id=candidateId(x.record),ev=lexicalEvidence(family,id,clo.statement),sem=(semanticRows||[]).find(y=>candidateId(y.record)===id),marks=[];
+   if(mode==='lexical'){
+     if(suggestedIds.has(id))marks.push('Suggested');
+     if(ev.eligible)marks.push('F✓');
+   }else if(sem)marks.push(`Semantic #${sem.semanticRank}`);
+   const prefix=marks.length?`${marks.join(' · ')} · `:'';
+   return `<option value="${esc(id)}"${id===selectedId?' selected':''}>${esc(prefix+familyLabel(family,x.record))}</option>`;
+ }).join('');
+ let status='fail',state='review',statusText='Needs attention',detail='';
+ if(mode==='lexical'){
+   const pass=!!selectedId&&!!selectedEv.eligible;status=pass?'pass':'fail';state=pass?'verified':'review';statusText=pass?'Valid':'Needs attention';
+   detail=selectedFamilyWordsNote(family,selectedId);
+ }else{
+   if(!analyzed){status='pending';state='ready';statusText='Not verified';detail=`<div class="semantic-hint"><b>Semantic verification:</b> Not run for this CLO yet.</div>`}
+   else{
+     const hit=(semanticRows||[]).find(x=>candidateId(x.record)===selectedId),pass=!!hit;status=pass?'pass':'fail';state=pass?'verified':'review';statusText=pass?'Valid':'Needs attention';
+     if(pass)detail=`<div class="semantic-hint"><b>Semantic verification:</b> Selected ${esc(title)} is Top 3 · rank #${hit.semanticRank} · ${hit.score.toFixed(3)}.</div>`;
+     else detail=`<div class="semantic-hint"><b>Semantic Top 3:</b> ${esc((semanticRows||[]).slice(0,3).map(x=>`${candidateId(x.record)} (${x.score.toFixed(3)})`).join(' · ')||'Unavailable')}</div>`;
+   }
+ }
+ return `<section class="mapping-card ${state}" data-family="${family}"><select class="other-select smart-select" data-family="${family}" aria-label="Select ${title}"><option value="">Select ${title}…</option>${optionHtml}</select>${detail}</section>`;
+}
+
+function contentsBlock(course,clo,a){
+ const mode=window.validationMode||'lexical',cs=courseSemanticStatus(a,course,clo);
+ if(mode==='lexical'){
+   const pass=!!cs.lex?.eligible;
+   const status=pass?'Valid':'Needs attention';
+   const hint=pass?'Course wording matches the course-content key word rules.':'Course wording does not yet satisfy the course-content key word rules.';
+   return `<section class="mapping-card ${pass?'verified':'review'}" data-family="contents">${courseLexicalWordsNote(course)}<div class="semantic-hint"><b>Lexical fit:</b> ${esc(hint)}${cs.lex?.loaded?` ${esc(evidenceDetail(cs.lex))}`:''}</div></section>`;
+ }
+ if(!a){
+   return `<section class="mapping-card ready" data-family="contents"><div class="semantic-hint"><b>Semantic verification:</b> Run embedding analysis for this CLO to check course-content alignment.</div></section>`;
+ }
+ const pass=!!cs.semanticPass;
+ const top=(a.courses||[]).map(x=>`${candidateId(x.record)} (${x.score.toFixed(3)})`).join(' · ');
+ return `<section class="mapping-card ${pass?'verified':'review'}" data-family="contents"><div class="semantic-hint"><b>Semantic course fit:</b> ${pass?`Assigned course is in the Top 3${cs.semanticRank?` · rank #${cs.semanticRank}`:''}.`:'Assigned course is outside semantic Top 3.'}</div><div class="semantic-hint"><b>Top 3 courses:</b> ${esc(top||'Unavailable')}</div></section>`;
+}
+
+function criteriaTabsBlock(course,clo,a){
+ const families=['contents','bloom','plo','wk','ec','sdg'];
+ const active=families.includes(window.activeCriteriaTab)?window.activeCriteriaTab:'contents';
+ const labels={contents:'Contents',bloom:'Bloom',plo:'PLO',wk:'WK',ec:'EC',sdg:'SDGs'},mode=window.validationMode||'lexical';
+ const tabs=families.map(f=>{
+   const st=channelStateForCriterion(course,clo,f,a),on=active===f;
+   const stateText=st.status==='pass'?'valid':st.status==='fail'?'needs attention':'not verified';
+   return `<button type="button" class="criteria-tab ${st.state} ${on?'active':''}" data-criteria-tab="${f}" role="tab" aria-selected="${on?'true':'false'}" aria-label="${labels[f]} · ${stateText}" title="${labels[f]} · ${stateText}"><span class="criteria-name">${labels[f]}</span></button>`;
+ }).join('');
+ const panels=families.map(f=>{
+   const body=f==='contents'?contentsBlock(course,clo,a):(f==='bloom'?bloomBlock(course,clo):familyCard(course,clo,f,a)),st=channelStateForCriterion(course,clo,f,a);
+   return `<div class="criteria-panel ${st.state} ${active===f?'active':''}" data-criteria-panel="${f}" role="tabpanel">${body}</div>`;
+ }).join('');
+ return `<section class="criteria-shell"><div class="criteria-tabs" role="tablist" aria-label="CLO criteria · ${mode} validation">${tabs}</div>${panels}</section>`;
+}
+
+function courseFitBlock(course,clo,a){
+ const mode=window.validationMode||'lexical',cs=courseSemanticStatus(a,course,clo);
+ if(mode==='lexical'){
+   const pass=!!cs.lex?.eligible;
+   return `<div class="course-fit ${pass?'verified':'review'}"><div><b>Course lexical fit</b><span>${pass?'Key word criteria satisfied':'Key word criteria not satisfied'}</span></div><details><summary>Evidence</summary><div>${esc(evidenceDetail(cs.lex))}</div></details></div>`;
+ }
+ if(!a)return `<div class="course-fit ready"><div><b>Course semantic fit</b><span>Not verified</span></div></div>`;
+ const pass=!!cs.semanticPass;
+ return `<div class="course-fit ${pass?'verified':'review'}"><div><b>Course semantic fit</b><span>${pass?`Top 3 · rank #${cs.semanticRank}`:'Assigned course is outside semantic Top 3'}</span></div><details><summary>Top 3</summary><div>${esc((a.courses||[]).map(x=>`${candidateId(x.record)} (${x.score.toFixed(3)})`).join(' · '))}</div></details></div>`;
+}
+
+function channelFinalStateBlock(course,clo,a){
+ const mode=window.validationMode||'lexical';
+ if(mode==='lexical'){
+   const problems=[];const cs=courseSemanticStatus(null,course,clo);
+   if(!cs.lex.eligible)problems.push('Course');
+   for(const f of ['plo','wk','ec','sdg']){const sid=selectedIdForFamily(clo,f),ev=lexicalEvidence(f,sid,clo.statement);if(!sid||!ev.eligible)problems.push(f.toUpperCase())}
+   if(!problems.length)return `<div class="final-state verified mode-final"><b>Lexical validation complete</b><span>Course, PLO, WK, EC and SDG satisfy the key word rules.</span></div>`;
+   return `<div class="final-state review mode-final"><b>Lexical validation incomplete</b><span>Resolve: ${esc(problems.join(', '))}</span></div>`;
+ }
+ if(!a)return `<div class="final-state mode-final semantic-pending"><b>Semantic validation not verified</b><span>Run embedding analysis for this CLO.</span></div>`;
+ const problems=[],cs=courseSemanticStatus(a,course,clo);if(!cs.semanticPass)problems.push('Course');
+ for(const f of ['plo','wk','ec','sdg']){const sid=selectedIdForFamily(clo,f);if(!sid||!semanticPass(familyRowsForAnalysis(a,f)||[],sid))problems.push(f.toUpperCase())}
+ if(!problems.length)return `<div class="final-state verified mode-final"><b>Semantic validation complete</b><span>All selected mappings are inside their embedding Top 3.</span></div>`;
+ return `<div class="final-state review mode-final"><b>Semantic validation incomplete</b><span>Review: ${esc(problems.join(', '))}</span></div>`;
+}
+
+const CRITERION_HIGHLIGHT_ORDER=['bloom','plo','wk','ec','sdg','contents'];
+function criterionHighlightTerms(course,clo){
+ const out={contents:[],bloom:[],plo:[],wk:[],ec:[],sdg:[]};
+ const addEntity=(family,id)=>{
+   const e=lexicalEntity(family,id);if(!e)return;
+   out[family]=[...(e.f1||[]),...(e.f2||[]),...(e.f3||[])];
+ };
+ addEntity('course',referenceCourseId(course));
+ out.contents=out.course||[];delete out.course;
+ const b=bloomMap[clo?.bloom];if(b)out.bloom=validBloomVerbs(b);
+ for(const f of ['plo','wk','ec','sdg'])addEntity(f,selectedIdForFamily(clo,f));
+ for(const f of Object.keys(out))out[f]=[...new Set((out[f]||[]).map(x=>clean(x).toLowerCase()).filter(Boolean))].sort((a,b)=>b.length-a.length);
+ return out;
+}
+function regexEscape(s){return String(s).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
+function highlightedCloHtml(course,clo){
+ const source=String(clo?.statement||'');if(!source)return '';
+ const active=['contents','bloom','plo','wk','ec','sdg'].includes(window.activeCriteriaTab)?window.activeCriteriaTab:'contents';
+ const terms=(criterionHighlightTerms(course,clo)[active]||[]),spans=[];
+ const overlaps=(a,b)=>spans.some(x=>a<x.end&&b>x.start);
+ for(const phrase of terms){
+   const pat=regexEscape(phrase).replace(/\s+/g,'\\s+');
+   let re;try{re=new RegExp(`(?<![\\p{L}\\p{N}])${pat}(?![\\p{L}\\p{N}])`,'giu')}catch{re=new RegExp(pat,'giu')}
+   let m;while((m=re.exec(source))){
+     const start=m.index,end=start+m[0].length;if(!overlaps(start,end))spans.push({start,end});
+     if(m[0].length===0)re.lastIndex++;
+   }
+ }
+ spans.sort((a,b)=>a.start-b.start||b.end-a.end);
+ let html='',at=0;
+ for(const span of spans){
+   if(span.start<at)continue;
+   html+=esc(source.slice(at,span.start));
+   html+=`<strong class="clo-match">${esc(source.slice(span.start,span.end))}</strong>`;
+   at=span.end;
+ }
+ return html+esc(source.slice(at));
+}
+function renderCloHighlight(course,clo){
+ const layer=document.getElementById('cloHighlight'),ta=document.querySelector('.clo-text');if(!layer||!ta)return;
+ layer.dataset.activeCriterion=['contents','bloom','plo','wk','ec','sdg'].includes(window.activeCriteriaTab)?window.activeCriteriaTab:'contents';
+ layer.innerHTML=highlightedCloHtml(course,clo);
+ layer.scrollTop=ta.scrollTop;layer.scrollLeft=ta.scrollLeft;
+}
+function syncCloHighlightScroll(){
+ const layer=document.getElementById('cloHighlight'),ta=document.querySelector('.clo-text');if(!layer||!ta)return;
+ layer.scrollTop=ta.scrollTop;layer.scrollLeft=ta.scrollLeft;
+}
+
+function renderCloCard(course,clo,i){
+ const a=currentAnalysis(course,clo),mode=window.validationMode||'lexical';
+ return `<article class="clo-work" data-i="${i}"><section class="editor-card"><div class="editor-head"><div><label for="cloText">CLO statement</label><span class="helper">${mode==='lexical'?'Write one measurable outcome. Key word guidance updates as you type.':'Review the same CLO against embedding-based semantic evidence.'}</span></div><input class="clo-id" aria-label="CLO ID" value="${esc(clo.id)}"></div><div class="clo-highlight-wrap"><div id="cloHighlight" class="clo-highlight-layer" aria-hidden="true"></div><textarea id="cloText" class="clo-text" rows="2" placeholder="Example: Analyze fluid-flow systems using appropriate governing equations and engineering principles.">${esc(clo.statement)}</textarea></div></section><div id="criteriaTabs">${criteriaTabsBlock(course,clo,a)}</div><div id="finalState">${channelFinalStateBlock(course,clo,a)}</div><div class="actions"><button type="button" class="btn danger-lite del">Delete CLO</button><button type="button" class="btn verify-clo primary" ${refs&&clean(clo.statement)?'':'disabled'}>${a?'Verify again':'Verify with embeddings'}</button></div></article>`;
+}
+
+function refreshLivePanels(c,clo){
+ const a=currentAnalysis(c,clo),root=document.querySelector('.clo-work');if(!root)return;
+ const ct=root.querySelector('#criteriaTabs'),fs=root.querySelector('#finalState');
+ if(ct)ct.innerHTML=criteriaTabsBlock(c,clo,a);if(fs)fs.innerHTML=channelFinalStateBlock(c,clo,a);
+ renderCloHighlight(c,clo);
+ refreshValidationSummary(c);refreshCloTabs(c);bindPanelEvents(c,clo);
+}
+
+function renderCloTabs(course){
+ if(!course?.clos?.length)return '<span class="clo-tabs-empty">No CLOs yet</span>';
+ const active=Math.max(0,Math.min(Number(window.currentCloIndex||0),course.clos.length-1)),mode=window.validationMode||'lexical';
+ return course.clos.map((clo,i)=>{
+   let status='fail',state='invalid';
+   if(mode==='lexical'){
+     const pass=lexicalValidationForClo(course,clo);status=pass?'pass':'fail';state=pass?'valid':'invalid';
+   }else{
+     const sem=semanticValidationForClo(course,clo);status=sem===null?'pending':sem?'pass':'fail';state=status==='pass'?'valid':status==='pending'?'pending':'invalid';
+   }
+   const label=clean(clo.id)||`CLO ${i+1}`;
+   const stateText=status==='pass'?'valid':status==='fail'?'needs attention':'not verified';
+   return `<button type="button" class="clo-tab ${state} ${i===active?'active':''}" data-clo-index="${i}" role="tab" aria-selected="${i===active?'true':'false'}" aria-label="${esc(label)} · ${stateText}" title="${esc((clo.statement||label)+' · '+stateText)}"><span class="clo-name">${esc(label)}</span></button>`;
+ }).join('');
+}
+
+function bindCloEvents(c){
+ const root=document.querySelector('.clo-work');if(!root)return;const i=Number(root.dataset.i),clo=c.clos[i];
+ root.querySelector('.clo-id')?.addEventListener('change',e=>{clo.id=e.target.value;saveState();refreshCloTabs(c)});
+ const ta=root.querySelector('.clo-text');
+ if(ta){ta.oninput=e=>{const old=keyFor(c,clo);clo.statement=e.target.value;analysisCache.delete(old);saveState();renderCloHighlight(c,clo);clearTimeout(ta._live);ta._live=setTimeout(()=>refreshLivePanels(c,clo),120)};ta.addEventListener('scroll',syncCloHighlightScroll);renderCloHighlight(c,clo)};
+ root.querySelector('.verify-clo')?.addEventListener('click',()=>{window.validationMode='semantic';verifyClo(c,clo).catch(handleError)});
+ root.querySelector('.del')?.addEventListener('click',()=>{if(!confirm(`Delete ${clo.id||'this CLO'}?`))return;c.clos.splice(i,1);window.currentCloIndex=Math.max(0,i-1);saveState();syncWorkbookStatus();renderCourse();renderOverall()});
+ bindPanelEvents(c,clo);
+}
+
+syncWorkbookStatus();renderAll();discoverReferenceVersions().then(()=>initEngine()).catch(handleError);
+
+</script>
+</body>
+</html>
