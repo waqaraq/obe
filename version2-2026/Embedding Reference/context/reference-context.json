@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "note": "Non-vector contextual reference material carried from the master workbook for auditability and future use.",
+  "tables": {
+    "PLO_WK_Crosswalk": [
+      {
+        "PLO ID": "PLO1",
+        "WA ID": "WA1",
+        "PLO Heading": "Engineering Knowledge",
+        "WK ID": "WK1",
+        "WK Theme (derived)": "Natural sciences + relevant social-science awareness",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.13"
+      },
+      {
+        "PLO ID": "PLO1",
+        "WA ID": "WA1",
+        "PLO Heading": "Engineering Knowledge",
+        "WK ID": "WK2",
+        "WK Theme (derived)": "Mathematics, data, computing, analysis and modelling",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.13"
+      },
+      {
+        "PLO ID": "PLO1",
+        "WA ID": "WA1",
+        "PLO Heading": "Engineering Knowledge",
+        "WK ID": "WK3",
+        "WK Theme (derived)": "Engineering fundamentals",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.13"
+      },
+      {
+        "PLO ID": "PLO1",
+        "WA ID": "WA1",
+        "PLO Heading": "Engineering Knowledge",
+        "WK ID": "WK4",
+        "WK Theme (derived)": "Engineering specialist knowledge / theoretical frameworks",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.13"
+      },
+      {
+        "PLO ID": "PLO2",
+        "WA ID": "WA2",
+        "PLO Heading": "Problem Analysis",
+        "WK ID": "WK1",
+        "WK Theme (derived)": "Natural sciences + relevant social-science awareness",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.13"
+      },
+      {
+        "PLO ID": "PLO2",
+        "WA ID": "WA2",
+        "PLO Heading": "Problem Analysis",
+        "WK ID": "WK2",
+        "WK Theme (derived)": "Mathematics, data, computing, analysis and modelling",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.13"
+      },
+      {
+        "PLO ID": "PLO2",
+        "WA ID": "WA2",
+        "PLO Heading": "Problem Analysis",
+        "WK ID": "WK3",
+        "WK Theme (derived)": "Engineering fundamentals",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.13"
+      },
+      {
+        "PLO ID": "PLO2",
+        "WA ID": "WA2",
+        "PLO Heading": "Problem Analysis",
+        "WK ID": "WK4",
+        "WK Theme (derived)": "Engineering specialist knowledge / theoretical frameworks",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.13"
+      },
+      {
+        "PLO ID": "PLO3",
+        "WA ID": "WA3",
+        "PLO Heading": "Design/development of solutions",
+        "WK ID": "WK5",
+        "WK Theme (derived)": "Engineering design and operations with resource and sustainability considerations",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.13"
+      },
+      {
+        "PLO ID": "PLO4",
+        "WA ID": "WA4",
+        "PLO Heading": "Investigation",
+        "WK ID": "WK8",
+        "WK Theme (derived)": "Research literature, critical thinking, creativity and emerging issues",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.14"
+      },
+      {
+        "PLO ID": "PLO5",
+        "WA ID": "WA5",
+        "PLO Heading": "Tool Usage",
+        "WK ID": "WK2",
+        "WK Theme (derived)": "Mathematics, data, computing, analysis and modelling",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.14"
+      },
+      {
+        "PLO ID": "PLO5",
+        "WA ID": "WA5",
+        "PLO Heading": "Tool Usage",
+        "WK ID": "WK6",
+        "WK Theme (derived)": "Engineering practice / technology",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.14"
+      },
+      {
+        "PLO ID": "PLO6",
+        "WA ID": "WA6",
+        "PLO Heading": "The Engineer and the World",
+        "WK ID": "WK1",
+        "WK Theme (derived)": "Natural sciences + relevant social-science awareness",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.14"
+      },
+      {
+        "PLO ID": "PLO6",
+        "WA ID": "WA6",
+        "PLO Heading": "The Engineer and the World",
+        "WK ID": "WK5",
+        "WK Theme (derived)": "Engineering design and operations with resource and sustainability considerations",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.14"
+      },
+      {
+        "PLO ID": "PLO6",
+        "WA ID": "WA6",
+        "PLO Heading": "The Engineer and the World",
+        "WK ID": "WK7",
+        "WK Theme (derived)": "Engineering in society, public safety and sustainable development",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.14"
+      },
+      {
+        "PLO ID": "PLO7",
+        "WA ID": "WA7",
+        "PLO Heading": "Ethics",
+        "WK ID": "WK9",
+        "WK Theme (derived)": "Ethics, professional responsibility, diversity and inclusion",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.14"
+      },
+      {
+        "PLO ID": "PLO8",
+        "WA ID": "WA8",
+        "PLO Heading": "Individual and Collaborative Teamwork",
+        "WK ID": "WK9",
+        "WK Theme (derived)": "Ethics, professional responsibility, diversity and inclusion",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.14"
+      },
+      {
+        "PLO ID": "PLO11",
+        "WA ID": "WA11",
+        "PLO Heading": "Lifelong Learning",
+        "WK ID": "WK8",
+        "WK Theme (derived)": "Research literature, critical thinking, creativity and emerging issues",
+        "Basis": "Explicitly cited in the WA statement",
+        "Source": "p.15"
+      }
+    ],
+    "Complex_Problems": [
+      {
+        "Code": "WP1",
+        "Dimension": "Depth of knowledge required",
+        "Official Complex-Problem Characteristic": "Cannot be resolved without in-depth engineering knowledge at the level of one or more of WK3, WK4, WK5, WK6 or WK8 which allows a fundamentals-based, first principles analytical approach",
+        "Explicit WK Reference": "WK3; WK4; WK5; WK6; WK8",
+        "Source": "p.8"
+      },
+      {
+        "Code": "WP2",
+        "Dimension": "Range of conflicting requirements",
+        "Official Complex-Problem Characteristic": "Involve wide-ranging and/or conflicting technical, non-technical issues (such as ethical, sustainability, legal, political, economic, societal) and consideration of future requirements",
+        "Source": "p.8"
+      },
+      {
+        "Code": "WP3",
+        "Dimension": "Depth of analysis required",
+        "Official Complex-Problem Characteristic": "Have no obvious solution and require abstract thinking, creativity and originality in analysis to formulate suitable models",
+        "Source": "p.8"
+      },
+      {
+        "Code": "WP4",
+        "Dimension": "Familiarity of issues",
+        "Official Complex-Problem Characteristic": "Involve infrequently encountered issues or novel problems",
+        "Source": "p.8"
+      },
+      {
+        "Code": "WP5",
+        "Dimension": "Extent of applicable codes",
+        "Official Complex-Problem Characteristic": "Address problems not encompassed by standards and codes of practice for professional engineering",
+        "Source": "p.8"
+      },
+      {
+        "Code": "WP6",
+        "Dimension": "Extent of stakeholder involvement and conflicting requirements",
+        "Official Complex-Problem Characteristic": "Involve collaboration across engineering disciplines, other fields, and/or diverse groups of stakeholders with widely varying needs",
+        "Source": "p.8"
+      },
+      {
+        "Code": "WP7",
+        "Dimension": "Interdependence",
+        "Official Complex-Problem Characteristic": "Address high level problems with many components or sub-problems that may require a systems approach",
+        "Source": "pp.8–9"
+      }
+    ],
+    "Complex_Activities": [
+      {
+        "Code": "EA1",
+        "Dimension": "Range of resources",
+        "Official Complex-Activity Characteristic": "Involve the use of diverse resources including people, data and information, natural, financial and physical resources and appropriate technologies including analytical and/or design software",
+        "Source": "p.10"
+      },
+      {
+        "Code": "EA2",
+        "Dimension": "Level of interactions",
+        "Official Complex-Activity Characteristic": "Require optimal resolution of interactions between wide-ranging and/or conflicting technical, non-technical, and engineering issues",
+        "Source": "p.10"
+      },
+      {
+        "Code": "EA3",
+        "Dimension": "Innovation",
+        "Official Complex-Activity Characteristic": "Involve creative use of engineering principles, innovative solutions for a conscious purpose, and research-based knowledge",
+        "Source": "p.10"
+      },
+      {
+        "Code": "EA4",
+        "Dimension": "Consequences to society and the environment",
+        "Official Complex-Activity Characteristic": "Have significant consequences in a range of contexts, characterized by difficulty of prediction and mitigation",
+        "Source": "p.10"
+      },
+      {
+        "Code": "EA5",
+        "Dimension": "Familiarity",
+        "Official Complex-Activity Characteristic": "Can extend beyond previous experiences by applying principles-based approaches",
+        "Source": "p.10"
+      }
+    ],
+    "Glossary": [
+      {
+        "Term": "Awareness",
+        "Definition": "Recognizing the context and implications while using or applying what has been learned. The demonstration of awareness can be more varied than a demonstration of knowledge.",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Complementary (contextual) knowledge",
+        "Definition": "Disciplines other than engineering, basic and mathematical sciences, that support engineering practice, enable its impacts to be understood and broaden the outlook of the engineering graduate.",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Complex engineering problems",
+        "Definition": "A class of problem with characteristics defined in section 4.1 (WP1–WP7).",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Complex engineering activities",
+        "Definition": "A class of activities with characteristics defined in section 4.2 (EA1–EA5).",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Continuing Professional Development",
+        "Definition": "The systematic, accountable maintenance, improvement and broadening of knowledge and skills, and the development of personal qualities necessary for the execution of professional and technical duties throughout an engineering practitioner’s career.",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Engineering sciences",
+        "Definition": "Include engineering fundamentals that have roots in the mathematical and physical sciences, and where applicable, in other natural sciences, but extend knowledge and develop models and methods in order to lead to applications and solve problems, providing the knowledge base for engineering specializations.",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Engineering design knowledge",
+        "Definition": "Knowledge that supports engineering design in a practice area, including codes, standards, processes, empirical information, and knowledge reused from past designs.",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Engineering fundamentals",
+        "Definition": "A systematic formulation of engineering concepts and principles based on mathematical and natural sciences to support applications.",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Engineering management",
+        "Definition": "The generic management functions of planning, organising, leading and controlling, applied together with engineering knowledge in contexts including the management of projects, construction, operations, maintenance, quality, risk, change and business.",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Engineering problem",
+        "Definition": "A problem that exists in any domain that can be solved by the application of engineering knowledge and skills and generic competences.",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Engineering practice area",
+        "Definition": "A generally accepted or legally defined area of engineering work or engineering technology.",
+        "Source": "p.19"
+      },
+      {
+        "Term": "Engineering speciality or specialization",
+        "Definition": "A generally-recognized practice area or major subdivision within an engineering discipline; the extension of engineering fundamentals to create theoretical frameworks and bodies of knowledge for engineering practice areas.",
+        "Source": "p.20"
+      },
+      {
+        "Term": "Engineering technology",
+        "Definition": "An established body of knowledge, with associated tools, techniques, materials, components, systems or processes that enable a family of practical applications and that relies for its development and effective application on engineering knowledge and competence.",
+        "Source": "p.20"
+      },
+      {
+        "Term": "Forefront of the professional discipline/branch",
+        "Definition": "Defined by advanced practice in the specialisations within the discipline.",
+        "Source": "p.20"
+      },
+      {
+        "Term": "Knowledge",
+        "Definition": "Recognizing and comprehending terminology, facts, methods, trends, classifications, structures, or theories. It involves learning as well as demonstrating what has been learned.",
+        "Source": "p.20"
+      },
+      {
+        "Term": "Manage",
+        "Definition": "Planning, organising, leading and controlling in respect of risk, project, change, financial, compliance, quality, ongoing monitoring, control and evaluation.",
+        "Source": "p.20"
+      },
+      {
+        "Term": "Mathematical sciences",
+        "Definition": "Mathematics, numerical analysis, statistics and aspects of computer science cast in an appropriate mathematical formalism.",
+        "Source": "p.20"
+      },
+      {
+        "Term": "Natural sciences",
+        "Definition": "Provide, as applicable in each engineering discipline or practice area, an understanding of the physical world including physics, mechanics, chemistry, earth sciences and the biological sciences.",
+        "Source": "p.20"
+      },
+      {
+        "Term": "Practice area",
+        "Definition": "In the educational context: synonymous with generally-recognized engineering speciality; at the professional level: a generally recognized or distinctive area of knowledge and expertise developed by an engineering practitioner by virtue of education, training and experience.",
+        "Source": "p.20"
+      },
+      {
+        "Term": "Solution",
+        "Definition": "An effective proposal for resolving a problem, taking into account all relevant technical, legal, social, cultural, economic and environmental issues and having regard to the need for sustainability.",
+        "Source": "p.20"
+      },
+      {
+        "Term": "Substantial equivalence",
+        "Definition": "Applied to educational programs means that two or more programs, while not meeting a single set of criteria, are both acceptable as preparing their respective graduates to enter formative development toward registration.",
+        "Source": "p.20"
+      }
+    ],
+    "Framework_Notes": [
+      {
+        "Principle": "Graduate attributes are assessable outcomes",
+        "Source-Derived Interpretation": "Graduate attributes form a set of individually assessable outcomes indicative of a graduate’s potential to acquire competence to practise.",
+        "Source": "pp.3–4"
+      },
+      {
+        "Principle": "Substantial equivalence, not identical wording/content",
+        "Source-Derived Interpretation": "Washington Accord programs are based on substantial equivalence rather than exact correspondence of content and outcomes.",
+        "Source": "pp.3–4"
+      },
+      {
+        "Principle": "Generic across engineering disciplines",
+        "Source-Derived Interpretation": "Graduate attributes are stated generically and are applicable to all engineering disciplines.",
+        "Source": "pp.5–6"
+      },
+      {
+        "Principle": "Contextual amplification is allowed",
+        "Source-Derived Interpretation": "Within a disciplinary context, individual statements may be amplified and given particular emphasis, but must not be altered in substance or have elements ignored.",
+        "Source": "pp.5–6"
+      },
+      {
+        "Principle": "Program design remains flexible",
+        "Source-Derived Interpretation": "Requirements are stated without prescribing program design; providers may use different structures, learning pathways and modes of delivery.",
+        "Source": "p.6"
+      },
+      {
+        "Principle": "Professional competence is holistic",
+        "Source-Derived Interpretation": "Unlike graduate attributes, professional competence is more than a set of attributes demonstrated individually and must be assessed holistically.",
+        "Source": "p.6"
+      },
+      {
+        "Principle": "Professional competence may be contextually amplified",
+        "Source-Derived Interpretation": "Professional competence statements may require amplification in regulatory, disciplinary, occupational or environmental contexts, without altering their substance.",
+        "Source": "p.7"
+      },
+      {
+        "Principle": "Performance indicators are jurisdictional",
+        "Source-Derived Interpretation": "The professional competence profile does not specify performance indicators; each jurisdiction may define actions that demonstrate competence.",
+        "Source": "pp.6–7"
+      }
+    ]
+  }
+}

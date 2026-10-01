@@ -1,0 +1,82 @@
+{
+  "schema_version": 2,
+  "package_version": "version2-2026",
+  "generated_at": "2026-10-01T00:20:56.023Z",
+  "builder": {
+    "name": "OBE Unified Reference Builder",
+    "version": "3.0.0-unified-master-workbook"
+  },
+  "model": {
+    "id": "mixedbread-ai/mxbai-embed-xsmall-v1",
+    "revision": "e6ac24e",
+    "transformers_js_version": "3.8.1",
+    "transformers_js_url": "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1",
+    "dtype": "q8",
+    "device": "wasm",
+    "pooling": "mean",
+    "normalize": true,
+    "dimension": 384,
+    "runtime_requirement": "CLO embeddings must use the same model/revision/pooling/normalization contract"
+  },
+  "text_profile": {
+    "name": "core-plus-local-context-v1",
+    "lexical_compatibility": "Lexical profiles use core entity text with the historical title treatment; richer contextual fields do not alter lexical tier rules."
+  },
+  "layout": {
+    "compact": true,
+    "paired_assets": true,
+    "courses_full": {
+      "metadata": "courses/courses.json",
+      "vectors": "courses/courses.f32"
+    },
+    "course_contents": {
+      "metadata": "courses/course-contents.json",
+      "vectors": "courses/course-contents.f32"
+    },
+    "plo": {
+      "metadata": "plo/plo.json",
+      "vectors": "plo/plo.f32"
+    },
+    "wk": {
+      "metadata": "wk/wk.json",
+      "vectors": "wk/wk.f32"
+    },
+    "ec": {
+      "metadata": "ec/ec.json",
+      "vectors": "ec/ec.f32"
+    },
+    "sdg": {
+      "metadata": "sdg/sdg.json",
+      "vectors": "sdg/sdg.f32"
+    },
+    "context": {
+      "metadata": "context/reference-context.json"
+    }
+  },
+  "counts": {
+    "actual_courses": 104,
+    "full_course_embeddings": 104,
+    "course_content_embeddings": 819,
+    "plo_embeddings": 11,
+    "wk_embeddings": 9,
+    "ec_embeddings": 13,
+    "sdg_goal_target_embeddings": 186,
+    "total_embeddings": 1142
+  },
+  "course_chunking": {
+    "version": "heading-aware-bullets-v1",
+    "max_chars": 520
+  },
+  "source_workbook": {
+    "filename": "OBE_Full_Richer_Reference_Courses_Bloom_PLO_WK_EC_SDG.xlsx",
+    "sha256": "56d108c68653691100d7195511896b224bcb78c8fb6f7d1b4c44b0463b4b84cc",
+    "source_framework": "2021.1 — Approved Version 4, 21 June 2021",
+    "primary_source": "International Engineering Alliance — Graduate Attributes & Professional Competencies, Version 2021.1",
+    "source_url": "https://www.internationalengineeringalliance.org/assets/Uploads/Documents/IEA-Graduate-Attributes-and-Professional-Competencies-2021.1-Sept-2021.pdf"
+  },
+  "exclusions": [
+    "CLOs are not embedded",
+    "Bloom is packaged but not embedded",
+    "Lexical tiers are generated separately in the Lexical Reference folder"
+  ]
+}

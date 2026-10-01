@@ -1,0 +1,2114 @@
+{
+  "schema_version": 1,
+  "levels": [
+    {
+      "level": "C1",
+      "name": "Remember",
+      "domain": "Cognitive",
+      "verb_count": 23,
+      "verbs_csv": "Choose, Define, Find, How, Label, List, Match, Name, Omit, Recall, Relate, Select, Show, Spell, Tell, What, When, Where, Which, Who, Why, Remembering, Remember"
+    },
+    {
+      "level": "C2",
+      "name": "Understand",
+      "domain": "Cognitive",
+      "verb_count": 17,
+      "verbs_csv": "Classify, Compare, Contrast, Demonstrate, Explain, Extend, Illustrate, Infer, Interpret, Outline, Relate, Rephrase, Show, Summarize, Translate, Understanding, Understand"
+    },
+    {
+      "level": "C3",
+      "name": "Apply",
+      "domain": "Cognitive",
+      "verb_count": 17,
+      "verbs_csv": "Build, Choose, Construct, Develop, Experiment with, Identify, Interview, Make use of, Model, Organize, Plan, Select, Solve, Utilize, Application, Applying, Apply"
+    },
+    {
+      "level": "C4",
+      "name": "Analyze",
+      "domain": "Cognitive",
+      "verb_count": 26,
+      "verbs_csv": "Assume, Categorize, Classify, Compare, Conclusion, Contrast, Discover, Dissect, Distinguish, Divide, Examine, Function, Inference, Inspect, List, Motive, Relationships, Simplify, Survey, Take part in, Test for, Theme, Analyzing, Analyse, Analyze, Analysis"
+    },
+    {
+      "level": "C5",
+      "name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_count": 35,
+      "verbs_csv": "Agree, Appraise, Assess, Award, Choose, Compare, Conclude, Criteria, Criticize, Decide, Deduct, Defend, Determine, Disprove, Estimate, Explain, Importance, Influence, Interpret, Judge, Justify, Mark, Measure, Opinion, Perceive, Prioritize, Prove, Rate, Recommend, Rule on, Select, Support, Value, Evaluating, Evaluate"
+    },
+    {
+      "level": "C6",
+      "name": "Create",
+      "domain": "Cognitive",
+      "verb_count": 35,
+      "verbs_csv": "Adapt, Build, Change, Choose, Combine, Compile, Compose, Construct, Delete, Design, Develop, Discuss, Elaborate, Estimate, Formulate, Happen, Imagine, Improve, Invent, Make up, Maximize, Minimize, Modify, Original, Originate, Plan, Predict, Propose, Solution, Solve, Suppose, Test, Theory, Creating, Create"
+    },
+    {
+      "level": "A1",
+      "name": "Receiving",
+      "domain": "Affective",
+      "verb_count": 5,
+      "verbs_csv": "Accept, Attend, Develop, Recognize, Receive"
+    },
+    {
+      "level": "A2",
+      "name": "Responding",
+      "domain": "Affective",
+      "verb_count": 7,
+      "verbs_csv": "Complete, Comply, Cooperate, Discuss, Examine, Obey, Respond"
+    },
+    {
+      "level": "A3",
+      "name": "Valuing",
+      "domain": "Affective",
+      "verb_count": 6,
+      "verbs_csv": "Accept, Defend, Devote, Pursue, Seek, Value"
+    },
+    {
+      "level": "A4",
+      "name": "Organization",
+      "domain": "Affective",
+      "verb_count": 8,
+      "verbs_csv": "Codify, Discriminate, Display, Order, Organize, Systematize, Weigh, Organzing"
+    },
+    {
+      "level": "A5",
+      "name": "Characterization",
+      "domain": "Affective",
+      "verb_count": 3,
+      "verbs_csv": "Internalize, Verify, Characterize"
+    },
+    {
+      "level": "P1",
+      "name": "Observing",
+      "domain": "Psychomotor",
+      "verb_count": 26,
+      "verbs_csv": "Bend, Calibrates, Constructs, Differentiate, Dismantles, Displays, Fastens, Fixes, Grasp, Grinds, Handle, Heats, Manipulates, Measures, Mends, Mixes, Operate, Organizes, Perform, Reach, Relax, Shorten, Sketches, Stretch, Write, Observe"
+    },
+    {
+      "level": "P2",
+      "name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_count": 25,
+      "verbs_csv": "Bend, Calibrates, Constructs, Differentiate, Dismantles, Displays, Fastens, Fixes, Grasp, Grinds, Handle, Heats, Manipulates, Measures, Mends, Mixes, Operate, Organizes, Perform, Reach, Relax, Shorten, Sketches, Stretch, Write"
+    },
+    {
+      "level": "P3",
+      "name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_count": 27,
+      "verbs_csv": "Bend, Calibrates, Constructs, Differentiate, Dismantles, Displays, Fastens, Fixes, Grasp, Grinds, Handle, Heats, Manipulates, Measures, Mends, Mixes, Operate, Organizes, Perform, Reach, Relax, Shorten, Sketches, Stretch, Write, Practice, Practise"
+    },
+    {
+      "level": "P4",
+      "name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_count": 26,
+      "verbs_csv": "Bend, Calibrates, Constructs, Differentiate, Dismantles, Displays, Fastens, Fixes, Grasp, Grinds, Handle, Heats, Manipulates, Measures, Mends, Mixes, Operate, Organizes, Perform, Reach, Relax, Shorten, Sketches, Stretch, Write, Adapt"
+    }
+  ],
+  "verbs": [
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 1,
+      "verb": "Choose"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 2,
+      "verb": "Define"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 3,
+      "verb": "Find"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 4,
+      "verb": "How"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 5,
+      "verb": "Label"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 6,
+      "verb": "List"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 7,
+      "verb": "Match"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 8,
+      "verb": "Name"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 9,
+      "verb": "Omit"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 10,
+      "verb": "Recall"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 11,
+      "verb": "Relate"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 12,
+      "verb": "Select"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 13,
+      "verb": "Show"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 14,
+      "verb": "Spell"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 15,
+      "verb": "Tell"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 16,
+      "verb": "What"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 17,
+      "verb": "When"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 18,
+      "verb": "Where"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 19,
+      "verb": "Which"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 20,
+      "verb": "Who"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 21,
+      "verb": "Why"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 22,
+      "verb": "Remembering"
+    },
+    {
+      "level": "C1",
+      "level_name": "Remember",
+      "domain": "Cognitive",
+      "verb_no": 23,
+      "verb": "Remember"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 1,
+      "verb": "Classify"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 2,
+      "verb": "Compare"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 3,
+      "verb": "Contrast"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 4,
+      "verb": "Demonstrate"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 5,
+      "verb": "Explain"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 6,
+      "verb": "Extend"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 7,
+      "verb": "Illustrate"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 8,
+      "verb": "Infer"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 9,
+      "verb": "Interpret"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 10,
+      "verb": "Outline"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 11,
+      "verb": "Relate"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 12,
+      "verb": "Rephrase"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 13,
+      "verb": "Show"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 14,
+      "verb": "Summarize"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 15,
+      "verb": "Translate"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 16,
+      "verb": "Understanding"
+    },
+    {
+      "level": "C2",
+      "level_name": "Understand",
+      "domain": "Cognitive",
+      "verb_no": 17,
+      "verb": "Understand"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 1,
+      "verb": "Build"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 2,
+      "verb": "Choose"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 3,
+      "verb": "Construct"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 4,
+      "verb": "Develop"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 5,
+      "verb": "Experiment with"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 6,
+      "verb": "Identify"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 7,
+      "verb": "Interview"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 8,
+      "verb": "Make use of"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 9,
+      "verb": "Model"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 10,
+      "verb": "Organize"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 11,
+      "verb": "Plan"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 12,
+      "verb": "Select"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 13,
+      "verb": "Solve"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 14,
+      "verb": "Utilize"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 15,
+      "verb": "Application"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 16,
+      "verb": "Applying"
+    },
+    {
+      "level": "C3",
+      "level_name": "Apply",
+      "domain": "Cognitive",
+      "verb_no": 17,
+      "verb": "Apply"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 1,
+      "verb": "Assume"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 2,
+      "verb": "Categorize"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 3,
+      "verb": "Classify"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 4,
+      "verb": "Compare"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 5,
+      "verb": "Conclusion"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 6,
+      "verb": "Contrast"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 7,
+      "verb": "Discover"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 8,
+      "verb": "Dissect"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 9,
+      "verb": "Distinguish"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 10,
+      "verb": "Divide"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 11,
+      "verb": "Examine"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 12,
+      "verb": "Function"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 13,
+      "verb": "Inference"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 14,
+      "verb": "Inspect"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 15,
+      "verb": "List"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 16,
+      "verb": "Motive"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 17,
+      "verb": "Relationships"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 18,
+      "verb": "Simplify"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 19,
+      "verb": "Survey"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 20,
+      "verb": "Take part in"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 21,
+      "verb": "Test for"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 22,
+      "verb": "Theme"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 23,
+      "verb": "Analyzing"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 24,
+      "verb": "Analyse"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 25,
+      "verb": "Analyze"
+    },
+    {
+      "level": "C4",
+      "level_name": "Analyze",
+      "domain": "Cognitive",
+      "verb_no": 26,
+      "verb": "Analysis"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 1,
+      "verb": "Agree"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 2,
+      "verb": "Appraise"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 3,
+      "verb": "Assess"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 4,
+      "verb": "Award"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 5,
+      "verb": "Choose"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 6,
+      "verb": "Compare"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 7,
+      "verb": "Conclude"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 8,
+      "verb": "Criteria"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 9,
+      "verb": "Criticize"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 10,
+      "verb": "Decide"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 11,
+      "verb": "Deduct"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 12,
+      "verb": "Defend"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 13,
+      "verb": "Determine"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 14,
+      "verb": "Disprove"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 15,
+      "verb": "Estimate"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 16,
+      "verb": "Explain"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 17,
+      "verb": "Importance"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 18,
+      "verb": "Influence"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 19,
+      "verb": "Interpret"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 20,
+      "verb": "Judge"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 21,
+      "verb": "Justify"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 22,
+      "verb": "Mark"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 23,
+      "verb": "Measure"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 24,
+      "verb": "Opinion"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 25,
+      "verb": "Perceive"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 26,
+      "verb": "Prioritize"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 27,
+      "verb": "Prove"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 28,
+      "verb": "Rate"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 29,
+      "verb": "Recommend"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 30,
+      "verb": "Rule on"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 31,
+      "verb": "Select"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 32,
+      "verb": "Support"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 33,
+      "verb": "Value"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 34,
+      "verb": "Evaluating"
+    },
+    {
+      "level": "C5",
+      "level_name": "Evaluate",
+      "domain": "Cognitive",
+      "verb_no": 35,
+      "verb": "Evaluate"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 1,
+      "verb": "Adapt"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 2,
+      "verb": "Build"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 3,
+      "verb": "Change"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 4,
+      "verb": "Choose"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 5,
+      "verb": "Combine"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 6,
+      "verb": "Compile"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 7,
+      "verb": "Compose"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 8,
+      "verb": "Construct"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 9,
+      "verb": "Delete"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 10,
+      "verb": "Design"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 11,
+      "verb": "Develop"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 12,
+      "verb": "Discuss"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 13,
+      "verb": "Elaborate"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 14,
+      "verb": "Estimate"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 15,
+      "verb": "Formulate"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 16,
+      "verb": "Happen"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 17,
+      "verb": "Imagine"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 18,
+      "verb": "Improve"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 19,
+      "verb": "Invent"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 20,
+      "verb": "Make up"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 21,
+      "verb": "Maximize"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 22,
+      "verb": "Minimize"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 23,
+      "verb": "Modify"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 24,
+      "verb": "Original"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 25,
+      "verb": "Originate"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 26,
+      "verb": "Plan"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 27,
+      "verb": "Predict"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 28,
+      "verb": "Propose"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 29,
+      "verb": "Solution"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 30,
+      "verb": "Solve"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 31,
+      "verb": "Suppose"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 32,
+      "verb": "Test"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 33,
+      "verb": "Theory"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 34,
+      "verb": "Creating"
+    },
+    {
+      "level": "C6",
+      "level_name": "Create",
+      "domain": "Cognitive",
+      "verb_no": 35,
+      "verb": "Create"
+    },
+    {
+      "level": "A1",
+      "level_name": "Receiving",
+      "domain": "Affective",
+      "verb_no": 1,
+      "verb": "Accept"
+    },
+    {
+      "level": "A1",
+      "level_name": "Receiving",
+      "domain": "Affective",
+      "verb_no": 2,
+      "verb": "Attend"
+    },
+    {
+      "level": "A1",
+      "level_name": "Receiving",
+      "domain": "Affective",
+      "verb_no": 3,
+      "verb": "Develop"
+    },
+    {
+      "level": "A1",
+      "level_name": "Receiving",
+      "domain": "Affective",
+      "verb_no": 4,
+      "verb": "Recognize"
+    },
+    {
+      "level": "A1",
+      "level_name": "Receiving",
+      "domain": "Affective",
+      "verb_no": 5,
+      "verb": "Receive"
+    },
+    {
+      "level": "A2",
+      "level_name": "Responding",
+      "domain": "Affective",
+      "verb_no": 1,
+      "verb": "Complete"
+    },
+    {
+      "level": "A2",
+      "level_name": "Responding",
+      "domain": "Affective",
+      "verb_no": 2,
+      "verb": "Comply"
+    },
+    {
+      "level": "A2",
+      "level_name": "Responding",
+      "domain": "Affective",
+      "verb_no": 3,
+      "verb": "Cooperate"
+    },
+    {
+      "level": "A2",
+      "level_name": "Responding",
+      "domain": "Affective",
+      "verb_no": 4,
+      "verb": "Discuss"
+    },
+    {
+      "level": "A2",
+      "level_name": "Responding",
+      "domain": "Affective",
+      "verb_no": 5,
+      "verb": "Examine"
+    },
+    {
+      "level": "A2",
+      "level_name": "Responding",
+      "domain": "Affective",
+      "verb_no": 6,
+      "verb": "Obey"
+    },
+    {
+      "level": "A2",
+      "level_name": "Responding",
+      "domain": "Affective",
+      "verb_no": 7,
+      "verb": "Respond"
+    },
+    {
+      "level": "A3",
+      "level_name": "Valuing",
+      "domain": "Affective",
+      "verb_no": 1,
+      "verb": "Accept"
+    },
+    {
+      "level": "A3",
+      "level_name": "Valuing",
+      "domain": "Affective",
+      "verb_no": 2,
+      "verb": "Defend"
+    },
+    {
+      "level": "A3",
+      "level_name": "Valuing",
+      "domain": "Affective",
+      "verb_no": 3,
+      "verb": "Devote"
+    },
+    {
+      "level": "A3",
+      "level_name": "Valuing",
+      "domain": "Affective",
+      "verb_no": 4,
+      "verb": "Pursue"
+    },
+    {
+      "level": "A3",
+      "level_name": "Valuing",
+      "domain": "Affective",
+      "verb_no": 5,
+      "verb": "Seek"
+    },
+    {
+      "level": "A3",
+      "level_name": "Valuing",
+      "domain": "Affective",
+      "verb_no": 6,
+      "verb": "Value"
+    },
+    {
+      "level": "A4",
+      "level_name": "Organization",
+      "domain": "Affective",
+      "verb_no": 1,
+      "verb": "Codify"
+    },
+    {
+      "level": "A4",
+      "level_name": "Organization",
+      "domain": "Affective",
+      "verb_no": 2,
+      "verb": "Discriminate"
+    },
+    {
+      "level": "A4",
+      "level_name": "Organization",
+      "domain": "Affective",
+      "verb_no": 3,
+      "verb": "Display"
+    },
+    {
+      "level": "A4",
+      "level_name": "Organization",
+      "domain": "Affective",
+      "verb_no": 4,
+      "verb": "Order"
+    },
+    {
+      "level": "A4",
+      "level_name": "Organization",
+      "domain": "Affective",
+      "verb_no": 5,
+      "verb": "Organize"
+    },
+    {
+      "level": "A4",
+      "level_name": "Organization",
+      "domain": "Affective",
+      "verb_no": 6,
+      "verb": "Systematize"
+    },
+    {
+      "level": "A4",
+      "level_name": "Organization",
+      "domain": "Affective",
+      "verb_no": 7,
+      "verb": "Weigh"
+    },
+    {
+      "level": "A4",
+      "level_name": "Organization",
+      "domain": "Affective",
+      "verb_no": 8,
+      "verb": "Organzing"
+    },
+    {
+      "level": "A5",
+      "level_name": "Characterization",
+      "domain": "Affective",
+      "verb_no": 1,
+      "verb": "Internalize"
+    },
+    {
+      "level": "A5",
+      "level_name": "Characterization",
+      "domain": "Affective",
+      "verb_no": 2,
+      "verb": "Verify"
+    },
+    {
+      "level": "A5",
+      "level_name": "Characterization",
+      "domain": "Affective",
+      "verb_no": 3,
+      "verb": "Characterize"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 1,
+      "verb": "Bend"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 2,
+      "verb": "Calibrates"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 3,
+      "verb": "Constructs"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 4,
+      "verb": "Differentiate"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 5,
+      "verb": "Dismantles"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 6,
+      "verb": "Displays"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 7,
+      "verb": "Fastens"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 8,
+      "verb": "Fixes"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 9,
+      "verb": "Grasp"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 10,
+      "verb": "Grinds"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 11,
+      "verb": "Handle"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 12,
+      "verb": "Heats"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 13,
+      "verb": "Manipulates"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 14,
+      "verb": "Measures"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 15,
+      "verb": "Mends"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 16,
+      "verb": "Mixes"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 17,
+      "verb": "Operate"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 18,
+      "verb": "Organizes"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 19,
+      "verb": "Perform"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 20,
+      "verb": "Reach"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 21,
+      "verb": "Relax"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 22,
+      "verb": "Shorten"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 23,
+      "verb": "Sketches"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 24,
+      "verb": "Stretch"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 25,
+      "verb": "Write"
+    },
+    {
+      "level": "P1",
+      "level_name": "Observing",
+      "domain": "Psychomotor",
+      "verb_no": 26,
+      "verb": "Observe"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 1,
+      "verb": "Bend"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 2,
+      "verb": "Calibrates"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 3,
+      "verb": "Constructs"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 4,
+      "verb": "Differentiate"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 5,
+      "verb": "Dismantles"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 6,
+      "verb": "Displays"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 7,
+      "verb": "Fastens"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 8,
+      "verb": "Fixes"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 9,
+      "verb": "Grasp"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 10,
+      "verb": "Grinds"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 11,
+      "verb": "Handle"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 12,
+      "verb": "Heats"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 13,
+      "verb": "Manipulates"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 14,
+      "verb": "Measures"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 15,
+      "verb": "Mends"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 16,
+      "verb": "Mixes"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 17,
+      "verb": "Operate"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 18,
+      "verb": "Organizes"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 19,
+      "verb": "Perform"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 20,
+      "verb": "Reach"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 21,
+      "verb": "Relax"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 22,
+      "verb": "Shorten"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 23,
+      "verb": "Sketches"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 24,
+      "verb": "Stretch"
+    },
+    {
+      "level": "P2",
+      "level_name": "Imitating",
+      "domain": "Psychomotor",
+      "verb_no": 25,
+      "verb": "Write"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 1,
+      "verb": "Bend"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 2,
+      "verb": "Calibrates"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 3,
+      "verb": "Constructs"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 4,
+      "verb": "Differentiate"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 5,
+      "verb": "Dismantles"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 6,
+      "verb": "Displays"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 7,
+      "verb": "Fastens"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 8,
+      "verb": "Fixes"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 9,
+      "verb": "Grasp"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 10,
+      "verb": "Grinds"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 11,
+      "verb": "Handle"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 12,
+      "verb": "Heats"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 13,
+      "verb": "Manipulates"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 14,
+      "verb": "Measures"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 15,
+      "verb": "Mends"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 16,
+      "verb": "Mixes"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 17,
+      "verb": "Operate"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 18,
+      "verb": "Organizes"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 19,
+      "verb": "Perform"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 20,
+      "verb": "Reach"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 21,
+      "verb": "Relax"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 22,
+      "verb": "Shorten"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 23,
+      "verb": "Sketches"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 24,
+      "verb": "Stretch"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 25,
+      "verb": "Write"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 26,
+      "verb": "Practice"
+    },
+    {
+      "level": "P3",
+      "level_name": "Practicing",
+      "domain": "Psychomotor",
+      "verb_no": 27,
+      "verb": "Practise"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 1,
+      "verb": "Bend"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 2,
+      "verb": "Calibrates"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 3,
+      "verb": "Constructs"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 4,
+      "verb": "Differentiate"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 5,
+      "verb": "Dismantles"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 6,
+      "verb": "Displays"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 7,
+      "verb": "Fastens"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 8,
+      "verb": "Fixes"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 9,
+      "verb": "Grasp"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 10,
+      "verb": "Grinds"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 11,
+      "verb": "Handle"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 12,
+      "verb": "Heats"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 13,
+      "verb": "Manipulates"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 14,
+      "verb": "Measures"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 15,
+      "verb": "Mends"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 16,
+      "verb": "Mixes"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 17,
+      "verb": "Operate"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 18,
+      "verb": "Organizes"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 19,
+      "verb": "Perform"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 20,
+      "verb": "Reach"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 21,
+      "verb": "Relax"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 22,
+      "verb": "Shorten"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 23,
+      "verb": "Sketches"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 24,
+      "verb": "Stretch"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 25,
+      "verb": "Write"
+    },
+    {
+      "level": "P4",
+      "level_name": "Adapting",
+      "domain": "Psychomotor",
+      "verb_no": 26,
+      "verb": "Adapt"
+    }
+  ]
+}

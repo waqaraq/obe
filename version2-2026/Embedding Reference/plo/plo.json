@@ -1,0 +1,248 @@
+{
+  "schema_version": 2,
+  "package_version": "version2-2026",
+  "kind": "plo_index",
+  "model": {
+    "id": "mixedbread-ai/mxbai-embed-xsmall-v1",
+    "revision": "e6ac24e",
+    "dimension": 384,
+    "pooling": "mean",
+    "normalize": true,
+    "dtype": "q8"
+  },
+  "vector": {
+    "file": "plo.f32",
+    "format": "float32-le",
+    "dimension": 384,
+    "normalized": true,
+    "row_major": true,
+    "record_count": 11
+  },
+  "records": [
+    {
+      "id": "plo:PLO-1",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-1",
+      "display_id": "PLO-1",
+      "title": "Engineering Knowledge",
+      "wa_id": "WA1",
+      "differentiating_characteristic": "Breadth, depth and type of knowledge, both theoretical and practical",
+      "explicit_wk_links": [
+        "WK-1",
+        "WK-2",
+        "WK-3",
+        "WK-4"
+      ],
+      "range_context": "Complex engineering problems",
+      "source_ref": "p.13",
+      "source_sheet": "PLO_WA",
+      "source_row": 3,
+      "text": "Apply knowledge of mathematics, natural science, computing and engineering fundamentals, and an engineering specialization as specified in WK1 to WK4 respectively to develop solutions to complex engineering problems",
+      "embed_text": "Engineering Knowledge. Apply knowledge of mathematics, natural science, computing and engineering fundamentals, and an engineering specialization as specified in WK1 to WK4 respectively to develop solutions to complex engineering problems. Differentiating characteristic: Breadth, depth and type of knowledge, both theoretical and practical. Explicit WK links: WK-1, WK-2, WK-3, WK-4. Range and context: Complex engineering problems",
+      "vector_index": 0
+    },
+    {
+      "id": "plo:PLO-2",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-2",
+      "display_id": "PLO-2",
+      "title": "Problem Analysis",
+      "wa_id": "WA2",
+      "differentiating_characteristic": "Complexity of analysis",
+      "explicit_wk_links": [
+        "WK-1",
+        "WK-2",
+        "WK-3",
+        "WK-4"
+      ],
+      "range_context": "Complex engineering problems",
+      "source_ref": "p.13",
+      "source_sheet": "PLO_WA",
+      "source_row": 4,
+      "text": "Identify, formulate, research literature and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences and engineering sciences with holistic considerations for sustainable development",
+      "embed_text": "Problem Analysis. Identify, formulate, research literature and analyze complex engineering problems reaching substantiated conclusions using first principles of mathematics, natural sciences and engineering sciences with holistic considerations for sustainable development. Differentiating characteristic: Complexity of analysis. Explicit WK links: WK-1, WK-2, WK-3, WK-4. Range and context: Complex engineering problems",
+      "vector_index": 1
+    },
+    {
+      "id": "plo:PLO-3",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-3",
+      "display_id": "PLO-3",
+      "title": "Design/development of solutions",
+      "wa_id": "WA3",
+      "differentiating_characteristic": "Breadth and uniqueness of engineering problems, i.e. the extent to which problems are original and to which solutions have not previously been identified or codified",
+      "explicit_wk_links": [
+        "WK-5"
+      ],
+      "range_context": "Complex engineering problems",
+      "source_ref": "p.13",
+      "source_sheet": "PLO_WA",
+      "source_row": 5,
+      "text": "Design creative solutions for complex engineering problems and design systems, components or processes to meet identified needs with appropriate consideration for public health and safety, whole-life cost, net zero carbon as well as resource, cultural, societal, and environmental considerations as required",
+      "embed_text": "Design/development of solutions. Design creative solutions for complex engineering problems and design systems, components or processes to meet identified needs with appropriate consideration for public health and safety, whole-life cost, net zero carbon as well as resource, cultural, societal, and environmental considerations as required. Differentiating characteristic: Breadth and uniqueness of engineering problems, i.e. the extent to which problems are original and to which solutions have not previously been identified or codified. Explicit WK links: WK-5. Range and context: Complex engineering problems",
+      "vector_index": 2
+    },
+    {
+      "id": "plo:PLO-4",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-4",
+      "display_id": "PLO-4",
+      "title": "Investigation",
+      "wa_id": "WA4",
+      "differentiating_characteristic": "Breadth and depth of investigation and experimentation",
+      "explicit_wk_links": [
+        "WK-8"
+      ],
+      "range_context": "Complex engineering problems",
+      "source_ref": "p.14",
+      "source_sheet": "PLO_WA",
+      "source_row": 6,
+      "text": "Conduct investigations of complex engineering problems using research methods including research-based knowledge, design of experiments, analysis and interpretation of data, and synthesis of information to provide valid conclusions",
+      "embed_text": "Investigation. Conduct investigations of complex engineering problems using research methods including research-based knowledge, design of experiments, analysis and interpretation of data, and synthesis of information to provide valid conclusions. Differentiating characteristic: Breadth and depth of investigation and experimentation. Explicit WK links: WK-8. Range and context: Complex engineering problems",
+      "vector_index": 3
+    },
+    {
+      "id": "plo:PLO-5",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-5",
+      "display_id": "PLO-5",
+      "title": "Tool Usage",
+      "wa_id": "WA5",
+      "differentiating_characteristic": "Level of understanding of the appropriateness of technologies and tools",
+      "explicit_wk_links": [
+        "WK-2",
+        "WK-6"
+      ],
+      "range_context": "Complex engineering problems",
+      "source_ref": "p.14",
+      "source_sheet": "PLO_WA",
+      "source_row": 7,
+      "text": "Create, select and apply, and recognize limitations of appropriate techniques, resources, and modern engineering and IT tools, including prediction and modelling, to complex engineering problems",
+      "embed_text": "Tool Usage. Create, select and apply, and recognize limitations of appropriate techniques, resources, and modern engineering and IT tools, including prediction and modelling, to complex engineering problems. Differentiating characteristic: Level of understanding of the appropriateness of technologies and tools. Explicit WK links: WK-2, WK-6. Range and context: Complex engineering problems",
+      "vector_index": 4
+    },
+    {
+      "id": "plo:PLO-6",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-6",
+      "display_id": "PLO-6",
+      "title": "The Engineer and the World",
+      "wa_id": "WA6",
+      "differentiating_characteristic": "Level of knowledge and responsibility for sustainable development",
+      "explicit_wk_links": [
+        "WK-1",
+        "WK-5",
+        "WK-7"
+      ],
+      "range_context": "Complex engineering problems",
+      "source_ref": "p.14",
+      "source_sheet": "PLO_WA",
+      "source_row": 8,
+      "text": "When solving complex engineering problems, analyze and evaluate sustainable development impacts to society, the economy, sustainability, health and safety, legal frameworks, and the environment",
+      "embed_text": "The Engineer and the World. When solving complex engineering problems, analyze and evaluate sustainable development impacts to society, the economy, sustainability, health and safety, legal frameworks, and the environment. Differentiating characteristic: Level of knowledge and responsibility for sustainable development. Explicit WK links: WK-1, WK-5, WK-7. Range and context: Complex engineering problems",
+      "vector_index": 5
+    },
+    {
+      "id": "plo:PLO-7",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-7",
+      "display_id": "PLO-7",
+      "title": "Ethics",
+      "wa_id": "WA7",
+      "differentiating_characteristic": "Understanding and level of practice",
+      "explicit_wk_links": [
+        "WK-9"
+      ],
+      "range_context": "Ethics / laws / diversity and inclusion",
+      "source_ref": "p.14",
+      "source_sheet": "PLO_WA",
+      "source_row": 9,
+      "text": "Apply ethical principles and commit to professional ethics and norms of engineering practice and adhere to relevant national and international laws. Demonstrate an understanding of the need for diversity and inclusion",
+      "embed_text": "Ethics. Apply ethical principles and commit to professional ethics and norms of engineering practice and adhere to relevant national and international laws. Demonstrate an understanding of the need for diversity and inclusion. Differentiating characteristic: Understanding and level of practice. Explicit WK links: WK-9. Range and context: Ethics / laws / diversity and inclusion",
+      "vector_index": 6
+    },
+    {
+      "id": "plo:PLO-8",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-8",
+      "display_id": "PLO-8",
+      "title": "Individual and Collaborative Teamwork",
+      "wa_id": "WA8",
+      "differentiating_characteristic": "Role in and diversity of team",
+      "explicit_wk_links": [
+        "WK-9"
+      ],
+      "range_context": "Teamwork / multidisciplinary settings",
+      "source_ref": "p.14",
+      "source_sheet": "PLO_WA",
+      "source_row": 10,
+      "text": "Function effectively as an individual, and as a member or leader in diverse and inclusive teams and in multi-disciplinary, face-to-face, remote and distributed settings",
+      "embed_text": "Individual and Collaborative Teamwork. Function effectively as an individual, and as a member or leader in diverse and inclusive teams and in multi-disciplinary, face-to-face, remote and distributed settings. Differentiating characteristic: Role in and diversity of team. Explicit WK links: WK-9. Range and context: Teamwork / multidisciplinary settings",
+      "vector_index": 7
+    },
+    {
+      "id": "plo:PLO-9",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-9",
+      "display_id": "PLO-9",
+      "title": "Communication",
+      "wa_id": "WA9",
+      "differentiating_characteristic": "Level of communication according to type of activities performed",
+      "explicit_wk_links": [],
+      "range_context": "Complex engineering activities",
+      "source_ref": "p.15",
+      "source_sheet": "PLO_WA",
+      "source_row": 11,
+      "text": "Communicate effectively and inclusively on complex engineering activities with the engineering community and with society at large, such as being able to comprehend and write effective reports and design documentation, make effective presentations, taking into account cultural, language, and learning differences",
+      "embed_text": "Communication. Communicate effectively and inclusively on complex engineering activities with the engineering community and with society at large, such as being able to comprehend and write effective reports and design documentation, make effective presentations, taking into account cultural, language, and learning differences. Differentiating characteristic: Level of communication according to type of activities performed. 0. Range and context: Complex engineering activities",
+      "vector_index": 8
+    },
+    {
+      "id": "plo:PLO-10",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-10",
+      "display_id": "PLO-10",
+      "title": "Project Management and Finance",
+      "wa_id": "WA10",
+      "differentiating_characteristic": "Level of management required for differing types of activity",
+      "explicit_wk_links": [],
+      "range_context": "Engineering management / economic decision-making",
+      "source_ref": "p.15",
+      "source_sheet": "PLO_WA",
+      "source_row": 12,
+      "text": "Apply knowledge and understanding of engineering management principles and economic decision-making and apply these to one’s own work, as a member and leader in a team, and to manage projects and in multidisciplinary environments",
+      "embed_text": "Project Management and Finance. Apply knowledge and understanding of engineering management principles and economic decision-making and apply these to one’s own work, as a member and leader in a team, and to manage projects and in multidisciplinary environments. Differentiating characteristic: Level of management required for differing types of activity. 0. Range and context: Engineering management / economic decision-making",
+      "vector_index": 9
+    },
+    {
+      "id": "plo:PLO-11",
+      "family": "plo",
+      "subtype": "definition",
+      "entity_id": "PLO-11",
+      "display_id": "PLO-11",
+      "title": "Lifelong Learning",
+      "wa_id": "WA11",
+      "differentiating_characteristic": "Duration and manner",
+      "explicit_wk_links": [
+        "WK-8"
+      ],
+      "range_context": "Lifelong learning / emerging technologies / critical thinking",
+      "source_ref": "p.15",
+      "source_sheet": "PLO_WA",
+      "source_row": 13,
+      "text": "Recognize the need for, and have the preparation and ability for: (i) independent and life-long learning; (ii) adaptability to new and emerging technologies; and (iii) critical thinking in the broadest context of technological change",
+      "embed_text": "Lifelong Learning. Recognize the need for, and have the preparation and ability for: (i) independent and life-long learning; (ii) adaptability to new and emerging technologies; and (iii) critical thinking in the broadest context of technological change. Differentiating characteristic: Duration and manner. Explicit WK links: WK-8. Range and context: Lifelong learning / emerging technologies / critical thinking",
+      "vector_index": 10
+    }
+  ]
+}
