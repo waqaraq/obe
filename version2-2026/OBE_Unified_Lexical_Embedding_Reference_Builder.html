@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>OBE Unified Reference Builder</title>
+<style>
+:root{
+  --bg:#f5f7fb;--panel:#fff;--ink:#172033;--muted:#667085;--line:#d9e1ec;
+  --accent:#2457d6;--accent2:#173b91;--green:#146c43;--greenbg:#eaf7f0;
+  --warn:#9a6700;--warnbg:#fff7df;--red:#b42318;--redbg:#fff0ef;--code:#0f172a;
+}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:1220px;margin:26px auto;padding:0 18px 48px}h1{font-size:26px;line-height:1.15;margin:0 0 6px}h2{font-size:16px;margin:0 0 12px}p{margin:6px 0}
+.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin-top:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.drop{border:1.5px dashed #9fb0ca;border-radius:12px;padding:22px;text-align:center;background:#f9fbff;transition:.15s}.drop.drag{border-color:var(--accent);background:#eef4ff}.drop input{display:none}
+button,.fileBtn{appearance:none;border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}.primary{background:var(--accent);color:#fff}.primary:hover{background:var(--accent2)}.secondary{background:#eef2f7;color:#344054}.secondary:hover{background:#e3e9f1}button:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.meta{display:grid;grid-template-columns:170px 1fr;gap:8px 12px;margin-top:12px}.meta b{font-weight:700}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}.stat{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fbfcfe}.stat .n{font-size:20px;font-weight:800}.stat .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.progress{height:10px;background:#edf1f6;border-radius:999px;overflow:hidden;margin:12px 0 5px}.bar{height:100%;width:0;background:linear-gradient(90deg,#2457d6,#6f8fe9);transition:width .2s}pre{margin:0;background:var(--code);color:#dbeafe;border-radius:10px;padding:12px;max-height:390px;overflow:auto;font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap}
+code{background:#eef2f7;padding:1px 5px;border-radius:5px;font-size:.92em}.foot{margin-top:12px;color:var(--muted);font-size:12px}.hidden{display:none!important}input[type=text]{width:100%;max-width:330px;border:1px solid #cbd5e1;border-radius:9px;padding:9px 10px;font:inherit;color:var(--ink);background:#fff}
+.tree{font:12px/1.52 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#f8fafc;border:1px solid var(--line);border-radius:10px;padding:12px;white-space:pre;overflow:auto}.status{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fbfcfe;margin-top:12px;white-space:pre-wrap}.status.ok{background:var(--greenbg);border-color:#b7e0c9;color:var(--green)}.status.warn{background:var(--warnbg);border-color:#ead69b;color:var(--warn)}.status.err{background:var(--redbg);border-color:#f2b8b3;color:var(--red)}
+.pill{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:11px;font-weight:750;background:#fff}.pill.ok{background:var(--greenbg);border-color:#b7e0c9;color:var(--green)}
+@media(max-width:860px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.meta{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>OBE Unified Reference Builder</h1>
+  <p class="muted">One master Excel workbook → one ZIP containing <b>Embedding Reference</b> and <b>Lexical Reference</b>. The embedding model contract and lexical F1/F2/F3 rules remain unchanged.</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>1. Load the master reference workbook</h2>
+      <div id="drop" class="drop">
+        <p><b>Drop the consolidated OBE reference workbook here</b></p>
+        <p class="muted">Designed for <code>OBE_Full_Richer_Reference_Courses_Bloom_PLO_WK_EC_SDG.xlsx</code>. Legacy builder workbooks are also accepted.</p>
+        <div class="row" style="justify-content:center;margin-top:12px">
+          <label class="fileBtn primary" for="fileInput">Choose Excel file</label>
+          <input id="fileInput" type="file" accept=".xlsx,.xlsm,.xls" />
+        </div>
+      </div>
+      <div id="sourceInfo" class="hidden">
+        <div class="meta">
+          <b>File</b><span id="fileName"></span>
+          <b>Source framework</b><span id="sourceVersion"></span>
+          <b>SHA-256</b><span id="workbookHash" style="word-break:break-all"></span>
+          <b>Detected schema</b><span id="schemaName"></span>
+          <b>Course entities</b><span id="courseCount"></span>
+          <b>Embedding records</b><span id="recordCount"></span>
+        </div>
+        <div id="stats" class="stats"></div>
+        <div id="validationStatus" class="status"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Fixed contracts</h2>
+      <div class="meta">
+        <b>Embedding model</b><span>mixedbread-ai/mxbai-embed-xsmall-v1</span>
+        <b>Revision</b><span><code>e6ac24e</code></span>
+        <b>Transformers.js</b><span><code>3.8.1</code></span>
+        <b>Runtime</b><span>WASM · q8</span>
+        <b>Pooling / norm</b><span>mean · L2</span>
+        <b>Dimension</b><span>384</span>
+        <b>Lexical tiers</b><span>K1/K2/K3 UI → stored as <code>f1/f2/f3</code></span>
+        <b>Lexical eligibility</b><span>≥1 F1 OR ≥2 F2 OR ≥3 F3; independent routes</span>
+      </div>
+      <p class="foot">No semantic pass/fail threshold is invented. <code>calibration.json</code> remains unset.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="row" style="justify-content:space-between;align-items:flex-end">
+      <div>
+        <h2 style="margin-bottom:4px">2. Build both reference folders</h2>
+        <p class="muted">Lexical data is computed directly from the same parsed workbook records used to build the embedding package; no GitHub round-trip is required.</p>
+        <div style="margin-top:10px">
+          <label for="versionName"><b>Package version</b></label><br>
+          <input id="versionName" type="text" value="version1-2026" spellcheck="false" />
+        </div>
+      </div>
+      <button id="buildBtn" class="primary" disabled>Build &amp; download both</button>
+    </div>
+    <div class="progress"><div id="bar" class="bar"></div></div>
+    <div class="row" style="justify-content:space-between"><span id="stage" class="muted">Waiting for workbook.</span><span id="pct" class="muted">0%</span></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>ZIP structure</h2>
+      <div class="tree">OBE-Reference-Packages-version1-2026.zip
+├── Embedding Reference/
+│   ├── manifest.json
+│   ├── README.md
+│   ├── calibration.json
+│   ├── bloom.json
+│   ├── context/reference-context.json
+│   ├── reference-loader.js
+│   ├── checksums.sha256
+│   ├── courses/
+│   │   ├── courses.json + courses.f32
+│   │   └── course-contents.json + course-contents.f32
+│   ├── plo/plo.json + plo.f32
+│   ├── wk/wk.json + wk.f32
+│   ├── ec/ec.json + ec.f32
+│   └── sdg/sdg.json + sdg.f32
+└── Lexical Reference/
+    ├── lexical-manifest.json
+    ├── lexical-README.md
+    ├── lexical-checksums.sha256
+    ├── courses/courses.lexical.json
+    ├── plo/plo.lexical.json
+    ├── wk/wk.lexical.json
+    ├── ec/ec.lexical.json
+    └── sdg/sdg.lexical.json</div>
+      <p class="foot">The underlying hosted reference formats remain compatible with the existing validator. Richer IEA fields are carried as metadata and used to enrich semantic embedding text without changing the lexical rules.</p>
+    </div>
+    <div class="card">
+      <h2>Build log</h2>
+      <pre id="log">Ready.</pre>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+const CONFIG=Object.freeze({
+  schemaVersion:2,
+  builderVersion:"3.0.0-unified-master-workbook",
+  transformersVersion:"3.8.1",
+  transformersUrl:"https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1",
+  sheetjsUrl:"https://cdn.sheetjs.com/xlsx-0.20.3/package/xlsx.mjs",
+  jszipUrl:"https://cdn.jsdelivr.net/npm/jszip@3.10.2/+esm",
+  modelId:"mixedbread-ai/mxbai-embed-xsmall-v1",
+  modelRevision:"e6ac24e",
+  dtype:"q8",device:"wasm",pooling:"mean",normalize:true,dimension:384,batchSize:16,
+  vectorFormat:"float32-le",courseChunkingVersion:"heading-aware-bullets-v1",maxCourseChunkChars:520,
+  lexicalRuleVersion:"f123-entity-frequency-v1",
+  expected:{courses:104,plo:11,wk:9,ec:13,sdgGoals:17,sdgTargets:169,bloomLevels:15,bloomVerbs:286,courseChunks:819,totalEmbeddings:1142}
+});
+
+const ORDINARY_STOP=new Set(`a an the or but if then than that which who whom whose this these those is are was were be been being am do does did have has had can could may might must shall should will would not no nor as such while because although though whether it its their his her our your my they we he she you i one ones any some each every both either neither other another same very more most less least many much few several own only just also even still already ever never here there where when why how what from into onto upon about around before after during without within throughout beside besides beneath beyond near per via versus vs`.split(/\s+/));
+const CONNECTORS=new Set(`of and for in with on by to over across through between from along under against versus`.split(/\s+/));
+const BLOOM_NON_ACTION=new Set(`how what when where which who why application understanding conclusion criteria inference motive relationships importance opinion original solution theory theme analysis observation organization characterization receiving responding valuing practicing practising adaption`.split(/\s+/));
+const LEXICAL_STOP=new Set([...ORDINARY_STOP,...CONNECTORS,'course','courses','content','contents','lecture','lectures','topic','topics','chapter','chapters','section','sections','student','students']);
+
+const $=id=>document.getElementById(id);
+const fileInput=$("fileInput"),drop=$("drop"),buildBtn=$("buildBtn");
+let parsed=null,busy=false;
+
+function log(msg){const stamp=new Date().toLocaleTimeString();const node=$("log");node.textContent+=`\n[${stamp}] ${msg}`;node.scrollTop=node.scrollHeight;}
+function setProgress(done,total,stage){const p=total?Math.max(0,Math.min(100,done/total*100)):0;$("bar").style.width=`${p.toFixed(1)}%`;$("pct").textContent=`${Math.round(p)}%`;if(stage)$("stage").textContent=stage;}
+function clean(v){return String(v??"").replace(/\u00a0/g," ").replace(/[ \t]+/g," ").trim();}
+function unicodeNorm(s){return String(s??'').normalize('NFKC').replace(/[’‘`]/g,"'").replace(/[–—−]/g,'-').replace(/\s+/g,' ').trim();}
+function safeName(v){return clean(v).replace(/[^A-Za-z0-9._-]+/g,"-").replace(/^-+|-+$/g,"")||"version1-2026";}
+function pathSlug(v){return clean(v).normalize("NFKD").replace(/[^A-Za-z0-9._-]+/g,"-").replace(/^-+|-+$/g,"")||"item";}
+function utf8(s){return new TextEncoder().encode(s);}
+function canonicalJson(obj){return JSON.stringify(obj,null,2)+"\n";}
+function uniq(a){return [...new Set(a)];}
+function canonicalFamilyId(prefix,v){const s=clean(v);const m=s.match(/(\d+)/);return m?`${prefix}-${Number(m[1])}`:s;}
+function parseIdList(prefix,v){return clean(v).split(/[;,]+/).map(clean).filter(Boolean).map(x=>canonicalFamilyId(prefix,x));}
+async function sha256Hex(data){const buf=data instanceof ArrayBuffer?data:(ArrayBuffer.isView(data)?data.buffer.slice(data.byteOffset,data.byteOffset+data.byteLength):utf8(String(data)).buffer);const hash=await crypto.subtle.digest("SHA-256",buf);return [...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,"0")).join("");}
+function esc(s){return String(s??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+
+function findTable(XLSX,wb,sheetNames,requiredHeaders){
+  for(const name of sheetNames){
+    const ws=wb.Sheets[name];if(!ws)continue;
+    const aoa=XLSX.utils.sheet_to_json(ws,{header:1,defval:"",raw:false});
+    const limit=Math.min(8,aoa.length);let headerIndex=-1,headers=[];
+    for(let i=0;i<limit;i++){
+      const h=(aoa[i]||[]).map(clean);
+      if(requiredHeaders.every(x=>h.includes(x))){headerIndex=i;headers=h;break;}
+    }
+    if(headerIndex<0)continue;
+    const rows=aoa.slice(headerIndex+1).map((row,i)=>{
+      const obj={_sourceSheet:name,_sourceRow:headerIndex+2+i};
+      headers.forEach((h,j)=>{if(h)obj[h]=row[j]??"";});return obj;
+    }).filter(r=>Object.entries(r).some(([k,v])=>!k.startsWith('_')&&clean(v)!==""));
+    return {name,headerIndex,headers,rows};
+  }
+  throw new Error(`Required table not found. Tried sheets: ${sheetNames.join(', ')}. Required columns: ${requiredHeaders.join(', ')}`);
+}
+function optionalTable(XLSX,wb,sheetNames,requiredHeaders){try{return findTable(XLSX,wb,sheetNames,requiredHeaders);}catch{return null;}}
+function readReadme(XLSX,wb){
+  const ws=wb.Sheets.README;if(!ws)return{};const aoa=XLSX.utils.sheet_to_json(ws,{header:1,defval:"",raw:false}),out={};
+  for(const r of aoa){const k=clean(r?.[0]),v=clean(r?.[1]);if(k&&v)out[k]=v;}return out;
+}
+
+function normalizeWorkbook(XLSX,wb){
+  const coursesT=findTable(XLSX,wb,["Course_Contents","Courses"],["Course Code","Course Title","Course Contents"]);
+  const ploNew=optionalTable(XLSX,wb,["PLO_WA"],["PLO ID","Official Heading","Official Engineer-Graduate Statement"]);
+  const ploOld=ploNew?null:findTable(XLSX,wb,["PLOs"],["PLO ID","Title","Statement"]);
+  const wkNew=optionalTable(XLSX,wb,["WK_Profile"],["WK ID","Official WK Statement"]);
+  const wkOld=wkNew?null:findTable(XLSX,wb,["WK Definitions"],["WK ID","Title","Descriptor"]);
+  const ecNew=optionalTable(XLSX,wb,["EC_Profile"],["EC ID","Official Professional-Engineer Statement"]);
+  const ecOld=ecNew?null:findTable(XLSX,wb,["EC Definitions"],["EC ID","Title","Descriptor"]);
+  const sdgT=findTable(XLSX,wb,["SDGs"],["SDG ID","Title","Goal Statement"]);
+  const sdgTargetsT=findTable(XLSX,wb,["SDG_Targets","SDG Targets"],["SDG ID","SDG Title","Target No.","Target Corpus Text"]);
+  const bloomLevelsT=findTable(XLSX,wb,["Bloom_Levels","Bloom Levels"],["Level","Name","Domain"]);
+  const bloomVerbsT=findTable(XLSX,wb,["Bloom_Verbs","Bloom Verbs"],["Level","Level Name","Domain","Verb No.","Verb"]);
+
+  const courses=coursesT.rows.map((r,i)=>({
+    uid:clean(r.UID)||`course-${i+1}`,
+    code:clean(r["Course Code"])||`course-${i+1}`,
+    title:clean(r["Course Title"]),type:clean(r.Type),contents:clean(r["Course Contents"]),
+    _sourceSheet:coursesT.name,_sourceRow:r._sourceRow
+  })).filter(r=>r.title&&r.contents);
+
+  const plos=(ploNew||ploOld).rows.map(r=>{
+    const newer=!!ploNew,id=canonicalFamilyId('PLO',r["PLO ID"]),title=clean(newer?r["Official Heading"]:r.Title),statement=clean(newer?r["Official Engineer-Graduate Statement"]:r.Statement);
+    return {id,title,statement,wa_id:clean(r["WA ID"]),differentiating_characteristic:clean(r["Differentiating Characteristic"]),explicit_wk_links:parseIdList('WK',r["Explicit WK Links"]),range_context:clean(r["Range / Context"]),source_ref:clean(r.Source),_sourceSheet:(ploNew||ploOld).name,_sourceRow:r._sourceRow};
+  }).filter(r=>/^PLO-\d+$/i.test(r.id)&&r.statement);
+
+  const wks=(wkNew||wkOld).rows.map(r=>{
+    const newer=!!wkNew,id=canonicalFamilyId('WK',r["WK ID"]),title=clean(newer?r["Concise Theme (derived)"]:r.Title),statement=clean(newer?r["Official WK Statement"]:r.Descriptor);
+    return {id,title,statement,theme:clean(r["Concise Theme (derived)"]),explicit_plo_links:parseIdList('PLO',r["Explicitly Linked PLOs"]),named_in_wp1:clean(r["Named in WP1?"]),complex_problem_role:clean(r["Complex-Problem Role"]),source_ref:clean(r.Source),_sourceSheet:(wkNew||wkOld).name,_sourceRow:r._sourceRow};
+  }).filter(r=>/^WK-\d+$/i.test(r.id)&&r.statement);
+
+  const ecs=(ecNew||ecOld).rows.map(r=>{
+    const newer=!!ecNew,id=canonicalFamilyId('EC',r["EC ID"]),title=clean(newer?r["Official Heading"]:r.Title),statement=clean(newer?r["Official Professional-Engineer Statement"]:r.Descriptor);
+    return {id,title,statement,differentiating_characteristic:clean(r["Differentiating Characteristic"]),range_context:clean(r["Range / Context"]),source_ref:clean(r.Source),_sourceSheet:(ecNew||ecOld).name,_sourceRow:r._sourceRow};
+  }).filter(r=>/^EC-\d+$/i.test(r.id)&&r.statement);
+
+  const sdgs=sdgT.rows.map(r=>({id:canonicalFamilyId('SDG',r["SDG ID"]),title:clean(r.Title),statement:clean(r["Goal Statement"]),target_count:Number(r["Target Count"]||0),_sourceSheet:sdgT.name,_sourceRow:r._sourceRow})).filter(r=>/^SDG-\d+$/i.test(r.id)&&r.statement);
+  const sdgTargets=sdgTargetsT.rows.map(r=>({id:canonicalFamilyId('SDG',r["SDG ID"]),title:clean(r["SDG Title"]),target_no:clean(r["Target No."]),text:clean(r["Target Corpus Text"]),_sourceSheet:sdgTargetsT.name,_sourceRow:r._sourceRow})).filter(r=>/^SDG-\d+$/i.test(r.id)&&r.text);
+  const bloomLevels=bloomLevelsT.rows.map(r=>({level:clean(r.Level),name:clean(r.Name),domain:clean(r.Domain),verb_count:Number(r["Verb Count"]||0),verbs_csv:clean(r.Verbs),_sourceSheet:bloomLevelsT.name,_sourceRow:r._sourceRow})).filter(r=>r.level);
+  const bloomVerbs=bloomVerbsT.rows.map(r=>({level:clean(r.Level),level_name:clean(r["Level Name"]),domain:clean(r.Domain),verb_no:Number(r["Verb No."]||0),verb:clean(r.Verb),_sourceSheet:bloomVerbsT.name,_sourceRow:r._sourceRow})).filter(r=>r.level&&r.verb);
+
+  const contextTables={};
+  const specs=[
+    ["PLO_WK_Crosswalk",["PLO ID","WA ID","PLO Heading","WK ID"]],
+    ["Complex_Problems",["Code","Dimension","Official Complex-Problem Characteristic"]],
+    ["Complex_Activities",["Code","Dimension","Official Complex-Activity Characteristic"]],
+    ["Glossary",["Term","Definition"]],
+    ["Framework_Notes",["Principle","Source-Derived Interpretation"]]
+  ];
+  for(const [name,headers] of specs){const t=optionalTable(XLSX,wb,[name],headers);if(t)contextTables[name]=t.rows.filter(r=>{const first=clean(r[headers[0]]);return first&&first.toLowerCase()!=='primary source url';}).map(r=>Object.fromEntries(Object.entries(r).filter(([k,v])=>!k.startsWith('_')&&clean(v)!=='')));}
+  const schemaName=(coursesT.name==="Course_Contents"&&!!ploNew&&!!wkNew&&!!ecNew)?"Consolidated richer reference workbook":"Legacy / compatible workbook";
+  return {courses,plos,wks,ecs,sdgs,sdgTargets,bloomLevels,bloomVerbs,contextTables,schemaName,sheets:{courses:coursesT.name,plo:(ploNew||ploOld).name,wk:(wkNew||wkOld).name,ec:(ecNew||ecOld).name,sdg:sdgT.name,sdgTargets:sdgTargetsT.name,bloomLevels:bloomLevelsT.name,bloomVerbs:bloomVerbsT.name}};
+}
+
+function hardSplit(text,maxChars){
+  const s=clean(text);if(!s)return[];if(s.length<=maxChars)return[s];
+  const sentences=s.split(/(?<=[.!?])\s+/).filter(Boolean),out=[];let cur="";
+  for(const sent of sentences){
+    if(sent.length>maxChars){if(cur){out.push(cur);cur="";}const words=sent.split(/\s+/);let part="";for(const w of words){const test=part?`${part} ${w}`:w;if(test.length>maxChars&&part){out.push(part);part=w;}else part=test;}if(part)out.push(part);continue;}
+    const test=cur?`${cur} ${sent}`:sent;if(test.length>maxChars&&cur){out.push(cur);cur=sent;}else cur=test;
+  }
+  if(cur)out.push(cur);return out.filter(Boolean);
+}
+function courseChunks(raw){
+  const text=String(raw??"").replace(/\r/g,"\n").trim();if(!text)return[];
+  let bullets=text.split(/\n+/).flatMap(line=>line.split(/[•●▪◦]/)).map(s=>clean(s.replace(/^[-–—]\s*/,""))).filter(Boolean);
+  if(bullets.length<2)bullets=text.split(/\s*;\s*|(?<=[.!?])\s+(?=[A-Z0-9])/).map(clean).filter(Boolean);
+  const out=[];let heading="";
+  for(let i=0;i<bullets.length;i++){
+    const unit=bullets[i],words=unit.split(/\s+/).length;
+    const headingLike=unit.length<=72&&words<=8&&!/[.!?]$/.test(unit)&&i<bullets.length-1;
+    if(headingLike){heading=unit;continue;}
+    const contextual=heading?`${heading}: ${unit}`:unit;
+    for(const chunk of hardSplit(contextual,CONFIG.maxCourseChunkChars))if(chunk)out.push(chunk);
+  }
+  if(!out.length&&heading)out.push(heading);return out;
+}
+function enrichedText(parts){return parts.map(clean).filter(Boolean).join('. ');}
+function buildReferenceCorpus(data){
+  const records=[],courseFolders=[];let vectorIndex=0;const add=r=>records.push({...r,vector_index:vectorIndex++}),usedFolders=new Set();
+  data.courses.forEach((r,courseOrdinal)=>{
+    const uid=r.uid||`course-${courseOrdinal+1}`,code=r.code||uid,title=r.title,type=r.type,raw=r.contents;
+    let folder=`${String(courseOrdinal+1).padStart(3,"0")}_${pathSlug(code)}_${pathSlug(title)}`;if(usedFolders.has(folder))folder+=`_${pathSlug(uid)}`;usedFolders.add(folder);
+    const fullId=`course:${uid}:full`;
+    add({id:fullId,family:"course",subtype:"full_course",entity_id:uid,display_id:code,title,course_type:type,course_ordinal:courseOrdinal+1,course_folder:folder,source_sheet:r._sourceSheet,source_row:r._sourceRow,text:raw,embed_text:clean(`${title}. ${raw}`)});
+    const chunks=courseChunks(raw);chunks.forEach((text,i)=>add({id:`course:${uid}:content:${String(i+1).padStart(3,"0")}`,family:"course",subtype:"content_chunk",entity_id:uid,display_id:code,title,course_type:type,course_ordinal:courseOrdinal+1,course_folder:folder,chunk_no:i+1,source_sheet:r._sourceSheet,source_row:r._sourceRow,text,embed_text:text}));
+    courseFolders.push({uid,code,title,type,folder,chunk_count:chunks.length,full_record_id:fullId});
+  });
+  for(const r of data.plos){
+    const context=enrichedText([r.differentiating_characteristic&&`Differentiating characteristic: ${r.differentiating_characteristic}`,r.explicit_wk_links.length&&`Explicit WK links: ${r.explicit_wk_links.join(', ')}`,r.range_context&&`Range and context: ${r.range_context}`]);
+    add({id:`plo:${r.id}`,family:"plo",subtype:"definition",entity_id:r.id,display_id:r.id,title:r.title,wa_id:r.wa_id,differentiating_characteristic:r.differentiating_characteristic,explicit_wk_links:r.explicit_wk_links,range_context:r.range_context,source_ref:r.source_ref,source_sheet:r._sourceSheet,source_row:r._sourceRow,text:r.statement,embed_text:enrichedText([r.title,r.statement,context])});
+  }
+  for(const r of data.wks){
+    const context=enrichedText([r.theme&&`Theme: ${r.theme}`,r.explicit_plo_links.length&&`Explicit PLO links: ${r.explicit_plo_links.join(', ')}`,r.named_in_wp1&&`Named in WP1: ${r.named_in_wp1}`,r.complex_problem_role&&`Complex-problem role: ${r.complex_problem_role}`]);
+    add({id:`wk:${r.id}`,family:"wk",subtype:"definition",entity_id:r.id,display_id:r.id,title:r.title,theme:r.theme,explicit_plo_links:r.explicit_plo_links,named_in_wp1:r.named_in_wp1,complex_problem_role:r.complex_problem_role,source_ref:r.source_ref,source_sheet:r._sourceSheet,source_row:r._sourceRow,text:r.statement,embed_text:enrichedText([r.title,r.statement,context])});
+  }
+  for(const r of data.ecs){
+    const context=enrichedText([r.differentiating_characteristic&&`Differentiating characteristic: ${r.differentiating_characteristic}`,r.range_context&&`Range and context: ${r.range_context}`]);
+    add({id:`ec:${r.id}`,family:"ec",subtype:"definition",entity_id:r.id,display_id:r.id,title:r.title,differentiating_characteristic:r.differentiating_characteristic,range_context:r.range_context,source_ref:r.source_ref,source_sheet:r._sourceSheet,source_row:r._sourceRow,text:r.statement,embed_text:enrichedText([r.title,r.statement,context])});
+  }
+  for(const r of data.sdgs)add({id:`sdg:${r.id}:goal`,family:"sdg",subtype:"goal",entity_id:r.id,display_id:r.id,parent_id:r.id,title:r.title,source_sheet:r._sourceSheet,source_row:r._sourceRow,text:r.statement,embed_text:clean(`${r.title}. ${r.statement}`)});
+  for(const r of data.sdgTargets)add({id:`sdg:${r.id}:target:${r.target_no||r._sourceRow}`,family:"sdg",subtype:"target",entity_id:r.id,display_id:r.id,parent_id:r.id,title:r.title,target_no:r.target_no,source_sheet:r._sourceSheet,source_row:r._sourceRow,text:r.text,embed_text:clean(`${r.title}. ${r.text}`)});
+  return {records,courseFolders};
+}
+function buildBloom(data){return{schema_version:1,levels:data.bloomLevels.map(({_sourceSheet,_sourceRow,...x})=>x),verbs:data.bloomVerbs.map(({_sourceSheet,_sourceRow,...x})=>x)};}
+function countsFor(records){return{full_courses:records.filter(r=>r.family==="course"&&r.subtype==="full_course").length,course_contents:records.filter(r=>r.family==="course"&&r.subtype==="content_chunk").length,plo:records.filter(r=>r.family==="plo").length,wk:records.filter(r=>r.family==="wk").length,ec:records.filter(r=>r.family==="ec").length,sdg:records.filter(r=>r.family==="sdg").length,total:records.length};}
+function countCheck(data,counts){
+  const exp=CONFIG.expected,actual={courses:data.courses.length,plo:data.plos.length,wk:data.wks.length,ec:data.ecs.length,sdgGoals:data.sdgs.length,sdgTargets:data.sdgTargets.length,bloomLevels:data.bloomLevels.length,bloomVerbs:data.bloomVerbs.length,courseChunks:counts.course_contents,totalEmbeddings:counts.total};
+  const issues=[];for(const [k,v] of Object.entries(exp))if(actual[k]!==v)issues.push(`${k}: expected ${v}, got ${actual[k]}`);return {actual,issues};
+}
+
+async function parseFile(file){
+  setProgress(0,1,"Reading workbook...");log(`Reading ${file.name}`);
+  const bytes=await file.arrayBuffer();const [XLSX,workbookHash]=await Promise.all([import(CONFIG.sheetjsUrl),sha256Hex(bytes)]);const wb=XLSX.read(bytes,{type:"array",cellDates:false});
+  const meta=readReadme(XLSX,wb),data=normalizeWorkbook(XLSX,wb),built=buildReferenceCorpus(data),records=built.records;
+  if(!records.length)throw new Error("No reference records were produced from the workbook.");
+  const dupes=records.map(r=>r.id).filter((id,i,a)=>a.indexOf(id)!==i);if(dupes.length)throw new Error(`Duplicate reference IDs detected: ${[...new Set(dupes)].slice(0,8).join(', ')}`);
+  const counts=countsFor(records),check=countCheck(data,counts),bloom=buildBloom(data);
+  parsed={file,bytes,workbookHash,sourceMeta:meta,data,records,courseFolders:built.courseFolders,bloom,counts,countCheck:check};
+  $("fileName").textContent=`${file.name} (${(file.size/1024).toFixed(1)} KiB)`;$("sourceVersion").textContent=meta.Version||meta["Primary source"]||"not declared";$("workbookHash").textContent=workbookHash;$("schemaName").textContent=data.schemaName;$("courseCount").textContent=data.courses.length.toLocaleString();$("recordCount").textContent=records.length.toLocaleString();
+  const stats=[[counts.full_courses,"FULL COURSES"],[counts.course_contents,"CONTENT CHUNKS"],[counts.plo,"PLO"],[counts.wk,"WK"],[counts.ec,"EC"],[data.sdgs.length,"SDG GOALS"],[data.sdgTargets.length,"SDG TARGETS"],[data.bloomVerbs.length,"BLOOM VERBS"]];
+  $("stats").innerHTML=stats.map(([n,l])=>`<div class="stat"><div class="n">${Number(n).toLocaleString()}</div><div class="l">${l}</div></div>`).join('');
+  const vs=$("validationStatus");if(check.issues.length){vs.className="status warn";vs.textContent=`Workbook parsed successfully, but current master-reference count checks differ:\n${check.issues.join('\n')}\nBuild is allowed; review intentional changes before publishing.`;}else{vs.className="status ok";vs.textContent="MASTER WORKBOOK SELF-CHECK PASS · 104 courses · 819 chunks · 11 PLO · 9 WK · 13 EC · 17 SDGs · 169 targets · 15 Bloom levels · 286 Bloom verbs · 1142 embeddings";}
+  $("sourceInfo").classList.remove("hidden");buildBtn.disabled=false;setProgress(0,1,"Workbook validated. Ready to build both references.");
+  log(`Workbook validated using ${data.schemaName}.`);log(`Reference counts: ${counts.full_courses} courses + ${counts.course_contents} chunks + ${counts.plo} PLO + ${counts.wk} WK + ${counts.ec} EC + ${counts.sdg} SDG goal/target = ${counts.total} embeddings.`);log(`Bloom: ${data.bloomLevels.length} levels, ${data.bloomVerbs.length} verb rows.`);if(check.issues.length)log(`Count-check warning: ${check.issues.join(' | ')}`);else log("Master count self-check passed.");
+}
+
+async function embedAll(records){
+  log("Loading Transformers.js and pinned embedding model...");const {pipeline,env}=await import(CONFIG.transformersUrl);env.allowLocalModels=false;
+  const extractor=await pipeline("feature-extraction",CONFIG.modelId,{revision:CONFIG.modelRevision,dtype:CONFIG.dtype,device:CONFIG.device,progress_callback:p=>{if(p?.status==="progress"&&Number.isFinite(p.progress))setProgress(p.progress,100,`Downloading model: ${p.file||'asset'}`);if(p?.status==="ready")log(`Model asset ready: ${p.file||''}`);}});
+  log("Model loaded. Embedding reference corpus...");const matrix=new Float32Array(records.length*CONFIG.dimension);
+  for(let start=0;start<records.length;start+=CONFIG.batchSize){
+    const end=Math.min(records.length,start+CONFIG.batchSize),texts=records.slice(start,end).map(r=>r.embed_text);const tensor=await extractor(texts,{pooling:CONFIG.pooling,normalize:CONFIG.normalize});const dims=tensor.dims||[];
+    if(dims.length!==2||dims[0]!==texts.length||dims[1]!==CONFIG.dimension)throw new Error(`Unexpected embedding tensor shape: [${dims.join(', ')}]`);
+    const vals=tensor.data;if(vals.length!==texts.length*CONFIG.dimension)throw new Error("Embedding data length mismatch.");
+    for(let i=0;i<vals.length;i++){const v=Number(vals[i]);if(!Number.isFinite(v))throw new Error(`Non-finite embedding value at batch ${start}.`);matrix[start*CONFIG.dimension+i]=v;}
+    for(let r=0;r<texts.length;r++){let n2=0,off=(start+r)*CONFIG.dimension;for(let d=0;d<CONFIG.dimension;d++)n2+=matrix[off+d]*matrix[off+d];const norm=Math.sqrt(n2);if(norm<0.97||norm>1.03)throw new Error(`Normalization check failed at vector ${start+r}: norm=${norm}`);}
+    setProgress(end,records.length,`Embedding references ${end.toLocaleString()} / ${records.length.toLocaleString()}`);await new Promise(requestAnimationFrame);
+  }
+  return matrix;
+}
+function float32LEBuffer(values){const out=new ArrayBuffer(values.length*4),view=new DataView(out);for(let i=0;i<values.length;i++)view.setFloat32(i*4,values[i],true);return out;}
+function matrixBufferFor(matrix,records){const out=new Float32Array(records.length*CONFIG.dimension);records.forEach((r,i)=>out.set(matrix.subarray(r.vector_index*CONFIG.dimension,(r.vector_index+1)*CONFIG.dimension),i*CONFIG.dimension));return float32LEBuffer(out);}
+function stripRecord(r){const {vector_index,...rest}=r;return rest;}
+function indexJson(packageVersion,kind,records,vectorFile,extra={}){return canonicalJson({schema_version:CONFIG.schemaVersion,package_version:packageVersion,kind,model:{id:CONFIG.modelId,revision:CONFIG.modelRevision,dimension:CONFIG.dimension,pooling:CONFIG.pooling,normalize:CONFIG.normalize,dtype:CONFIG.dtype},vector:{file:vectorFile,format:CONFIG.vectorFormat,dimension:CONFIG.dimension,normalized:true,row_major:true,record_count:records.length},records:records.map((r,i)=>({...stripRecord(r),vector_index:i})),...extra});}
+function runtimeLoaderSource(){return `// Generated loader for compact reference embedding packages\nexport async function loadReferencePair(baseUrl, stem) {\n  const root=String(baseUrl).replace(/\\\/$/,'');\n  const [j,b]=await Promise.all([fetch(root+'/'+stem+'.json'),fetch(root+'/'+stem+'.f32')]);\n  if(!j.ok||!b.ok) throw new Error('Failed to load reference pair: '+root+'/'+stem);\n  const meta=await j.json(), buffer=await b.arrayBuffer();\n  const expected=meta.vector.record_count*meta.vector.dimension*4;\n  if(buffer.byteLength!==expected) throw new Error('Vector byte length mismatch for '+stem);\n  return {meta,vectors:new Float32Array(buffer)};\n}\nexport function dotVectorAt(query,vectors,index,dimension=384){\n  if(query.length!==dimension) throw new Error('Query dimension mismatch');\n  let sum=0,off=index*dimension;\n  for(let i=0;i<dimension;i++) sum+=query[i]*vectors[off+i];\n  return sum;\n}\nexport function scoreIndex(index,query){\n  return index.meta.records.map(r=>({record:r,score:dotVectorAt(query,index.vectors,r.vector_index,index.meta.vector.dimension)})).sort((a,b)=>b.score-a.score);\n}\n`;}
+
+function embeddingReadme(packageVersion,manifest){return `# Embedding Reference — ${packageVersion}\n\nGenerated from the consolidated OBE master reference workbook.\n\n## Embedding contract\n- Model: ${manifest.model.id}\n- Revision: ${manifest.model.revision}\n- Transformers.js: ${manifest.model.transformers_js_version}\n- dtype: ${manifest.model.dtype}\n- pooling: ${manifest.model.pooling}\n- normalization: L2\n- dimension: ${manifest.model.dimension}\n- binary format: Float32 little-endian\n\nPLO/WK/EC embedding text uses the official statement plus entity-local richer context present in the workbook. The record \`text\` field remains the core official statement. Course embeddings use course title + contents. SDG embeddings remain goal/target records grouped by SDG at runtime.\n\nSimilarity thresholds are intentionally unset in calibration.json.\n`}
+function contextPayload(data){return{schema_version:1,note:"Non-vector contextual reference material carried from the master workbook for auditability and future use.",tables:data.contextTables};}
+async function makeEmbeddingFiles(matrix,packageVersion){
+  const now=new Date().toISOString(),counts=parsed.counts;
+  const manifest={
+    schema_version:CONFIG.schemaVersion,package_version:packageVersion,generated_at:now,
+    builder:{name:"OBE Unified Reference Builder",version:CONFIG.builderVersion},
+    model:{id:CONFIG.modelId,revision:CONFIG.modelRevision,transformers_js_version:CONFIG.transformersVersion,transformers_js_url:CONFIG.transformersUrl,dtype:CONFIG.dtype,device:CONFIG.device,pooling:CONFIG.pooling,normalize:CONFIG.normalize,dimension:CONFIG.dimension,runtime_requirement:"CLO embeddings must use the same model/revision/pooling/normalization contract"},
+    text_profile:{name:"core-plus-local-context-v1",lexical_compatibility:"Lexical profiles use core entity text with the historical title treatment; richer contextual fields do not alter lexical tier rules."},
+    layout:{compact:true,paired_assets:true,courses_full:{metadata:"courses/courses.json",vectors:"courses/courses.f32"},course_contents:{metadata:"courses/course-contents.json",vectors:"courses/course-contents.f32"},plo:{metadata:"plo/plo.json",vectors:"plo/plo.f32"},wk:{metadata:"wk/wk.json",vectors:"wk/wk.f32"},ec:{metadata:"ec/ec.json",vectors:"ec/ec.f32"},sdg:{metadata:"sdg/sdg.json",vectors:"sdg/sdg.f32"},context:{metadata:"context/reference-context.json"}},
+    counts:{actual_courses:parsed.data.courses.length,full_course_embeddings:counts.full_courses,course_content_embeddings:counts.course_contents,plo_embeddings:counts.plo,wk_embeddings:counts.wk,ec_embeddings:counts.ec,sdg_goal_target_embeddings:counts.sdg,total_embeddings:counts.total},
+    course_chunking:{version:CONFIG.courseChunkingVersion,max_chars:CONFIG.maxCourseChunkChars},
+    source_workbook:{filename:parsed.file.name,sha256:parsed.workbookHash,source_framework:parsed.sourceMeta.Version||null,primary_source:parsed.sourceMeta["Primary source"]||null,source_url:parsed.sourceMeta["Source URL"]||null},
+    exclusions:["CLOs are not embedded","Bloom is packaged but not embedded","Lexical tiers are generated separately in the Lexical Reference folder"]
+  };
+  const calibration={schema_version:1,package_version:packageVersion,model_id:CONFIG.modelId,status:"UNSET_REQUIRES_FACULTY_CALIBRATION",thresholds:{course_full:null,course_content:null,plo:null,wk:null,ec:null,sdg:null},aggregation:{course:"compare assigned course full vector and/or max content chunk",plo:"per_definition",wk:"per_definition",ec:"per_definition",sdg:"max_goal_or_target_within_sdg"},note:"Semantic validation uses Top-3 membership in the current validator; no arbitrary similarity threshold is set here."};
+  const files=new Map(),put=(p,d)=>files.set(p,d);
+  put("manifest.json",canonicalJson(manifest));put("bloom.json",canonicalJson(parsed.bloom));put("calibration.json",canonicalJson(calibration));put("reference-loader.js",runtimeLoaderSource());put("README.md",embeddingReadme(packageVersion,manifest));put("context/reference-context.json",canonicalJson(contextPayload(parsed.data)));
+  const fullCourses=parsed.records.filter(r=>r.family==="course"&&r.subtype==="full_course"),courseContents=parsed.records.filter(r=>r.family==="course"&&r.subtype==="content_chunk");
+  put("courses/courses.json",indexJson(packageVersion,"course_full_index",fullCourses,"courses.f32",{course_count:fullCourses.length}));put("courses/courses.f32",matrixBufferFor(matrix,fullCourses));
+  put("courses/course-contents.json",indexJson(packageVersion,"course_content_index",courseContents,"course-contents.f32",{course_count:parsed.data.courses.length,chunk_count:courseContents.length,relationship:"Each content record links to its parent via entity_id, display_id, title, course_folder and chunk_no."}));put("courses/course-contents.f32",matrixBufferFor(matrix,courseContents));
+  for(const family of ["plo","wk","ec"]){const recs=parsed.records.filter(r=>r.family===family);put(`${family}/${family}.json`,indexJson(packageVersion,`${family}_index`,recs,`${family}.f32`));put(`${family}/${family}.f32`,matrixBufferFor(matrix,recs));}
+  const sdgAll=parsed.records.filter(r=>r.family==="sdg");put("sdg/sdg.json",indexJson(packageVersion,"sdg_all_index",sdgAll,"sdg.f32",{aggregation:"Group goal/target records by entity_id (SDG ID) at runtime."}));put("sdg/sdg.f32",matrixBufferFor(matrix,sdgAll));
+  const hashes=[];for(const [path,data] of files)hashes.push(`${await sha256Hex(data)}  ${path}`);put("checksums.sha256",hashes.join("\n")+"\n");return {files,manifest};
+}
+
+function canonToken(t){let s=unicodeNorm(t).toLowerCase().replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu,'');if(s.length>4){if(/ies$/.test(s))s=s.slice(0,-3)+'y';else if(/sses$/.test(s))s=s.slice(0,-2);else if(/(ches|shes|xes|zes)$/.test(s))s=s.slice(0,-2);else if(/s$/.test(s)&&!/(ss|us|is)$/.test(s))s=s.slice(0,-1);}return s;}
+function bloomActionOpeners(bloom){const out=new Set();for(const row of (bloom?.verbs||[])){const rawVerb=row?.verb||'',rawFirst=(unicodeNorm(String(rawVerb).replace(/\([^)]*\)/g,'')).match(/\p{L}+/u)||[])[0]||'',lower=rawFirst.toLowerCase(),canon=canonToken(rawFirst);if(!lower||BLOOM_NON_ACTION.has(canon||lower))continue;out.add(lower);if(canon)out.add(canon);}return out;}
+function lexicalWords(text,bloomOpeners){const out=[];for(const raw of (unicodeNorm(text).match(/\p{L}+/gu)||[])){const w=raw.toLowerCase(),isAcronym=/^[A-Z]{2,5}$/.test(raw);if(([...w].length<3&&!isAcronym)||LEXICAL_STOP.has(w)||bloomOpeners.has(w))continue;out.push(w);}return uniq(out);}
+function buildFamily(family,items,bloomOpeners){
+  const wordsById=new Map(),df=new Map();for(const item of items){const words=new Set(lexicalWords(item.text,bloomOpeners));wordsById.set(String(item.id),words);for(const w of words)df.set(w,(df.get(w)||0)+1);}
+  const entities=items.map(item=>{const words=[...(wordsById.get(String(item.id))||[])].sort(),f1=words.filter(w=>df.get(w)===1),f2=words.filter(w=>df.get(w)===2),f3=words.filter(w=>df.get(w)===3),common4plus=words.filter(w=>(df.get(w)||0)>=4);return{id:item.id,display_id:item.display_id||String(item.id),title:item.title||'',f1,f2,f3,common4plus,counts:{f1:f1.length,f2:f2.length,f3:f3.length,common4plus:common4plus.length,all:words.length}};});
+  const document_frequency=Object.fromEntries([...df.entries()].sort((a,b)=>a[0].localeCompare(b[0]))),vocab=[...df.keys()];return{family,frequency_scope:'distinct_entities_within_family',stats:{entity_count:items.length,vocabulary_size:vocab.length,f1_words:vocab.filter(w=>df.get(w)===1).length,f2_words:vocab.filter(w=>df.get(w)===2).length,f3_words:vocab.filter(w=>df.get(w)===3).length,common4plus_words:vocab.filter(w=>df.get(w)>=4).length},document_frequency,entities};
+}
+function lexicalSourceItems(records){
+  const courses=records.filter(r=>r.family==="course"&&r.subtype==="full_course").map(r=>({id:r.entity_id,display_id:r.display_id,title:r.title,text:r.text||''}));
+  const makeSimple=family=>records.filter(r=>r.family===family).map(r=>({id:r.entity_id,display_id:r.display_id,title:r.title,text:`${r.title||''}. ${r.text||''}`}));
+  const grouped=new Map();for(const r of records.filter(r=>r.family==="sdg")){if(!grouped.has(r.entity_id))grouped.set(r.entity_id,{id:r.entity_id,display_id:r.display_id,title:r.title,parts:[]});grouped.get(r.entity_id).parts.push(r.text||'');}
+  const sdgs=[...grouped.values()].map(g=>({id:g.id,display_id:g.display_id,title:g.title,text:`${g.title||''}. ${g.parts.join('. ')}`}));return{course:courses,plo:makeSimple('plo'),wk:makeSimple('wk'),ec:makeSimple('ec'),sdg:sdgs};
+}
+function validateFamilyIndex(idx,bloomOpeners){const errs=[],ids=new Set();for(const e of idx.entities){if(ids.has(String(e.id)))errs.push(`duplicate entity ${e.id}`);ids.add(String(e.id));for(const [tier,expected] of [['f1',1],['f2',2],['f3',3]])for(const w of e[tier]){if(idx.document_frequency[w]!==expected)errs.push(`${idx.family}/${e.id}/${w}: ${tier} but df=${idx.document_frequency[w]}`);if(LEXICAL_STOP.has(w))errs.push(`${idx.family}/${e.id}/${w}: stopword leaked`);if(bloomOpeners.has(w))errs.push(`${idx.family}/${e.id}/${w}: Bloom opener leaked`);}for(const w of e.common4plus)if((idx.document_frequency[w]||0)<4)errs.push(`${idx.family}/${e.id}/${w}: common4plus but df=${idx.document_frequency[w]}`);const combined=[...e.f1,...e.f2,...e.f3,...e.common4plus];if(new Set(combined).size!==combined.length)errs.push(`${idx.family}/${e.id}: duplicate word across tiers`);}if(ids.size!==idx.stats.entity_count)errs.push(`${idx.family}: entity count mismatch`);return errs;}
+async function makeLexicalFiles(packageVersion,embeddingManifest){
+  const bloomOpeners=bloomActionOpeners(parsed.bloom),items=lexicalSourceItems(parsed.records),families={};for(const f of ['course','plo','wk','ec','sdg'])families[f]=buildFamily(f,items[f],bloomOpeners);
+  const errors=[];for(const f of Object.keys(families))errors.push(...validateFamilyIndex(families[f],bloomOpeners));const expected={course:parsed.data.courses.length,plo:parsed.data.plos.length,wk:parsed.data.wks.length,ec:parsed.data.ecs.length,sdg:parsed.data.sdgs.length};for(const [f,n] of Object.entries(expected))if(families[f].stats.entity_count!==n)errors.push(`${f}: expected ${n} entities, got ${families[f].stats.entity_count}`);if(errors.length)throw new Error(`Lexical self-test failed: ${errors.slice(0,10).join(' | ')}`);
+  const generatedAt=new Date().toISOString(),sourceReference={package_version:packageVersion,workbook_filename:parsed.file.name,workbook_sha256:parsed.workbookHash,embedding_manifest_generated_at:embeddingManifest.generated_at,embedding_model:embeddingManifest.model.id};
+  const rules={frequency_unit:'distinct entities within each family',f1:'word occurs in exactly 1 entity',f2:'word occurs in exactly 2 entities',f3:'word occurs in exactly 3 entities',excluded:'word occurs in 4 or more entities',eligibility:'>=1 F1 word OR >=2 distinct F2 words OR >=3 distinct F3 words',route_combination:'independent; mixed F1/F2/F3 counts do not combine',tokenization:'Unicode letters; exact lowercase words; ordinary words length >=3; all-cap acronyms length 2-5 retained; no stemming; no synonym expansion',bloom_action_openers_excluded:true,stop_words:[...LEXICAL_STOP].sort()};
+  const bloomExclusion={action_opener_count:bloomOpeners.size,action_openers:[...bloomOpeners].sort()},famPath={course:'courses/courses.lexical.json',plo:'plo/plo.lexical.json',wk:'wk/wk.lexical.json',ec:'ec/ec.lexical.json',sdg:'sdg/sdg.lexical.json'};
+  const manifest={schema_version:2,package_version:packageVersion,lexical_rule_version:CONFIG.lexicalRuleVersion,generated_at:generatedAt,source_reference:sourceReference,layout:{courses_full:{lexical:famPath.course,frequency_entity:'one full course'},course_contents:{lexical:null,note:'No per-content-chunk lexical profiles are generated; course frequency is calculated at full-course level.'},plo:{lexical:famPath.plo},wk:{lexical:famPath.wk},ec:{lexical:famPath.ec},sdg:{lexical:famPath.sdg}},family_counts:Object.fromEntries(Object.entries(families).map(([k,v])=>[k,v.stats.entity_count])),rules:{f1:'df=1',f2:'df=2',f3:'df=3',excluded:'df>=4',eligibility:'>=1 F1 OR >=2 F2 OR >=3 F3',frequency_unit:'distinct entities within each family',course_frequency_entity:'full course only'},files:{manifest:'lexical-manifest.json',readme:'lexical-README.md',checksums:'lexical-checksums.sha256',families:famPath},integrity:{self_test:'PASS'}};
+  const files=new Map();files.set('lexical-manifest.json',canonicalJson(manifest));
+  const readme=`# Lexical Reference — ${packageVersion}\n\nUnderlying package fields remain f1/f2/f3 for runtime compatibility; the validator may present them to users as K1/K2/K3.\n\nRules: F1=df1, F2=df2, F3=df3, 4+=excluded. Eligibility is >=1 F1 OR >=2 F2 OR >=3 F3. Routes are independent. Bloom action openers and configured stop words are excluded. Course frequency is calculated across full courses only. SDG frequency is calculated across 17 SDG entities after combining each goal with its targets.\n`;
+  files.set('lexical-README.md',readme);
+  for(const [family,path] of Object.entries(famPath))files.set(path,canonicalJson({schema_version:1,package_version:packageVersion,lexical_rule_version:CONFIG.lexicalRuleVersion,generated_at:generatedAt,source_reference:sourceReference,rules,bloom_exclusion:bloomExclusion,family:families[family]}));
+  const hashes=[];for(const [path,data] of files)hashes.push(`${await sha256Hex(data)}  ${path}`);files.set('lexical-checksums.sha256',hashes.join('\n')+'\n');return {files,manifest,families};
+}
+
+async function packageBoth(matrix,packageVersion){
+  setProgress(0,1,"Building Embedding Reference files...");const embedding=await makeEmbeddingFiles(matrix,packageVersion);log(`Embedding Reference prepared: ${embedding.files.size} files.`);
+  setProgress(0,1,"Building Lexical Reference files...");const lexical=await makeLexicalFiles(packageVersion,embedding.manifest);log(`Lexical Reference self-test passed: course ${lexical.families.course.stats.entity_count}, PLO ${lexical.families.plo.stats.entity_count}, WK ${lexical.families.wk.stats.entity_count}, EC ${lexical.families.ec.stats.entity_count}, SDG ${lexical.families.sdg.stats.entity_count}.`);
+  const JSZipModule=await import(CONFIG.jszipUrl),JSZip=JSZipModule.default||JSZipModule,zip=new JSZip(),embFolder=zip.folder('Embedding Reference'),lexFolder=zip.folder('Lexical Reference');for(const [path,data] of embedding.files)embFolder.file(path,data);for(const [path,data] of lexical.files)lexFolder.file(path,data);
+  const blob=await zip.generateAsync({type:'blob',compression:'DEFLATE',compressionOptions:{level:6}},m=>setProgress(m.percent,100,`Compressing ${m.currentFile||'reference packages'}`));return{blob,filename:`OBE-Reference-Packages-${packageVersion}.zip`,embedding,lexical};
+}
+function downloadBlob(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);}
+async function build(){
+  if(!parsed||busy)return;busy=true;buildBtn.disabled=true;fileInput.disabled=true;
+  try{const packageVersion=safeName($("versionName").value||"version1-2026");$("versionName").value=packageVersion;log(`Starting unified build for ${packageVersion}.`);setProgress(0,1,"Loading embedding model...");const matrix=await embedAll(parsed.records);log(`Embedding complete: ${parsed.records.length} × ${CONFIG.dimension} normalized vectors.`);const pkg=await packageBoth(matrix,packageVersion);downloadBlob(pkg.blob,pkg.filename);setProgress(1,1,`Complete — ${pkg.filename}`);log(`Downloaded ${pkg.filename} (${(pkg.blob.size/1024/1024).toFixed(2)} MiB zipped) with exactly two top-level folders: Embedding Reference and Lexical Reference.`);}catch(err){console.error(err);setProgress(0,1,"Build failed.");log(`ERROR: ${err?.message||err}`);alert(`Build failed:\n\n${err?.message||err}`);}finally{busy=false;buildBtn.disabled=!parsed;fileInput.disabled=false;}
+}
+async function acceptFile(file){if(!file||busy)return;buildBtn.disabled=true;parsed=null;$("sourceInfo").classList.add("hidden");$("log").textContent="Ready.";try{await parseFile(file);}catch(err){console.error(err);log(`ERROR: ${err?.message||err}`);setProgress(0,1,"Workbook validation failed.");alert(`Workbook validation failed:\n\n${err?.message||err}`);}}
+fileInput.addEventListener("change",()=>acceptFile(fileInput.files?.[0]));buildBtn.addEventListener("click",build);["dragenter","dragover"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add("drag");}));["dragleave","drop"].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove("drag");}));drop.addEventListener("drop",e=>acceptFile(e.dataTransfer?.files?.[0]));
+</script>
+</body>
+</html>
